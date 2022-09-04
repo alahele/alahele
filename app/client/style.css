@@ -26,3 +26,16 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+#home-img {
+  margin-bottom: 10px;
+}
+
+#state-seal-img {
+  height: 110px;
+  width: 155px;
+}
+
+.tos {
+  font-size: 12px;
+}
