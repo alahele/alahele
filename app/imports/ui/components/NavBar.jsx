@@ -13,12 +13,11 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const menuStyle = { marginBottom: '10px' };
   return (
     <div>
       {currentUser ? ([null]) :
         ([
-          <Navbar bg="light" expand="lg" style={menuStyle}>
+          <Navbar bg="light" expand="lg">
             <Container>
               <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
                 <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
