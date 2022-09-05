@@ -22,7 +22,7 @@ const NavBar = () => {
               <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
                 <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
               </Navbar.Brand>
-              <h4 className="me-auto">Hawaii DOE Legislative Tracker</h4>
+              <h4 className="me-auto">Ala Hele</h4>
               <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin">
                 <button id="login" type="button" className="btn btn-outline-secondary">Login</button>
               </Nav.Link>
@@ -35,7 +35,7 @@ const NavBar = () => {
             <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
               <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
             </Navbar.Brand>
-            <h4 className="me-auto">HIDOE Legislative Tracker</h4>
+            <h4 className="me-auto">Ala Hele</h4>
             <Nav className="me-auto justify-content-center flex-grow-1 pe-3">
               <Nav.Link href="#Option 1">Option 1</Nav.Link>
               <Nav.Link href="#Option 2">Option 2</Nav.Link>
