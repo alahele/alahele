@@ -88,7 +88,7 @@ const Landing = () => (
               <ListGroupItem>
                 <Card.Title>Contact Us</Card.Title>
               </ListGroupItem>
-
+            <p></p>
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
               <Form.Control placeholder="name@example.com" disabled />
