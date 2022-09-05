@@ -26,3 +26,9 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.btn.search_btn{
+  background-color: darkseagreen;
+  --bs-btn-padding-x: 20px;
+  margin-bottom: 5px;
+}

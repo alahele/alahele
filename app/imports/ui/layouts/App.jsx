@@ -8,6 +8,7 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
+import Bills from '../pages/Bills';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -23,7 +24,7 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/" element={<Bills />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
