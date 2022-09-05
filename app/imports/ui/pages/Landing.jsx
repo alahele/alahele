@@ -86,7 +86,7 @@ const Landing = () => (
 
             <ListGroup className="list-group-flush">
               <ListGroupItem>
-                <Card.Title>Get To Know Our Team</Card.Title>
+                <Card.Title>Contact Us</Card.Title>
               </ListGroupItem>
 
             <Form.Group className="mb-3">
