@@ -14,24 +14,24 @@ const Testimony = () => {
   return (
     <Container id={PAGE_IDS.TESTIMONY} className="py-3">
       <div className="text-center">
-        <img src="../images/emblum-hidoe.png" className="h-20 p-3" alt="logo" />
+        <img src="../images/emblum-hidoe.png" className="h-20 p-3" style={{ 'max-width': '10%' }} alt="logo" />
       </div>
       <div id="infounderlogo" className="text-center">
-        <p>
+        <p className="mb-0">
           STATE OF HAWAI&apos;I
         </p>
-        <p>
+        <p className="mb-0">
           DEPARTMENT OF EDUCATION
         </p>
-        <p className="text-center">
+        <p className="mb-0">
           P.O. BOX 2360
         </p>
-        <p>
+        <p className="mb-0">
           HONOLULU, HAWAI&apos;I 96804
         </p>
       </div>
       <div className="text-end">
-        <label htmlFor="Department" className="col-sm-2 col-form-label">Date: 06/20/2020 </label>
+        <label htmlFor="Department" className="col-sm-2 col-form-label mb-0">Date: 06/20/2020 </label>
       </div>
       <div className="text-end">
         <label htmlFor="Department" className="col-sm-2 col-form-label">Time: 02:00 PM </label>
