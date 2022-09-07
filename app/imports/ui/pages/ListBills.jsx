@@ -5,7 +5,7 @@ import { Container, Table, Form, Button, Alert, Nav } from 'react-bootstrap';
 //import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
-const Bills = () => {
+const ListBills = () => {
   return (
       <Container>
         <div>
@@ -98,4 +98,4 @@ const Bills = () => {
   );
 };
 
-export default Bills;
+export default ListBills;
