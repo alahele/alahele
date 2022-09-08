@@ -8,7 +8,7 @@ const Testimony = () => (
     <div className="text-center">
       <img src="../images/emblum-hidoe.png" className="h-20 p-3" style={{ 'max-width': '10%' }} alt="logo"/>
     </div>
-    <div id="infounderlogo" className="text-center">
+    <div className="text-center">
       <p className="mb-0">
         STATE OF HAWAI&apos;I
       </p>
