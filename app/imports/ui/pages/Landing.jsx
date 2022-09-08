@@ -26,7 +26,7 @@ const Landing = () => (
                 <Card.Title>About Us</Card.Title>
               </ListGroupItem>
               <Card.Text>
-                <p></p>
+
                 Aloha! Welcome to Alahele. Our team is comprised of UH Manoa Students who are dedicated to helping you find your alahele through the legislative process.
 
               </Card.Text>
@@ -43,7 +43,7 @@ const Landing = () => (
                 <Card.Title>Alahele Defined</Card.Title>
               </ListGroupItem>
               <Card.Text>
-                <p></p>
+
                 <p>[ala hele] noun</p>
 
                 <p>1. Pathway, route, road, way to go, itinerary, trail, highway, means of transportation.
@@ -64,15 +64,15 @@ const Landing = () => (
                 <Card.Title>Get To Know Our Team</Card.Title>
               </ListGroupItem>
               <Card.Text>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Zak Gilbert</li>
-                  <li className="list-group-item">Cathy Kim</li>
-                  <li className="list-group-item">Steven Le</li>
-                  <li className="list-group-item">William Liang</li>
-                  <li className="list-group-item">Yon-Sung Masuda</li>
-                  <li className="list-group-item">Lise Nilsen</li>
-                  <li className="list-group-item">Kristine Rivera</li>
-                  <li className="list-group-item">Hyunjun Song</li>
+                <ul>
+                  <li>Zak Gilbert</li>
+                  <li>Cathy Kim</li>
+                  <li>Steven Le</li>
+                  <li>William Liang</li>
+                  <li>Yon-Sung Masuda</li>
+                  <li>Lise Nilsen</li>
+                  <li>Kristine Rivera</li>
+                  <li>Hyunjun Song</li>
                 </ul>
               </Card.Text>
             </ListGroup>
@@ -88,7 +88,7 @@ const Landing = () => (
               <ListGroupItem>
                 <Card.Title>Contact Us</Card.Title>
               </ListGroupItem>
-            <p></p>
+
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
               <Form.Control placeholder="name@example.com" disabled />
