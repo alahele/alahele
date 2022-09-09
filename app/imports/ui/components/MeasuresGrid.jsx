@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 /** Render a list cards containing measures data */
-const CardGrid = props => {
+const MeasuresGrid = props => {
 
   const { measures } = props;
 
@@ -36,7 +36,7 @@ const CardGrid = props => {
   );
 };
 
-CardGrid.propTypes = {
+MeasuresGrid.propTypes = {
   measures: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -44,4 +44,4 @@ CardGrid.propTypes = {
   })).isRequired,
 };
 
-export default CardGrid;
+export default MeasuresGrid;

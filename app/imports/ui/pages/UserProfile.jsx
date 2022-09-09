@@ -1,11 +1,8 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
 import '/client/style.css';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Card, Container } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import CardGrid from '../components/CardGrid';
+import MeasuresGrid from '../components/MeasuresGrid';
 
 /** Render the current users personal information. */
 const UserProfile = () => {
@@ -46,7 +43,7 @@ const UserProfile = () => {
         </Card.Body>
       </Card>
       <Container className="user-profile-measures-container">
-        <CardGrid measures={user.measures} />
+        <MeasuresGrid measures={user.measures} />
       </Container>
     </Container>
   );
