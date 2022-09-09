@@ -3,12 +3,12 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import '/client/style.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import CardGrid from '../components/CardGrid';
 
 /** Render the current users personal information. */
 const UserProfile = () => {
-
   const user = {
     name: 'sharky mc sharkertons',
     title: 'DOE Human Resources',
@@ -39,16 +39,17 @@ const UserProfile = () => {
             className="rounded-circle img-fluid img-thumbnail"
             style={{ width: '12rem' }}
           />
-          <Card.Title style={{ padding: '1rem' }}>{user.name}</Card.Title>
+          <Card.Title className="user-profile-main-card">{user.name}</Card.Title>
           <Card.Text>{user.priv}</Card.Text>
           <Card.Text>{user.title}</Card.Text>
           <Card.Text>{billsFollowed}</Card.Text>
         </Card.Body>
       </Card>
-      <Container style={{ padding: '0.5rem' }}>
+      <Container className="user-profile-measures-container">
         <CardGrid measures={user.measures} />
       </Container>
     </Container>
   );
 };
+
 export default UserProfile;

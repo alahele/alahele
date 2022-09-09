@@ -27,21 +27,16 @@ body {
     padding-bottom: 20px;
 }
 
-.box {
-    margin: 20px;
+
+/** UserProfile.jsx */
+.user-profile-image {
+    width: 12rem;
 }
 
-.grid {
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+.user-profile-main-card {
+    padding: 1rem;
 }
 
-.grid > div {
-    flex-basis: calc(50% - 40px);
-}
-
-#scrolling-wrapper {
-    overflow-y: scroll;
+.user-profile-measures-container {
+    padding: 0.5rem;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-/** Render a list cards containing bills data */
+/** Render a list cards containing measures data */
 const CardGrid = props => {
 
   const { measures } = props;
@@ -35,15 +35,7 @@ const CardGrid = props => {
     </Container>
   );
 };
-/*
-CardGrid.propTypes = {
-  measures: PropTypes.shape([{
-    code: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-  }]).isRequired,
-};
- */
+
 CardGrid.propTypes = {
   measures: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
