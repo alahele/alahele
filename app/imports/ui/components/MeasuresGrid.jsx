@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 
 /** Render a list cards containing measures data */
 const MeasuresGrid = props => {
-
   const { measures } = props;
-
   return (
     <Container className="overflow-scroll">
       <Row>
