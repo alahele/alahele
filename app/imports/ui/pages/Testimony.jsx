@@ -49,7 +49,7 @@ const Testimony = () => (
     <div className="mb-3 row">
       <label htmlFor="TitleofBill" className="col-sm-2 col-form-label">Title of Bill: </label>
       <div className="col-sm-10">
-        <input type="text" readOnly className="form-control-plaintext" id="TitleofBill" value="SB 2486, SD1 RELATING TO EDUCATION DATA."/>
+        <input type="text" readOnly className="form-control-plaintext" id="TitleofBill" value="SB 2486, SD1 RELATING TO EDUCATION DATA." />
       </div>
     </div>
     <div className="mb-3 row">
