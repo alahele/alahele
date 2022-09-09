@@ -1,37 +1,31 @@
-import React, { useState } from 'react';
-import { Card, Row, Col, Container, Button } from 'react-bootstrap';
+import React from 'react';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import BillModal from './BillModal';
 
 /** Render a list cards containing bills data */
 const CardGrid = props => {
-  const { bills } = props;
-  const cardInfo = Object.keys(bills).map(key => bills[key]);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+  const { measures } = props;
 
   return (
     <Container className="overflow-scroll">
       <Row>
-        {/* eslint-disable-next-line no-shadow */}
-        {cardInfo.map((cardInfo, k) => (
-          <Col key={k} xs={12} md={4} lg={3}>
+        {measures.map((measure, idx) => (
+          <Col key={idx} xs={12} md={4} lg={3} style={{ padding: '0.25rem' }}>
             <Card>
-              <Card.Header> {cardInfo.code} </Card.Header>
+              <Card.Header> {measure.code} </Card.Header>
               <Card.Body>
-                <Card.Text>{cardInfo.title}</Card.Text>
+                <Card.Text>{measure.title}</Card.Text>
               </Card.Body>
               <Card.Footer>
                 <div className="text-center">
                   <Button
-                    onClick={handleShow}
                     as="input"
                     type="link"
                     value="View"
+                    onChange={() => {}}
                     style={{ width: '4rem', height: '1.5rem' }}
                   />
-                  <BillModal bill={cardInfo} show={show} onClose={handleClose} />
                 </div>
               </Card.Footer>
             </Card>
@@ -41,11 +35,21 @@ const CardGrid = props => {
     </Container>
   );
 };
+/*
 CardGrid.propTypes = {
-  bills: PropTypes.shape({
-    code: PropTypes.string,
-    title: PropTypes.string,
-    body: PropTypes.string,
-  }).isRequired,
+  measures: PropTypes.shape([{
+    code: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }]).isRequired,
 };
+ */
+CardGrid.propTypes = {
+  measures: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  })).isRequired,
+};
+
 export default CardGrid;
