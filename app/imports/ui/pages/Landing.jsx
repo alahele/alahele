@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Image, Row, Card, ListGroup, ListGroupItem, Form, FloatingLabel, Button} from 'react-bootstrap';
+import { Col, Container, Image, Row, Card, ListGroup, ListGroupItem, Form, FloatingLabel, Button } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
@@ -47,14 +47,14 @@ const Landing = () => (
                 <p>[ala hele] noun</p>
 
                 <p>1. Pathway, route, road, way to go, itinerary, trail, highway, means of transportation.
-                  ʻO ka pono koʻu ala hele, my course is righteousness.</p>
+                  ʻO ka pono koʻu ala hele, my course is righteousness.
+                </p>
 
               </Card.Text>
             </ListGroup>
           </Card.Body>
         </Card>
       </div>
-
 
       <div>
         <Card>
@@ -89,23 +89,22 @@ const Landing = () => (
                 <Card.Title>Contact Us</Card.Title>
               </ListGroupItem>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control placeholder="name@example.com" disabled />
-            </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control placeholder="name@example.com" disabled />
+              </Form.Group>
 
               <FloatingLabel controlId="floatingTextarea2" label="Comments">
                 <Form.Control
-                    as="textarea"
-                    placeholder="Leave a comment here"
-                    style={{ height: '200px' }}
+                  as="textarea"
+                  placeholder="Leave a comment here"
+                  style={{ height: '200px' }}
                 />
               </FloatingLabel>
 
               <Button variant="outline-secondary" size="sm">Submit</Button>{' '}
 
-
-          </ListGroup>
+            </ListGroup>
 
           </Card.Body>
         </Card>
