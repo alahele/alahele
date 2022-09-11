@@ -29,10 +29,9 @@ body {
 
 .card-title {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
-.card-homepage {
-  background-color: blue;
+.card-container {
+  margin-top: 80px;
 }
-

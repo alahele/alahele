@@ -9,17 +9,17 @@ const Homepage = () => {
     console.log('Redirecting...');
   }
   return (
-    <Container className="mt-5">
+    <Container className="card-container">
       <Row>
         <Col>
-          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
+          <Card className="bg-primary text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
               <Card.Title>View Existing Measures</Card.Title>
             </Card.Body>
           </Card>
         </Col>
         <Col>
-          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
+          <Card className="bg-danger text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
               <Card.Title>Go to My Email</Card.Title>
             </Card.Body>
@@ -28,14 +28,14 @@ const Homepage = () => {
       </Row>
       <Row className="mt-3">
         <Col>
-          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
+          <Card className="bg-success text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
               <Card.Title>View My Notifications</Card.Title>
             </Card.Body>
           </Card>
         </Col>
         <Col>
-          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
+          <Card className="bg-warning text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
               <Card.Title>View Hearing Schedule</Card.Title>
             </Card.Body>
