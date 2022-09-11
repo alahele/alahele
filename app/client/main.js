@@ -1,3 +1,4 @@
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 // Start the app.
 import '../imports/startup/client/Startup';
 // Import the Bootstrap css.
