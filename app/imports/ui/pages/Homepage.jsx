@@ -6,38 +6,38 @@ import { Card, Container, Row, Col } from 'react-bootstrap';
 const Homepage = () => {
 
   function handleClick() {
-    console.log('in cardClick');
+    console.log('Redirecting...');
   }
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
         <Col>
-          <Card className="bg-dark text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '15rem' }} border="primary">
+          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
-              <Card.Title className="text-center">View Existing Measures</Card.Title>
+              <Card.Title>View Existing Measures</Card.Title>
             </Card.Body>
           </Card>
         </Col>
         <Col>
-          <Card className="bg-dark text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '15rem' }} border="primary">
+          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
-              <Card.Title className="text-center">Go to My Email</Card.Title>
+              <Card.Title>Go to My Email</Card.Title>
             </Card.Body>
           </Card>
         </Col>
       </Row>
       <Row className="mt-3">
         <Col>
-          <Card className="bg-dark text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '15rem' }} border="primary">
+          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
-              <Card.Title className="text-center">View My Notifications</Card.Title>
+              <Card.Title>View My Notifications</Card.Title>
             </Card.Body>
           </Card>
         </Col>
         <Col>
-          <Card className="bg-dark text-white" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '15rem' }} border="primary">
+          <Card className="card-homepage" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '30rem' }}>
             <Card.Body>
-              <Card.Title className="text-center">View Hearing Schedule</Card.Title>
+              <Card.Title>View Hearing Schedule</Card.Title>
             </Card.Body>
           </Card>
         </Col>
