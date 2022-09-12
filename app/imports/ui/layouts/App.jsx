@@ -13,7 +13,6 @@ import ListBills from '../pages/ListBills';
 import UserProfile from '../pages/UserProfile';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
@@ -24,6 +23,7 @@ import { ROLE } from '../../api/role/Role';
 import ListTestimony from '../pages/ListTestimony';
 import IndividualBill from '../pages/IndividualBills';
 import CreateTestimony from '../pages/CreateTestimony';
+import Hearing from '../pages/Hearing';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -41,6 +41,7 @@ const App = () => (
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/hearing" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
         <Route path="/testimony" element={<ProtectedRoute><Testimony /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
