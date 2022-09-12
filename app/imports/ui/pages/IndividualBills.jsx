@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Row, Container, Accordion, Tab, ListGroup } from 'react-bootstrap';
+import { Col, Row, Container, Accordion, Tab, ListGroup, Badge, Table } from 'react-bootstrap';
 import Tabs from 'react-bootstrap/Tabs';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -8,15 +8,12 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const IndividualBill = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 
-  const { stuffs, ready } = useTracker(() => {
+  const { ready } = useTracker(() => {
     // Get access to Stuff documents.
     const subscription = Stuffs.subscribeStuffAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Stuff documents
-    const items = Stuffs.find({}).fetch();
     return {
-      stuffs: items,
       ready: rdy,
     };
 
@@ -26,67 +23,78 @@ const IndividualBill = () => {
     <Container md className="my-4">
 
       <Row>
-        <Col md="auto"><h3>HB1941</h3></Col>
-        <Col md="auto"><h3>RELATING TO EDUCATION.</h3></Col>
-        <Col md="auto"><h3>2022</h3></Col>
+        <Col md="auto"><h3>SB2821 SD2 HD1 CD1</h3></Col>
       </Row>
-
       <Row>
-        <Col md className="text-secondary">
-          <ListGroup horizontal style={{ height: '25px', fontSize: '12px' }}>
-            <h6 className="mx-3">Status:</h6>
-            <ListGroup.Item>
-              <p style={{ marginTop: '-0.3rem' }}>Introduced</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p style={{ marginTop: '-0.3rem' }}>Reviewed</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p style={{ marginTop: '-0.3rem' }}>Testimonies Submitted</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p style={{ marginTop: '-0.3rem' }}>Final Review</p>
-            </ListGroup.Item>
-            <ListGroup.Item variant="danger">
-              <p style={{ marginTop: '-0.3rem' }}>Sent to Capital</p>
-            </ListGroup.Item>
-          </ListGroup>
-
+        <Col md="auto" key="secondary"><h5>RELATING TO MENSTRUAL EQUALITY</h5></Col>
+        <Col md="auto"><h5>2022</h5></Col>
+        <Col>
+          <Badge bg="danger">PDF</Badge>{' '}
+          <Badge bg="info">Archive</Badge>{' '}
         </Col>
       </Row>
 
       <Row className="my-4">
         <Col md>
 
-          <Accordion defaultActiveKey="0" style={{ width: '50rem' }}>
-            <Accordion.Item eventKey="0" className="border-0">
-              <Accordion.Button style={{ width: '15rem', height: '5px', fontWeight: 'bolder' }}>Measure Overview</Accordion.Button>
+          <Accordion defaultActiveKey="0" className="accordion">
+            <Accordion.Item eventKey="0">
+              <Accordion.Button className="accordion">
+                <h6 className="mt-2">Measure Overview</h6>
+              </Accordion.Button>
 
-              <Accordion.Body style={{ backgroundColor: 'whitesmoke' }}>
+              <Accordion.Body>
                 <dl className="row">
-                  <dt className="col-sm-3">Description lists</dt>
-                  <dd className="col-sm-9">A description list is perfect for defining terms.</dd>
 
-                  <dt className="col-sm-3">Term</dt>
+                  <dt className="col-sm-2">Status:</dt>
                   <dd className="col-sm-9">
-                    <p>Definition for the term.</p>
-                    <p>And some more placeholder definition text.</p>
+                    <Badge pill bg="danger">PASSED INTO LAW</Badge>{' '}
+                    <dl className="row">
+                      <dd className="col-sm-2">6/21/2022</dd>
+                      <dd className="col-sm-8">Act 113, on 06/20/2022 (Gov. Msg. No. 1213).</dd>
+                    </dl>
                   </dd>
 
-                  <dt className="col-sm-3">Another term</dt>
-                  <dd className="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
+                  <dt className="col-sm-2">Measure Type:</dt>
+                  <dd className="col-sm-9" />
 
-                  <dt className="col-sm-3 text-truncate">Truncated term is truncated</dt>
-                  <dd className="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
+                  <dt className="col-sm-2">Report Title:</dt>
+                  <dd className="col-sm-9">Menstrual Equity; Menstrual Products; Department of Education; Public Schools; Charter Schools</dd>
 
-                  <dt className="col-sm-3">Nesting</dt>
+                  <dt className="col-sm-2">Companion:</dt>
+                  <dd className="col-sm-9" />
+
+                  <dt className="col-sm-2">Current Referral:</dt>
+                  <dd className="col-sm-9">EDN, FIN</dd>
+
+                  <dt className="col-sm-2">Description:</dt>
                   <dd className="col-sm-9">
-                    <dl className="row">
-                      <dt className="col-sm-4">Nested definition list</dt>
-                      <dd className="col-sm-8">I heard you like definition lists. Let me put a definition list inside
-                        your definition list.
-                      </dd>
-                    </dl>
+                    <p>Requires the Department of Education to provide menstrual products free of charge to all students on all public school campuses. (CD1)</p>
+                  </dd>
+
+                  <dt className="col-sm-2">Introducer:</dt>
+                  <dd className="col-sm-9">KIDANI, BAKER, CHANG, DECOITE, FEVELLA, GABBARD, INOUYE, KEITH-AGARAN, KEOHOKALOLE, KIM, LEE, MISALUCHA, MORIWAKI, RIVIERE, SAN BUENAVENTURA, Dela Cruz, Ihara, Nishihara, Shimabukuro, Wakai
+                  </dd>
+
+                  <dt className="col-sm-2">DOE Tracker:</dt>
+                  <dd className="col-sm-9">
+                    <ListGroup horizontal style={{ height: '25px', fontSize: '12px' }}>
+                      <ListGroup.Item variant="warning">
+                        <p style={{ marginTop: '-0.3rem' }}>Introduced</p>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="warning">
+                        <p style={{ marginTop: '-0.3rem' }}>Reviewed</p>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="warning">
+                        <p style={{ marginTop: '-0.3rem' }}>Testimonies Submitted</p>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="warning">
+                        <p style={{ marginTop: '-0.3rem' }}>Final Review</p>
+                      </ListGroup.Item>
+                      <ListGroup.Item variant="success">
+                        <p style={{ marginTop: '-0.3rem' }}>Sent to Capital</p>
+                      </ListGroup.Item>
+                    </ListGroup>
                   </dd>
                 </dl>
               </Accordion.Body>
@@ -94,48 +102,295 @@ const IndividualBill = () => {
           </Accordion>
         </Col>
       </Row>
+      <ListGroup className="tabs">
+        <ListGroup.Item>
+          <Row className="tabs">
+            <Col md>
+              <Tabs defaultActiveKey="hearing" id="uncontrolled-tab-example" className="mb-3">
+                <Tab eventKey="hearing" title="Hearing Notices">
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Committee</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Room</th>
+                        <th>Notice</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>EDU</td>
+                        <td>1/28/22</td>
+                        <td>3:00 PM</td>
+                        <td>CR 229 & Videoconference</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
 
-      <Row className="mt-5">
-        <Col md>
-          <Tabs
-            defaultActiveKey="summary"
-            id="uncontrolled-tab-example"
-            className="mb-3"
-          >
-            <Tab eventKey="summary" title="Summary">
-              <dl className="row">
-                <dt className="col-sm-3">Description lists</dt>
-                <dd className="col-sm-9">A description list is perfect for defining terms.</dd>
+                      <tr>
+                        <td>WAM</td>
+                        <td>2/18/22</td>
+                        <td>10:10 AM</td>
+                        <td>CR 211 & Videoconference</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
 
-                <dt className="col-sm-3">Term</dt>
-                <dd className="col-sm-9">
-                  <p>Definition for the term.</p>
-                  <p>And some more placeholder definition text.</p>
-                </dd>
+                      <tr>
+                        <td>EDN</td>
+                        <td>3/17/22</td>
+                        <td>2:00 PM</td>
+                        <td>309 Via Videoconference</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
 
-                <dt className="col-sm-3">Another term</dt>
-                <dd className="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
+                      <tr>
+                        <td>FIN</td>
+                        <td>4/01/22</td>
+                        <td>3:00 PM</td>
+                        <td>308 Via Videoconference</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
 
-                <dt className="col-sm-3 text-truncate">Truncated term is truncated</dt>
-                <dd className="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
+                      <tr>
+                        <td>CONF</td>
+                        <td>4/22/22</td>
+                        <td>3:00 PM</td>
+                        <td>CR 229</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
 
-                <dt className="col-sm-3">Nesting</dt>
-                <dd className="col-sm-9">
+                      <tr>
+                        <td>CONF</td>
+                        <td>4/26/22</td>
+                        <td>3:00 PM</td>
+                        <td>CR 229</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>CONF</td>
+                        <td>4/28/22</td>
+                        <td>3:30 PM</td>
+                        <td>CR 229</td>
+                        <td>
+                          <Badge pill bg="info">Notice</Badge>{' '}
+                          <Badge pill bg="secondary">Video</Badge>{' '}
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </Table>
+                </Tab>
+
+                <Tab eventKey="testimony" title="Testimony">
+
                   <dl className="row">
-                    <dt className="col-sm-4">Nested definition list</dt>
-                    <dd className="col-sm-8">I heard you like definition lists. Let me put a definition list inside
-                      your definition list.
-                    </dd>
+                    <dt className="col-sm-2">SB2821</dt>
+                    <dt className="col-sm-2">01-28-22</dt>
+                    <dd className="col-sm-2"><Badge pill bg="danger">PDF</Badge></dd>
                   </dl>
-                </dd>
-              </dl>
-            </Tab>
-            <Tab eventKey="hearings" title="Hearings" />
-            <Tab eventKey="relatedbills" title="Related Bills" disabled />
-          </Tabs>
-        </Col>
-      </Row>
 
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Submitted By</th>
+                        <th>Organization</th>
+                        <th>Position</th>
+                        <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Michael Golojuch Jr</td>
+                        <td>Stonewall Caucus of the Democratic Party of Hawaii</td>
+                        <td>Support</td>
+                        <td>Remotely Via Zoom</td>
+                      </tr>
+                      <tr>
+                        <td>Rachel Kuenzi</td>
+                        <td>Planned Parenthood Alliance Advocates</td>
+                        <td>Support</td>
+                        <td>Written Testimony Only</td>
+                      </tr>
+                      <tr>
+                        <td>David Peters</td>
+                        <td>Ho`ola Lahui Hawaii</td>
+                        <td>Support</td>
+                        <td>Written Testimony Only</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+
+                  <dl className="row">
+                    <dt className="col-sm-2">SB2821 SD1</dt>
+                    <dt className="col-sm-2">02-18-22</dt>
+                    <dd className="col-sm-2"><Badge pill bg="danger">PDF</Badge></dd>
+                  </dl>
+
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Submitted By</th>
+                        <th>Organization</th>
+                        <th>Position</th>
+                        <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Michael Golojuch Jr</td>
+                        <td>Stonewall Caucus of the Democratic Party of Hawaii</td>
+                        <td>Support</td>
+                        <td>Remotely Via Zoom</td>
+                      </tr>
+                      <tr>
+                        <td>Rachel Kuenzi</td>
+                        <td>Planned Parenthood Alliance Advocates</td>
+                        <td>Support</td>
+                        <td>Written Testimony Only</td>
+                      </tr>
+                      <tr>
+                        <td>David Peters</td>
+                        <td>Ho`ola Lahui Hawaii</td>
+                        <td>Support</td>
+                        <td>Written Testimony Only</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+
+                </Tab>
+
+                <Tab eventKey="files" title="Files">
+                  <Row className="justify-content-md-center">
+                    <Col md lg="6">
+                      <Table>
+                        <thead>
+                          <tr>
+                            <th>All Versions of this Measure</th>
+                            <th>Links</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              SB2821 SD2
+                            </td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 SD1</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 HD2</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 HD1</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 CD1</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </Col>
+                    <Col md lg="6">
+                      <Table>
+                        <thead>
+                          <tr>
+                            <th>Committee Reports</th>
+                            <th>Links</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>SB2821 SD1 SSCR2013</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 SD2 SSCR2863</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 SD2 HSCR1236-22</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 HD1 HSCR1938-22</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SB2821 CD1 CCR129-22</td>
+                            <td>
+                              <Badge bg="danger">PDF</Badge>{' '}
+                              <Badge bg="info">Archive</Badge>{' '}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </Col>
+                  </Row>
+                </Tab>
+
+              </Tabs>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
     </Container>
 
   ) : <LoadingSpinner />);

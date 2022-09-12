@@ -26,3 +26,18 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.accordion {
+  background-color: #FFFFFF;
+  --bs-accordion-bg: #FFFFFF !important;
+  --bs-accordion-active-color: #000000 !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-bg: #FFFFF !important;
+  --bs-accordion-btn-padding-y: 0px !important;
+  font-size: small;
+}
+
+.tabs{
+  --bs-list-group-bg: #FFFFFF !important;
+  --bs-nav-tabs-link-active-bg: none !important;
+}
