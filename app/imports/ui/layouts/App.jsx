@@ -16,6 +16,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
+import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -24,7 +25,7 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/" element={<HearingList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
