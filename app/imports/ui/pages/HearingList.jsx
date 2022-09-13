@@ -4,7 +4,7 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink,
 // import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
-const TestimonyList = () => (
+const HearingList = () => (
   <Container>
     <MDBTable align="middle">
       <MDBTableHead>
@@ -177,4 +177,4 @@ const TestimonyList = () => (
   </Container>
 );
 
-export default TestimonyList;
+export default HearingList;
