@@ -21,6 +21,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import Testimony from '../pages/Testimony';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
+import TestimonyList from '../pages/TestimonyList';
 import IndividualBill from '../pages/IndividualBills';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -32,8 +33,8 @@ const App = () => (
         <Route exact path="/" element={<Landing/>} />
         <Route path="/listbills" element={<ListBills/>}/>
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/testimonylist" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
         <Route path="/hearinglist" element={<HearingList />} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
