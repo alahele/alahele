@@ -69,7 +69,6 @@ const Landing = () => (
                   <li>Cathy Kim</li>
                   <li>Steven Le</li>
                   <li>William Liang</li>
-                  <li>Yon-Sung Masuda</li>
                   <li>Lise Nilsen</li>
                   <li>Kristine Rivera</li>
                   <li>Hyunjun Song</li>
