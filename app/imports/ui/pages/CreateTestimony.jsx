@@ -48,29 +48,29 @@ const CreateTestimony = () => (
       <Row className="mb-3">
         <Col htmlFor="Upload file" className="col-sm-2 col-form-label fw-bold mx-4">Upload file: </Col>
         <Col className="col-sm-9">
-          <Button className="btn btn-secondary" type="upload"> Upload</Button>
+          <Button className="btn btn-secondary"> Upload</Button>
         </Col>
       </Row>
     </Card>
 
     <Card className="card-body border bg-light rounded mt-3 shadow-sm">
       <Row className="mb-3">
-        <Col htmlFor="DepartmentsPosition" className="col-sm-2 col-form-label fw-bold mx-4"> Department&apos;s Position: </Col>
-        <div className="center-block mx-4">
-          <textarea className=" form-control " placeholder="" id="floatingTextarea2" style={{ width: '1250px', height: '100px' }} />
+        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Department&apos;s Position: </Col>
+        <div className="center-block mx-2">
+          <textarea className="form-control" style={{ width: '1250px', height: '100px' }} />
         </div>
       </Row>
       <Row className="mb-3">
-        <Col htmlFor="Comments" className="col-sm-4 col-form-label fw-bold mx-4"> Comments (include data and your initials): </Col>
+        <Col className="col-sm-4 col-form-label fw-bold mx-4"> Comments (include data and your initials): </Col>
         <Col className="col-sm-7">
-          <textarea type="comments" className="form-control" id="floatingInput" placeholder="" style={{ height: '40px' }} />
+          <textarea className="form-control" id="floatingInput" style={{ height: '40px' }} />
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col htmlFor="Comments" className="col-sm-4 col-form-label fw-bold mx-4"> Route testimony to: </Col>
+        <Col className="col-sm-4 col-form-label fw-bold mx-4"> Route testimony to: </Col>
         <Col className="col-sm-6">
           <Card.Text className="col-sm-4 col-form-label"> Ellen Nishioka/OSIP/HIDOE; </Card.Text>
-          <Button className="btn btn-secondary" type="addtestimony"> Add testimony </Button>
+          <Button className="btn btn-secondary"> Add testimony </Button>
         </Col>
       </Row>
     </Card>
