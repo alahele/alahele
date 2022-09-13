@@ -18,6 +18,7 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
+import IndividualBill from '../pages/IndividualBills';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -38,6 +39,7 @@ const App = () => (
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </div>
