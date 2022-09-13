@@ -85,3 +85,37 @@ body {
   --bs-list-group-bg: #FFFFFF !important;
   --bs-nav-tabs-link-active-bg: none !important;
 }
+
+.card-title {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.text-background {
+  margin-top: 40px;
+}
+.buttons-background {
+  margin-top: 110px;
+  height: 350px;
+}
+
+.homepage-text {
+  font-family: "Playfair Display", sans-serif;
+  text-align: center;
+  color: yellow;
+  font-size: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.homepage-subtext {
+  font-family: "Playfair Display", sans-serif;
+  text-align: center;
+  color: yellow;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.homepage-background {
+  background: url(https://media.bizj.us/view/img/11601807/queen-liliuokalani-bldg-01*1200xx3000-1688-0-156.jpg) no-repeat center;
+  background-size: cover;
+  height: 1000px;
+}
