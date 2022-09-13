@@ -3,28 +3,85 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+    --matr-navbar-bg: #ECECEC;
+    --matr-navbar-bg-rgb: 236, 236, 236;
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-light-rgb: var(--matr-navbar-bg-rgb);
+    --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
 
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {
-  --bs-alert-bg: var(--matr-navbar-bg);
+    --bs-alert-bg: var(--matr-navbar-bg);
 }
 
 /* Define custom styles */
 .gray-background {
-  background-color: var(--bs-gray-200);
-  color: var(--bs-dark);
-  padding-top: 10px;
-  padding-bottom: 20px;
+    background-color: var(--bs-gray-200);
+    color: var(--bs-dark);
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 
+/** UserProfile.jsx */
+.user-profile-image {
+    width: 12rem;
+}
+
+.user-profile-main-card {
+    padding: 1rem;
+}
+
+.user-profile-measures-container {
+    padding: 0.5rem;
+}
+
+/** MeasuresGrid */
+.measures-grid-cards-padding {
+    padding: 0.25rem;
+}
+
+.measures-grid-card-button {
+    width: 4rem;
+    height: 1.5rem;
+}
+
+.btn.search_btn{
+  background-color: darkseagreen;
+  --bs-btn-padding-x: 20px;
+  margin-bottom: 5px;
+}
+
+#home-img {
+  margin-bottom: 10px;
+}
+
+#state-seal-img {
+  height: 110px;
+  width: 155px;
+}
+
+.tos {
+  font-size: 12px;
+
+}
+
+.accordion {
+  background-color: #FFFFFF;
+  --bs-accordion-bg: #FFFFFF !important;
+  --bs-accordion-active-color: #000000 !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-bg: #FFFFF !important;
+  --bs-accordion-btn-padding-y: 0px !important;
+  font-size: small;
+}
+
+.tabs{
+  --bs-list-group-bg: #FFFFFF !important;
+  --bs-nav-tabs-link-active-bg: none !important;
+}
