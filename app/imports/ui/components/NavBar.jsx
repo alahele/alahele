@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, CloudDownload, PersonCircle } from 'react-bootstrap-icons';
+import { BoxArrowRight, CloudDownload } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -41,7 +41,7 @@ const NavBar = () => {
                 <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
               </Navbar.Brand>
               <h4 className="me-auto">Ala Hele</h4>
-              <Nav className="me-auto justify-content-center flex-grow-1 pe-3">
+              <Nav className="me-auto ms-5 flex-grow-1 pe-3">
                 <Nav.Link href="#Option 1">Option 1</Nav.Link>
                 <Nav.Link href="#Option 2">Option 2</Nav.Link>
                 <Nav.Link href="#Option 3">Option 3</Nav.Link>
