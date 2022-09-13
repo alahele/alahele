@@ -50,3 +50,16 @@ body {
     width: 4rem;
     height: 1.5rem;
 }
+
+#home-img {
+  margin-bottom: 10px;
+}
+
+#state-seal-img {
+  height: 110px;
+  width: 155px;
+}
+
+.tos {
+  font-size: 12px;
+}
