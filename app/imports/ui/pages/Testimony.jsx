@@ -6,7 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 const Testimony = () => (
   <Container id={PAGE_IDS.TESTIMONY} className="py-3">
     <div className="text-center">
-      <img src="../images/emblum-hidoe.png" className="h-20 p-3" style={{ 'max-width': '10%' }} alt="logo"/>
+      <img src="../images/emblum-hidoe.png" className="h-20 p-3" style={{ 'max-width': '10%' }} alt="logo" />
     </div>
     <div className="text-center">
       <p className="mb-0">
@@ -23,37 +23,37 @@ const Testimony = () => (
       </p>
     </div>
     <div className="text-end">
-      <label className="col-sm-2 col-form-label mb-0">Date: 06/20/2020 </label>
+      <span className="col-sm-2 col-form-label mb-0">Date: 06/20/2020 </span>
     </div>
     <div className="text-end">
-      <label className="col-sm-2 col-form-label">Time: 02:00 PM </label>
+      <span className="col-sm-2 col-form-label">Time: 02:00 PM </span>
     </div>
     <div className="text-end">
-      <label className="col-sm-2 col-form-label">Location: 329 </label>
+      <span className="col-sm-2 col-form-label">Location: 329 </span>
     </div>
     <div className="text-end">
-      <label className="col-sm-2 col-form-label">Committee: House Finance </label>
+      <span className="col-sm-2 col-form-label">Committee: House Finance </span>
     </div>
     <div className="mb-3 row">
-      <label htmlFor="Department" className="col-sm-2 col-form-label">Department: </label>
+      <span htmlFor="Department" className="col-sm-2 col-form-label">Department: </span>
       <div className="col-sm-10">
-        <input type="text" readOnly className="form-control-plaintext" id="Department" value="Education"/>
+        <input type="text" readOnly className="form-control-plaintext" id="Department" value="Education" />
       </div>
     </div>
     <div className="mb-3 row">
-      <label className="col-sm-2 col-form-label">Testifier: </label>
+      <span className="col-sm-2 col-form-label">Testifier: </span>
       <div className="col-sm-10">
-        <input type="text" readOnly className="form-control-plaintext" id="Testifier" value="Dr. Christina M. Kishimoto, Superintendent of Education"/>
+        <input type="text" readOnly className="form-control-plaintext" id="Testifier" value="Dr. Christina M. Kishimoto, Superintendent of Education" />
       </div>
     </div>
     <div className="mb-3 row">
-      <label htmlFor="TitleofBill" className="col-sm-2 col-form-label">Title of Bill: </label>
+      <span htmlFor="TitleofBill" className="col-sm-2 col-form-label">Title of Bill: </span>
       <div className="col-sm-10">
         <input type="text" readOnly className="form-control-plaintext" id="TitleofBill" value="SB 2486, SD1 RELATING TO EDUCATION DATA." />
       </div>
     </div>
     <div className="mb-3 row">
-      <label htmlFor="PurposeofBill" className="col-sm-2 col-form-label">Purpose of Bill: </label>
+      <span htmlFor="PurposeofBill" className="col-sm-2 col-form-label">Purpose of Bill: </span>
       <div className="col-sm-10">
         {/* eslint-disable-next-line max-len */}
         <p className="text-wrap" id="PurposeofBill"> Requires the Department of Education to establish a standardized data collection process; collect and anayze data relating to, among other things, student discipline, seclusion, and
@@ -61,7 +61,7 @@ const Testimony = () => (
         </p>
       </div>
       <div className="mb-3 row">
-        <label htmlFor="DepartmentsPosition" className="col-sm-2 col-form-label">Department&apos;s Position: </label>
+        <span htmlFor="DepartmentsPosition" className="col-sm-2 col-form-label">Department&apos;s Position: </span>
         <p className="1h-1 text-wrap">
           The Department collects and reports accountability data for StriveHI, the Every Student Succeeds ACT (ESSA)The Department collects and reports accountability data for StriveHI, the Every Student Succeeds ACT (ESSA)The Department
           collects and reports accountability data for StriveHI, the Every Student Succeeds ACT (ESSA)The Department collects and reports accountability data for StriveHI, the Every Student Succeeds ACT (ESSA).
