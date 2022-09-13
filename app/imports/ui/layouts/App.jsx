@@ -24,7 +24,8 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<ListBills />} />
+        <Route exact path="/" element={<Landing/>} />
+        <Route path="/listbills" element={<ListBills/>}/>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
