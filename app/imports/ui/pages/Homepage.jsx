@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
-// import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
 const Homepage = () => {
