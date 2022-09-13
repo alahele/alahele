@@ -56,3 +56,17 @@ body {
   --bs-btn-padding-x: 20px;
   margin-bottom: 5px;
 }
+
+#home-img {
+  margin-bottom: 10px;
+}
+
+#state-seal-img {
+  height: 110px;
+  width: 155px;
+}
+
+.tos {
+  font-size: 12px;
+
+}
