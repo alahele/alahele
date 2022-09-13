@@ -20,7 +20,7 @@ const IndividualBill = () => {
   }, []);
   return (ready ? (
   // Measure Number & Measure Title
-    <Container md className="my-4">
+    <Container className="my-4">
 
       <Row>
         <Col md="auto"><h3>SB2821 SD2 HD1 CD1</h3></Col>
