@@ -17,6 +17,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
+import Testimony from '../pages/Testimony';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
 import IndividualBill from '../pages/IndividualBills';
@@ -38,6 +39,7 @@ const App = () => (
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+        <Route path="/testimony" element={<ProtectedRoute><Testimony /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
