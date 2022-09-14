@@ -51,7 +51,7 @@ const NavBar = () => {
                 <Nav.Link href="/listbills">Bills List</Nav.Link>
                 <Nav.Link href="/testimonylist">Testimony List</Nav.Link>
                 <Nav.Link href="/hearinglist">Hearing List</Nav.Link>
-                <Nav.Link href="/createtestimony">Create Testimony</Nav.Link>
+                <Nav.Link href="/create-testimony">Create Testimony</Nav.Link>
                 {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                   [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
                     <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option 2: Dropdown" key="manage-dropdown">
