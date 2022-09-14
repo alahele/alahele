@@ -29,9 +29,6 @@ const NavBar = () => {
                     Ala Hele
                   </Nav.Link>
                 </h4>
-                {/* <Nav.Link href="/"> */}
-                {/*  <h4 className="me-auto">Ala Hele</h4> */}
-                {/* </Nav.Link> */}
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin">
                   <button id="login" type="button" className="btn btn-outline-secondary me-auto">Login</button>
                 </Nav.Link>
