@@ -21,7 +21,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import Testimony from '../pages/Testimony';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
-import TestimonyList from '../pages/TestimonyList';
+import ListTestimony from '../pages/ListTestimony';
 import IndividualBill from '../pages/IndividualBills';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -30,11 +30,11 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Landing/>} />
-        <Route path="/listbills" element={<ListBills/>}/>
+        <Route exact path="/" element={<Landing />} />
+        <Route path="/listbills" element={<ListBills />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/testimonylist" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
+        <Route path="/testimonylist" element={<ProtectedRoute><ListTestimony /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
         <Route path="/hearinglist" element={<HearingList />} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
