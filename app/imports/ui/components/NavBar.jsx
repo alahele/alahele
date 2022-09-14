@@ -24,9 +24,13 @@ const NavBar = () => {
                 <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
                   <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
                 </Navbar.Brand>
-                <h4 className="me-auto">Ala Hele</h4>
+                <h4 className="me-auto">
+                  <Nav.Link href="/">
+                    Ala Hele
+                  </Nav.Link>
+                </h4>
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin">
-                  <button id="login" type="button" className="btn btn-outline-secondary">Login</button>
+                  <button id="login" type="button" className="btn btn-outline-secondary me-auto">Login</button>
                 </Nav.Link>
               </Navbar.Collapse>
             </Container>
@@ -39,12 +43,15 @@ const NavBar = () => {
             <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
               <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
                 <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
+                <Nav.Link href="/">
+                  <h4 className="me-auto">Ala Hele</h4>
+                </Nav.Link>
               </Navbar.Brand>
-              <h4 className="me-auto">Ala Hele</h4>
               <Nav className="me-auto ms-5 flex-grow-1 pe-3">
-                <Nav.Link href="#Option 1">Option 1</Nav.Link>
-                <Nav.Link href="#Option 2">Option 2</Nav.Link>
-                <Nav.Link href="#Option 3">Option 3</Nav.Link>
+                <Nav.Link href="/listbills">Bills List</Nav.Link>
+                <Nav.Link href="/testimonylist">Testimony List</Nav.Link>
+                <Nav.Link href="/hearinglist">Hearing List</Nav.Link>
+                <Nav.Link href="/createtestimony">Create Testimony</Nav.Link>
                 {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                   [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
                     <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option 2: Dropdown" key="manage-dropdown">
@@ -53,7 +60,10 @@ const NavBar = () => {
                 ) : ''}
               </Nav>
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile"><BoxArrowRight /> Profile</NavDropdown.Item>
+                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile">
+                  <BoxArrowRight />
+                  Profile
+                </NavDropdown.Item>
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout"><BoxArrowRight /> Sign out</NavDropdown.Item>
               </NavDropdown>
             </Navbar.Collapse>
@@ -61,7 +71,6 @@ const NavBar = () => {
         </Navbar>,
       ]) : ([null])}
     </div>
-
   );
 };
 

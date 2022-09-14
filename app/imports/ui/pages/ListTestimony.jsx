@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 
 /* A simple static component to render some text for the landing page. */
-const TestimonyList = () => (
+const ListTestimony = () => (
   <Container>
     <MDBTable align="middle">
       <MDBTableHead>
@@ -138,4 +138,4 @@ const TestimonyList = () => (
   </Container>
 );
 
-export default TestimonyList;
+export default ListTestimony;
