@@ -23,6 +23,7 @@ import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
 import TestimonyList from '../pages/TestimonyList';
 import IndividualBill from '../pages/IndividualBills';
+import CreateTestimony from '../pages/CreateTestimony';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -46,6 +47,7 @@ const App = () => (
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
+        <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </div>

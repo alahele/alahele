@@ -13,4 +13,5 @@ export const PAGE_IDS = {
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
   TESTIMONY: 'testimony',
+  CREATE_TESTIMONY: 'create-testimony',
 };
