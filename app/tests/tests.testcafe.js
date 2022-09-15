@@ -5,8 +5,9 @@ import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 import { billListPage } from './billlist.page.js';
-import { userProfile} from './userprofile.page';
-import { individualBillPage} from './individualbill.page';
+import { userProfile } from './userprofile.page';
+import { individualBillPage } from './individualbill.page';
+import { createTestimonyPage } from './createtestimony.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -55,13 +56,12 @@ test('Test that admin page show up', async () => {
   await navBar.logout();
 });
 
-
 test('Test that user profile page shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.gotoUserProfilePage();
   await userProfile.isDisplayed();
-)};
+});
 
 test('Test that individual bill page show up', async () => {
   await navBar.gotoSignInPage();
@@ -70,4 +70,12 @@ test('Test that individual bill page show up', async () => {
   await navBar.gotoBillsListPage();
   await billListPage.gotoIndividualBillPage();
   await individualBillPage.isDisplayed();
+});
+
+test('Test that create testimony page show up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoCreateTestimonyPage();
+  await createTestimonyPage.isDisplayed();
 });
