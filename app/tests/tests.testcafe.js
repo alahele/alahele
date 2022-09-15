@@ -8,6 +8,7 @@ import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { testimonyListPage } from './testimonylist.page';
 import { userProfile } from './userprofile.page';
 import { individualBillPage } from './individualbill.page';
+import { createTestimonyPage } from './createtestimony.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -87,4 +88,12 @@ test('Test that individual bill page show up', async () => {
   await navBar.gotoBillsListPage();
   await billListPage.gotoIndividualBillPage();
   await individualBillPage.isDisplayed();
+});
+
+test('Test that create testimony page show up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoCreateTestimonyPage();
+  await createTestimonyPage.isDisplayed();
 });

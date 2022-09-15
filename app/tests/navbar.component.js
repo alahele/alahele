@@ -36,6 +36,16 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_HEARING_LIST}`);
   }
 
+  async gotoTestimonyListPage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_TESTIMONY_LIST}`);
+  }
+
+  async gotoCreateTestimonyPage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY}`);
+  }
+
   /* Check that the specified user is currently logged in. */
   async isLoggedIn(username) {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
