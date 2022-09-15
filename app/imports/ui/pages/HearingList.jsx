@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
-// import { PAGE_IDS } from '../utilities/PageIDs';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
 const HearingList = () => (
-  <Container>
+  <Container id={PAGE_IDS.HEARING_LIST}>
     <MDBTable align="middle">
       <MDBTableHead>
         <tr>

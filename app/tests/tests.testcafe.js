@@ -3,8 +3,8 @@ import { /* manageDatabasePage, */ signOutPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
-import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 import { billListPage } from './billlist.page.js';
+import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -53,3 +53,11 @@ test('Test that admin page show up', async () => {
   await navBar.logout();
 });
 
+test.only('Test that hearing list page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoHearingListPage();
+  await t.expect(Selector(`#${PAGE_IDS.HEARING_LIST}`).exists).ok();
+  await navBar.logout();
+});

@@ -92,8 +92,6 @@ class NavBar {
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
     await t.click(`#${COMPONENT_IDS.NAVBAR_BILL_LIST}`);
   }
-
-
 }
 
 export const navBar = new NavBar();
