@@ -53,7 +53,7 @@ test('Test that admin page show up', async () => {
   await navBar.logout();
 });
 
-test.only('Test that hearing list page shows up', async () => {
+test('Test that hearing list page shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
