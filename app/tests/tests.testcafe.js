@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { addStuffPage, listStuffPage, editStuffPage, /* manageDatabasePage, */ signOutPage } from './simple.page';
+import { /* manageDatabasePage, */ signOutPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
@@ -26,7 +26,7 @@ test('Test that signin and signout work', async () => {
   await signOutPage.isDisplayed();
 });
 
-test.only('Test that navbar options route correctly when logged in', async () => {
+test('Test that navbar options route correctly when logged in', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
