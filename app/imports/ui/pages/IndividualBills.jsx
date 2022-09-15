@@ -228,13 +228,13 @@ const IndividualBill = () => {
                         <td>Rachel Kuenzi</td>
                         <td>Planned Parenthood Alliance Advocates</td>
                         <td>Support</td>
-                        <td>Written IndividualTestimony Only</td>
+                        <td>Written Testimony Only</td>
                       </tr>
                       <tr>
                         <td>David Peters</td>
                         <td>Ho`ola Lahui Hawaii</td>
                         <td>Support</td>
-                        <td>Written IndividualTestimony Only</td>
+                        <td>Written Testimony Only</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -265,13 +265,13 @@ const IndividualBill = () => {
                         <td>Rachel Kuenzi</td>
                         <td>Planned Parenthood Alliance Advocates</td>
                         <td>Support</td>
-                        <td>Written IndividualTestimony Only</td>
+                        <td>Written Testimony Only</td>
                       </tr>
                       <tr>
                         <td>David Peters</td>
                         <td>Ho`ola Lahui Hawaii</td>
                         <td>Support</td>
-                        <td>Written IndividualTestimony Only</td>
+                        <td>Written Testimony Only</td>
                       </tr>
                     </tbody>
                   </Table>
