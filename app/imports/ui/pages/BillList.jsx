@@ -66,7 +66,7 @@ const BillList = () => (
             </p>
           </td>
           <td>
-            <a  href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
+            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
