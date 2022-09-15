@@ -2,7 +2,6 @@
 export const PAGE_IDS = {
   ADD_STUFF: 'add-stuff',
   USER_PROFILE: 'user-profile',
-  HEARING: 'hearing',
   EDIT_STUFF: 'edit-stuff',
   LANDING: 'landing',
   LIST_STUFF: 'list-stuff',
@@ -12,7 +11,11 @@ export const PAGE_IDS = {
   NOT_FOUND: 'not-found',
   SIGN_IN: 'sign-in',
   SIGN_OUT: 'sign-out',
-  SIGN_UP: 'sign-up',
-  TESTIMONY: 'testimony',
+  INDIVIDUAL_TESTIMONY: 'individual-testimony',
+  TESTIMONY_LIST: 'testimony-list',
+  INDIVIDUAL_HEARING: 'individual-hearing',
+  HEARING_LIST: 'hearing-list',
+  INDIVIDUAL_BILL: 'individual-bill',
+  BILL_LIST: 'bill-list',
   CREATE_TESTIMONY: 'create-testimony',
 };
