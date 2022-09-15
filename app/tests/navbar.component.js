@@ -57,6 +57,16 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_SIGN_OUT}`);
   }
 
+  /* Go to the user page page. */
+  async gotoUserProfilePage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.click(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_USER_PROFILE}`);
+  }
+
   /* Go to the list stuff admin page. */
   async gotoListStuffAdminPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
