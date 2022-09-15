@@ -27,7 +27,7 @@ const NavBar = () => {
                 <h4 className="me-auto">
                   Ala Hele
                 </h4>
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin">
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN} as={NavLink} to="/signin">
                   <button id="login" type="button" className="btn btn-outline-secondary me-auto">Login</button>
                 </Nav.Link>
               </Navbar.Collapse>
@@ -39,17 +39,17 @@ const NavBar = () => {
           <Container>
             <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
             <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
-              <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/home">
+              <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
                 <img width="50px" src="../images/hidoe-logo.png" alt="hidoe logo" />
                 <h4 className="me-auto">
                   Ala Hele
                 </h4>
               </Navbar.Brand>
               <Nav className="me-auto ms-5 flex-grow-1 pe-3">
-                <Nav.Link href="/bill-list">Bills List</Nav.Link>
-                <Nav.Link href="/testimony-list">Testimony List</Nav.Link>
-                <Nav.Link href="/hearing-list">Hearing List</Nav.Link>
-                <Nav.Link href="/create-testimony">Create Testimony</Nav.Link>
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills List</Nav.Link>
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimony List</Nav.Link>
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearing List</Nav.Link>
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>
                 {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                   [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
                     <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option 2: Dropdown" key="manage-dropdown">

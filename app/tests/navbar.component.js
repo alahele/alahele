@@ -18,8 +18,27 @@ class NavBar {
     if (!visible) {
       await t.click('button.navbar-toggler');
     }
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN}`);
+  }
+
+  async gotoHomePage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_HOME_PAGE}`);
+  }
+
+  async gotoBillListPage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_BILL_LIST}`);
+  }
+
+  async gotoHearingListPage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_HEARING_LIST}`);
+  }
+
+  async gotoTestimonyListPage() {
+    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
+    await t.click(`#${COMPONENT_IDS.NAVBAR_TESTIMONY_LIST}`);
   }
 
   /* Check that the specified user is currently logged in. */
@@ -41,37 +60,6 @@ class NavBar {
     await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
     await t.click(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_SIGN_OUT}`);
-  }
-
-  /* Pull down login menu, go to sign up page. */
-  async gotoSignUpPage() {
-    await this.ensureLogout(t);
-    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
-    if (!visible) {
-      await t.click('button.navbar-toggler');
-    }
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP}`);
-  }
-
-  /* Go to the add stuff page. */
-  async gotoAddStuffPage() {
-    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
-    if (!visible) {
-      await t.click('button.navbar-toggler');
-    }
-    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_ADD_STUFF}`);
-  }
-
-  /* Go to the list stuff page. */
-  async gotoListStuffPage() {
-    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
-    if (!visible) {
-      await t.click('button.navbar-toggler');
-    }
-    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_STUFF}`);
   }
 
   /* Go to the list stuff admin page. */
