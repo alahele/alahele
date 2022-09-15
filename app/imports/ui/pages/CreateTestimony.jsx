@@ -48,7 +48,8 @@ const CreateTestimony = () => (
       <Row className="mb-3">
         <Col htmlFor="Upload file" className="col-sm-2 col-form-label fw-bold mx-4">Upload file: </Col>
         <Col className="col-sm-9">
-          <Button className="btn btn-secondary"> Upload</Button>
+          {/* <Button className="btn btn-secondary" type="file"> Upload</Button> */}
+          <input className="form-control" type="file" id="formFile" />
         </Col>
       </Row>
     </Card>
