@@ -24,6 +24,7 @@ import TestimonyList from '../pages/TestimonyList';
 import IndividualBill from '../pages/IndividualBill';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
+import AdminDashboard from '../pages/AdminDashboard';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -49,6 +50,7 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
         <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
         <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
+        <Route path="/admin-dashboard" element={<AdminProtectedRoute><AdminDashboard /></AdminProtectedRoute>} />
       </Routes>
       <Footer />
     </div>
@@ -97,6 +99,12 @@ AdminProtectedRoute.propTypes = {
 
 AdminProtectedRoute.defaultProps = {
   children: <Landing />,
+
+};
+
+AdminProtectedRoute.defaultProps = {
+  children: <AdminDashboard />,
+
 };
 
 export default App;
