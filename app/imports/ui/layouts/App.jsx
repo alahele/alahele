@@ -13,7 +13,6 @@ import ListBills from '../pages/ListBills';
 import UserProfile from '../pages/UserProfile';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
