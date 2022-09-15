@@ -3,8 +3,9 @@ import { /* manageDatabasePage, */ signOutPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
-import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 import { billListPage } from './billlist.page.js';
+import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
+import { testimonyListPage } from './testimonylist.page';
 import { userProfile } from './userprofile.page';
 import { individualBillPage } from './individualbill.page';
 import { createTestimonyPage } from './createtestimony.page';
@@ -23,6 +24,14 @@ test('Test that billslist page show up', async () => {
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoBillsListPage();
   await billListPage.isDisplayed();
+});
+
+test('Test that testimony list page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoTestimonyListPage();
+  await testimonyListPage.isDisplayed();
 });
 
 test('Test that landing page shows up', async () => {
@@ -53,6 +62,15 @@ test('Test that admin page show up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.logout();
+});
+
+test('Test that hearing list page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoHearingListPage();
+  await t.expect(Selector(`#${PAGE_IDS.HEARING_LIST}`).exists).ok();
   await navBar.logout();
 });
 
