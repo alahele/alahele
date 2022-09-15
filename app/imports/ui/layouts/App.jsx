@@ -17,10 +17,10 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Testimony from '../pages/Testimony';
+import IndividualTestimony from '../pages/IndividualTestimony';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
-import ListTestimony from '../pages/ListTestimony';
+import TestimonyList from '../pages/TestimonyList';
 import IndividualBill from '../pages/IndividualBills';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
@@ -32,18 +32,18 @@ const App = () => (
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        <Route path="/listbills" element={<ListBills />} />
+        <Route path="/bill-list" element={<ListBills />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/testimonylist" element={<ProtectedRoute><ListTestimony /></ProtectedRoute>} />
+        <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
-        <Route path="/hearinglist" element={<HearingList />} />
+        <Route path="/hearing-list" element={<HearingList />} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/hearing" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-        <Route path="/testimony" element={<ProtectedRoute><Testimony /></ProtectedRoute>} />
+        <Route path="/individual-testimony" element={<ProtectedRoute><IndividualTestimony /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />

@@ -5,7 +5,7 @@ import { Card, Container, Row, Col } from 'react-bootstrap';
 const Homepage = () => {
 
   function handleClick() {
-    console.log('Redirecting...');
+    window.location.pathname = '/';
   }
   return (
     <div className="homepage-background">
@@ -17,25 +17,31 @@ const Homepage = () => {
         <Container className="card-container">
           <Row>
             <Col>
-              <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
-                <Card.Body>
-                  <Card.Title>View Measures</Card.Title>
-                </Card.Body>
-              </Card>
+              <a className="no-style" href="bill-list">
+                <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
+                  <Card.Body>
+                    <Card.Title>View Measures</Card.Title>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
             <Col>
-              <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
-                <Card.Body>
-                  <Card.Title>View Hearings</Card.Title>
-                </Card.Body>
-              </Card>
+              <a className="no-style" href="hearing-list">
+                <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
+                  <Card.Body>
+                    <Card.Title>View Hearings</Card.Title>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
             <Col>
-              <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
-                <Card.Body>
-                  <Card.Title>View Testimonies</Card.Title>
-                </Card.Body>
-              </Card>
+              <a className="no-style" href="testimony-list">
+                <Card className="bg-warning text-black" border="warning" onClick={() => handleClick()} style={{ cursor: 'pointer', height: '20rem' }}>
+                  <Card.Body>
+                    <Card.Title>View Testimonies</Card.Title>
+                  </Card.Body>
+                </Card>
+              </a>
             </Col>
           </Row>
         </Container>

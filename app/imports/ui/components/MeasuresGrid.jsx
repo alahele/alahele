@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 /** Render a list cards containing measures data */
@@ -17,13 +17,7 @@ const MeasuresGrid = props => {
               </Card.Body>
               <Card.Footer>
                 <div className="text-center">
-                  <Button
-                    as="input"
-                    type="link"
-                    value="View"
-                    onChange={() => {}}
-                    style={{ width: '4rem', height: '1.5rem' }}
-                  />
+                  <a href type="button" className="btn btn-primary btn-sm">View</a>
                 </div>
               </Card.Footer>
             </Card>

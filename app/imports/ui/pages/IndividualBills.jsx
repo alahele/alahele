@@ -21,7 +21,7 @@ const IndividualBill = () => {
   return (ready ? (
   // Measure Number & Measure Title
     <Container className="my-4">
-
+      <a className="btn btn-primary btn-sm mb-2" href="/bill-list">back</a>
       <Row>
         <Col md="auto"><h3>SB2821 SD2 HD1 CD1</h3></Col>
       </Row>
@@ -200,7 +200,7 @@ const IndividualBill = () => {
                   </Table>
                 </Tab>
 
-                <Tab eventKey="testimony" title="Testimony">
+                <Tab eventKey="testimony" title="IndividualTestimony">
 
                   <dl className="row">
                     <dt className="col-sm-2">SB2821</dt>
@@ -392,7 +392,6 @@ const IndividualBill = () => {
         </ListGroup.Item>
       </ListGroup>
     </Container>
-
   ) : <LoadingSpinner />);
 };
 

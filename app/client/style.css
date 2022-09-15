@@ -119,3 +119,7 @@ body {
   background-size: cover;
   height: 1000px;
 }
+
+.no-style {
+  text-decoration:none;
+}
