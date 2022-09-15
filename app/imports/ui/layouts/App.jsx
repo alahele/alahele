@@ -9,7 +9,7 @@ import Homepage from '../pages/Homepage';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
-import ListBills from '../pages/ListBills';
+import BillList from '../pages/BillList';
 import UserProfile from '../pages/UserProfile';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -21,7 +21,7 @@ import IndividualTestimony from '../pages/IndividualTestimony';
 import HearingList from '../pages/HearingList';
 import { ROLE } from '../../api/role/Role';
 import TestimonyList from '../pages/TestimonyList';
-import IndividualBill from '../pages/IndividualBills';
+import IndividualBill from '../pages/IndividualBill';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 
@@ -32,7 +32,7 @@ const App = () => (
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        <Route path="/bill-list" element={<ListBills />} />
+        <Route path="/bill-list" element={<BillList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />

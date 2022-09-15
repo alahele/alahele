@@ -2,8 +2,8 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 
-/* A simple static component to render some text for the listBills page. */
-const TestimonyList = () => (
+/* A simple static component to render some text for the BillList page. */
+const BillList = () => (
   <Container>
     <MDBTable align="middle">
       <MDBTableHead>
@@ -183,4 +183,4 @@ const TestimonyList = () => (
   </Container>
 );
 
-export default TestimonyList;
+export default BillList;
