@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 
 /* A simple static component to render some text for the landing page. */
-const ListTestimony = () => (
+const TestimonyList = () => (
   <Container>
     <MDBTable align="middle">
       <MDBTableHead>
@@ -45,9 +45,7 @@ const ListTestimony = () => (
             </MDBBadge>
           </td>
           <td>
-            <MDBBtn color="link" rounded size="sm">
-              Link
-            </MDBBtn>
+            <a href="/individual-testimony" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -78,9 +76,7 @@ const ListTestimony = () => (
             </MDBBadge>
           </td>
           <td>
-            <MDBBtn color="link" className="fw-normal mb-1" rounded size="sm">
-              Link
-            </MDBBtn>
+            <a href="/individual-testimony" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -111,9 +107,7 @@ const ListTestimony = () => (
             </MDBBadge>
           </td>
           <td>
-            <MDBBtn color="link" className="fw-normal mb-1" rounded size="sm">
-              Link
-            </MDBBtn>
+            <a href="/individual-testimony" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
       </MDBTableBody>
@@ -138,4 +132,4 @@ const ListTestimony = () => (
   </Container>
 );
 
-export default ListTestimony;
+export default TestimonyList;

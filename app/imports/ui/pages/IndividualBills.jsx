@@ -21,7 +21,7 @@ const IndividualBill = () => {
   return (ready ? (
   // Measure Number & Measure Title
     <Container className="my-4">
-
+      <a className="btn btn-primary btn-sm mb-2" href="/bill-list">back</a>
       <Row>
         <Col md="auto"><h3>SB2821 SD2 HD1 CD1</h3></Col>
       </Row>
@@ -200,7 +200,7 @@ const IndividualBill = () => {
                   </Table>
                 </Tab>
 
-                <Tab eventKey="testimony" title="Testimony">
+                <Tab eventKey="testimony" title="IndividualTestimony">
 
                   <dl className="row">
                     <dt className="col-sm-2">SB2821</dt>
@@ -228,13 +228,13 @@ const IndividualBill = () => {
                         <td>Rachel Kuenzi</td>
                         <td>Planned Parenthood Alliance Advocates</td>
                         <td>Support</td>
-                        <td>Written Testimony Only</td>
+                        <td>Written IndividualTestimony Only</td>
                       </tr>
                       <tr>
                         <td>David Peters</td>
                         <td>Ho`ola Lahui Hawaii</td>
                         <td>Support</td>
-                        <td>Written Testimony Only</td>
+                        <td>Written IndividualTestimony Only</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -265,13 +265,13 @@ const IndividualBill = () => {
                         <td>Rachel Kuenzi</td>
                         <td>Planned Parenthood Alliance Advocates</td>
                         <td>Support</td>
-                        <td>Written Testimony Only</td>
+                        <td>Written IndividualTestimony Only</td>
                       </tr>
                       <tr>
                         <td>David Peters</td>
                         <td>Ho`ola Lahui Hawaii</td>
                         <td>Support</td>
-                        <td>Written Testimony Only</td>
+                        <td>Written IndividualTestimony Only</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -392,7 +392,6 @@ const IndividualBill = () => {
         </ListGroup.Item>
       </ListGroup>
     </Container>
-
   ) : <LoadingSpinner />);
 };
 

@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, CloudDownload } from 'react-bootstrap-icons';
+import { BoxArrowRight, CloudDownload, Person } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -46,9 +46,9 @@ const NavBar = () => {
                 </h4>
               </Navbar.Brand>
               <Nav className="me-auto ms-5 flex-grow-1 pe-3">
-                <Nav.Link href="/listbills">Bills List</Nav.Link>
-                <Nav.Link href="/testimonylist">Testimony List</Nav.Link>
-                <Nav.Link href="/hearinglist">Hearing List</Nav.Link>
+                <Nav.Link href="/bill-list">Bills List</Nav.Link>
+                <Nav.Link href="/testimony-list">Testimony List</Nav.Link>
+                <Nav.Link href="/hearing-list">Hearing List</Nav.Link>
                 <Nav.Link href="/create-testimony">Create Testimony</Nav.Link>
                 {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                   [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
@@ -59,10 +59,10 @@ const NavBar = () => {
               </Nav>
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile">
-                  <BoxArrowRight />
                   Profile
+                  <Person />
                 </NavDropdown.Item>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout"><BoxArrowRight /> Sign out</NavDropdown.Item>
+                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout">Sign out <BoxArrowRight /></NavDropdown.Item>
               </NavDropdown>
             </Navbar.Collapse>
           </Container>

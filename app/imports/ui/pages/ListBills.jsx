@@ -64,7 +64,7 @@ const TestimonyList = () => (
             </p>
           </td>
           <td>
-            <a href="#" className="">Link</a>
+            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -111,7 +111,7 @@ const TestimonyList = () => (
             </p>
           </td>
           <td>
-            <a href="#" className="">Link</a>
+            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -158,7 +158,7 @@ const TestimonyList = () => (
             </p>
           </td>
           <td>
-            <a href="#" className="">Link</a>
+            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
       </MDBTableBody>

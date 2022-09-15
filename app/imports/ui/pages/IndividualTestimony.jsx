@@ -3,8 +3,9 @@ import '/client/style.css';
 import { Container } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
-const Testimony = () => (
+const IndividualTestimony = () => (
   <Container id={PAGE_IDS.TESTIMONY} className="py-3">
+    <a className="btn btn-primary btn-sm my-4 position-absolute" href="/testimony-list">back</a>
     <div className="text-center">
       <img src="../images/emblum-hidoe.png" className="h-20 p-3" style={{ 'max-width': '10%' }} alt="logo" />
     </div>
@@ -75,4 +76,4 @@ const Testimony = () => (
   </Container>
 );
 
-export default Testimony;
+export default IndividualTestimony;
