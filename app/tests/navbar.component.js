@@ -36,11 +36,6 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_HEARING_LIST}`);
   }
 
-  async gotoTestimonyListPage() {
-    await Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists;
-    await t.click(`#${COMPONENT_IDS.NAVBAR_TESTIMONY_LIST}`);
-  }
-
   /* Check that the specified user is currently logged in. */
   async isLoggedIn(username) {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
@@ -93,6 +88,14 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_BILL_LIST}`);
   }
 
+  async gotoTestimonyListPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_TESTIMONY_LIST}`);
+  }
 
 }
 
