@@ -5,6 +5,7 @@ import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 import { billListPage } from './billlist.page.js';
+import { testimonyListPage } from './testimonylist.page';
 import { userProfile} from './userprofile.page';
 import { individualBillPage} from './individualbill.page';
 /* global fixture:false, test:false */
@@ -22,6 +23,14 @@ test('Test that billslist page show up', async () => {
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoBillsListPage();
   await billListPage.isDisplayed();
+});
+
+test('Test that testimony list page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoTestimonyListPage();
+  await testimonyListPage.isDisplayed();
 });
 
 test('Test that landing page shows up', async () => {
@@ -54,7 +63,6 @@ test('Test that admin page show up', async () => {
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.logout();
 });
-
 
 test('Test that user profile page shows up', async () => {
   await navBar.gotoSignInPage();
