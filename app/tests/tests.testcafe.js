@@ -4,7 +4,7 @@ import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
-
+import { billListPage } from './billlist.page.js';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -13,6 +13,14 @@ const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
+
+test('Test that billslist page show up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoBillsListPage();
+  await billListPage.isDisplayed();
+});
 
 test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
@@ -44,3 +52,4 @@ test('Test that admin page show up', async () => {
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.logout();
 });
+
