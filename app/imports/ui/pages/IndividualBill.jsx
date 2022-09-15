@@ -33,6 +33,7 @@ const IndividualBill = () => {
           <Badge bg="danger">PDF</Badge>{' '}
           <Badge bg="info">Archive</Badge>{' '}
         </Col>
+        <Col md="auto"><Badge bg="primary">Track This Bill</Badge>{' '}</Col>
       </Row>
 
       <Row className="my-4">
