@@ -1,9 +1,9 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
-class BillsListPage {
+class BillListPage {
   constructor() {
-    this.pageId = `#${PAGE_IDS.BILLS_LIST}`;
+    this.pageId = `#${PAGE_IDS.BILL_LIST}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -15,4 +15,4 @@ class BillsListPage {
   }
 }
 
-export const billsListPage = new BillsListPage();
+export const billListPage = new BillListPage();
