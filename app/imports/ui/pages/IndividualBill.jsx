@@ -4,6 +4,7 @@ import { Col, Row, Container, Accordion, Tab, ListGroup, Badge, Table } from 're
 import Tabs from 'react-bootstrap/Tabs';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const IndividualBill = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -20,7 +21,7 @@ const IndividualBill = () => {
   }, []);
   return (ready ? (
   // Measure Number & Measure Title
-    <Container className="my-4">
+    <Container id={PAGE_IDS.INDIVIDUAL_BILL} className="my-4">
       <a className="btn btn-primary btn-sm mb-2" href="/bill-list">back</a>
       <Row>
         <Col md="auto"><h3>SB2821 SD2 HD1 CD1</h3></Col>

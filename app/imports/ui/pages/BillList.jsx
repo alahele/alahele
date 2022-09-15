@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => (
@@ -65,7 +66,7 @@ const BillList = () => (
             </p>
           </td>
           <td>
-            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
+            <a  href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -159,7 +160,7 @@ const BillList = () => (
             </p>
           </td>
           <td>
-            <a href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
+            <a id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
       </MDBTableBody>
