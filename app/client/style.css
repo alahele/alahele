@@ -3,25 +3,38 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-    --matr-navbar-bg: #ECECEC;
-    --matr-navbar-bg-rgb: 236, 236, 236;
+
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-    --bs-light-rgb: var(--matr-navbar-bg-rgb);
+  --bs-body-bg: #f9f9f9;
 }
 
+.navbar-toggler .navbar-toggler-icon{
+  background-image: var(--bs-navbar-toggler-icon-bg) !important;
+}
+
+.navbar-toggler:focus {
+  color: transparent !important;
+}
+
+.navbar-collapse{
+  background-color: #f9f9f9;
+  z-index: 9999;
+}
+
+
 /* Set the SignIn and SignUp alerts background. */
-#signin-page .alert-light, #signup-page .alert-light {
-    --bs-alert-bg: var(--matr-navbar-bg);
+.signin {
+  --bs-card-border-color: none !important;
 }
 
 /* Define custom styles */
 .gray-background {
-    background-color: var(--bs-gray-200);
+    background-color: black;
     color: var(--bs-dark);
     padding-top: 10px;
     padding-bottom: 20px;
