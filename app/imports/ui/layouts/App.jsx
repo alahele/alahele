@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Routes, Navigate,
+} from 'react-router-dom';
 import Landing from '../pages/Landing';
 import Homepage from '../pages/Homepage';
 import ListStuff from '../pages/ListStuff';
@@ -23,8 +25,10 @@ import IndividualBill from '../pages/IndividualBill';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 
-/** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
-const App = () => (
+/** Top-level layout component for this application.
+ * Called in imports/startup/client/startup.jsx. */
+function App() {
+  return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
@@ -49,25 +53,27 @@ const App = () => (
         </Routes>
       </div>
     </Router>
-);
+  );
+}
 
 /*
  * ProtectedRoute (see React Router v6 sample)
  * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-const ProtectedRoute = ({ children }) => {
+function ProtectedRoute({ children }) {
   const isLogged = Meteor.userId() !== null;
   console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
-};
+}
 
 /**
  * AdminProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
+ * Checks for Meteor login and admin role before routing
+ * to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-const AdminProtectedRoute = ({ children }) => {
+function AdminProtectedRoute({ children }) {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
     return <Navigate to="/signin" />;
@@ -75,7 +81,7 @@ const AdminProtectedRoute = ({ children }) => {
   const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
   console.log('AdminProtectedRoute', isLogged, isAdmin);
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
-};
+}
 
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
