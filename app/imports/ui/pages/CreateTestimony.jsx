@@ -1,42 +1,70 @@
 import React from 'react';
 import '/client/style.css';
-import { Container, Card, Button, Col, Row } from 'react-bootstrap';
+import { Container, Card, Button, Col, Row, CardGroup } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
+
+const time = new Date();
+
+function formatAMPM(date) {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours %= 12;
+  hours = hours || 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  const strTime = `${hours}:${minutes} ${ampm}`;
+  return strTime;
+}
 
 const CreateTestimony = () => (
   <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
     <Row>
-      <Col className="mt-5 ms-5 col-sm-8">
-        <h1>Create Testimony</h1>
-      </Col>
-
-      <Col>
-        <Card className="card-body border bg-light rounded shadow-sm">
-          <Card.Text className="col-form-label mx-3"> <b> Date: </b> &nbsp;06/20/2020 </Card.Text>
-          <Card.Text className="col-form-label mx-3"> <b>Time:</b> &nbsp;02:00 PM  </Card.Text>
-          <Card.Text className="col-form-label mx-3"> <b> Location: </b> &nbsp;329 </Card.Text>
-          <Card.Text className="col-form-label mx-3"> <b> Committee: </b>&nbsp;House Finance </Card.Text>
+      <CardGroup>
+        <Card className="mt-5 ms-5 border-white shadow-none">
+          <h1>Create Testimony</h1>
         </Card>
-      </Col>
+
+        <Card className="border-white shadow-none">
+          <Col className="d-md-flex justify-content-md-end">
+            <Card className="mt-3 border-white shadow-none">
+              <Card.Text className="col-form-label mx-3 fw-bold"> Date: </Card.Text>
+              <Card.Text className="col-form-label mx-3 fw-bold"> Time: </Card.Text>
+              <Card.Text className="col-form-label mx-3 fw-bold"> Location: </Card.Text>
+              <Card.Text className="col-form-label mx-3 fw-bold"> Committee: </Card.Text>
+            </Card>
+
+            <Card className="mt-3 border-white shadow-none">
+              <Card.Text className="col-form-label mx-3"> {`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} </Card.Text>
+              <Card.Text className="col-form-label mx-3"> {`${formatAMPM(time)}`}  </Card.Text>
+              <Card.Text className="col-form-label mx-3"> 329 </Card.Text>
+              <Card.Text className="col-form-label mx-3"> House Finance </Card.Text>
+            </Card>
+          </Col>
+        </Card>
+      </CardGroup>
     </Row>
 
-    <Card className="card-body border bg-light rounded mt-3 shadow-sm">
-      <Row className="mb-3 mt-3">
-        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Department: </Col>
-        <Col className="col-sm-9">
+    <Card className="mt-3 border-white shadow-none">
+      {/* card-body border bg-light rounded mt-3 shadow-sm  */}
+      <Row className="mb-3 col-sm-2 col-form-label fw-bold mx-4"> Testifier: </Row>
+      <Row className="mb-3">
+        <Col className="col-sm-2 col-form-label mx-4">First name </Col>
+        <Col className="col-sm-3">
+          <input type="testifier" className="form-control" id="floatingInput" placeholder="Type first name" />
+        </Col>
+        <Col className="col-sm-2 col-form-label mx-4">Last name </Col>
+        <Col className="col-sm-3">
+          <input type="testifier" className="form-control" id="floatingInput" placeholder="Type last name" />
+        </Col>
+        <Col className="col-sm-2 col-form-label mx-4 mt-3"> Department </Col>
+        <Col className="col-sm-9 mt-3">
           <input type="department" className="form-control" id="departmentInput" placeholder="" />
         </Col>
       </Row>
-      <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label fw-bold mx-4">Testifier: </Col>
+      <Row className="mb-3 mt-3">
+        <Col htmlFor="TitleofBill" className="col-sm-2 col-form-label fw-bold mx-4">Relevant Bill: </Col>
         <Col className="col-sm-9">
-          <input type="testifier" className="form-control" id="floatingInput" placeholder="" />
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Col htmlFor="TitleofBill" className="col-sm-2 col-form-label fw-bold mx-4">Title of Bill: </Col>
-        <Col className="col-sm-9">
-          <input type="titleofbill" className="form-control" id="floatingInput" placeholder="" />
+          <Button className="btn btn-secondary"> Select </Button>
         </Col>
       </Row>
       <Row className="mb-3">
@@ -54,7 +82,7 @@ const CreateTestimony = () => (
       </Row>
     </Card>
 
-    <Card className="card-body border bg-light rounded mt-3 shadow-sm">
+    <Card className="mt-3 border-white shadow-none">
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label fw-bold mx-4"> Department&apos;s Position: </Col>
         <div className="center-block mx-2">
@@ -75,6 +103,9 @@ const CreateTestimony = () => (
         </Col>
       </Row>
     </Card>
+    <div className="d-md-flex justify-content-md-end">
+      <Button className="btn-success me-md-2 btn-lg" type="submit"> Submit </Button>
+    </div>
   </Container>
 );
 
