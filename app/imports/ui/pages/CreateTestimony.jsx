@@ -1,7 +1,9 @@
 import React from 'react';
 import '/client/style.css';
-import { Container, Card, Button, Col, Row, CardGroup } from 'react-bootstrap';
+import { Container, Card, Button, Col, Row, CardGroup, ListGroup, Tab } from 'react-bootstrap';
+import Tabs from 'react-bootstrap/Tabs';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const time = new Date();
 
@@ -45,65 +47,110 @@ const CreateTestimony = () => (
     </Row>
 
     <Card className="mt-3 border-white shadow-none">
-      {/* card-body border bg-light rounded mt-3 shadow-sm  */}
       <Row className="mb-3 col-sm-2 col-form-label fw-bold mx-4"> Testifier: </Row>
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label mx-4">First name </Col>
         <Col className="col-sm-3">
-          <input type="testifier" className="form-control" id="floatingInput" placeholder="Type first name" />
+          <input className="form-control" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_FIRST_NAME} placeholder="Type first name" />
         </Col>
         <Col className="col-sm-2 col-form-label mx-4">Last name </Col>
         <Col className="col-sm-3">
-          <input type="testifier" className="form-control" id="floatingInput" placeholder="Type last name" />
-        </Col>
-        <Col className="col-sm-2 col-form-label mx-4 mt-3"> Department </Col>
-        <Col className="col-sm-9 mt-3">
-          <input type="department" className="form-control" id="departmentInput" placeholder="" />
+          <input className="form-control" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_LAST_NAME} placeholder="Type last name" />
         </Col>
       </Row>
-      <Row className="mb-3 mt-3">
-        <Col htmlFor="TitleofBill" className="col-sm-2 col-form-label fw-bold mx-4">Relevant Bill: </Col>
-        <Col className="col-sm-9">
-          <Button className="btn btn-secondary"> Select </Button>
-        </Col>
-      </Row>
+
+      <Card className="col-sm-3 col-form-label fw-bold mx-4 border-white shadow-none">Relevant Bill: </Card>
+      <CardGroup className="mb-3 ms-4">
+        <Card className="mb-3 border-white shadow-none">
+          <Row className="">
+            <Col className="col-form-label fw-bold mx-4">Bill </Col>
+            <Col className="col-form-label fw-bold mx-4">Comitee </Col>
+            <Col className="col-form-label fw-bold mx-4">Room </Col>
+            <Col className="col-form-label fw-bold mx-4">Date/Time </Col>
+          </Row>
+          <Row className="">
+            <Col className="col-form-label mx-4"> SB 144 Relating to a school supply subsidy pilot program.</Col>
+            <Col className="col-form-label mx-4"> EDU </Col>
+            <Col className="col-form-label mx-4"> 229 </Col>
+            <Col className="col-form-label mx-4"> Feb 1, 2021 / 3:00 PM</Col>
+          </Row>
+          <Col className="">
+            <Button className="btn btn-secondary mx-4"> Change </Button>
+          </Col>
+        </Card>
+      </CardGroup>
+
       <Row className="mb-3">
-        <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label fw-bold mx-4">Purpose of Bill: </Col>
-        <Col className="col-sm-9">
-          <input type="purposeofbill" className="form-control" id="floatingInput" placeholder="" />
+        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Your position </Col>
+        <Col className="col-sm-9 mt-2">
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" id="support" />
+            <div className="form-check-label"> Support </div>
+            <input className="form-check-input" type="checkbox" id="oppose" />
+            <div className="form-check-label"> Oppose </div>
+            <input className="form-check-input" type="checkbox" id="comments" />
+            <div className="form-check-label"> Comments only </div>
+          </div>
         </Col>
       </Row>
+
       <Row className="mb-3">
-        <Col htmlFor="Upload file" className="col-sm-2 col-form-label fw-bold mx-4">Upload file: </Col>
-        <Col className="col-sm-9">
-          {/* <Button className="btn btn-secondary" type="file"> Upload</Button> */}
-          <input className="form-control" type="file" id="formFile" />
+        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Testifying </Col>
+        <Col className="col-sm-9 mt-2">
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" id="induvidual" />
+            <div className="form-check-label"> As an induvidual citizen </div>
+            <input className="form-check-input" type="checkbox" id="organization" />
+            <div className="form-check-label"> On behalf of an organization </div>
+          </div>
+          <input className="form-control" placeholder=" Name of organization" />
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label fw-bold mx-4"> How will you be testifying? </Col>
+        <Col className="col-sm-9 mt-2">
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" id="support" />
+            <div className="form-check-label"> Remotly via Zoom during the hearing & submitting written testimony </div>
+            <input className="form-check-input" type="checkbox" id="checkbox1" />
+            <div className="form-check-label"> Written testimony only </div>
+          </div>
         </Col>
       </Row>
     </Card>
 
-    <Card className="mt-3 border-white shadow-none">
-      <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Department&apos;s Position: </Col>
-        <div className="center-block mx-2">
-          <textarea className="form-control" style={{ width: '1250px', height: '100px' }} />
-        </div>
-      </Row>
-      <Row className="mb-3">
-        <Col className="col-sm-4 col-form-label fw-bold mx-4"> Comments (include data and your initials): </Col>
-        <Col className="col-sm-7">
-          <textarea className="form-control" id="floatingInput" style={{ height: '40px' }} />
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Col className="col-sm-4 col-form-label fw-bold mx-4"> Route testimony to: </Col>
-        <Col className="col-sm-6">
-          <Card.Text className="col-sm-4 col-form-label"> Ellen Nishioka/OSIP/HIDOE; </Card.Text>
-          <Button className="btn btn-secondary"> Add testimony </Button>
-        </Col>
-      </Row>
-    </Card>
-    <div className="d-md-flex justify-content-md-end">
+    <p className="mx-4 my-3"> Please submit your written testimony using one of two options below </p>
+
+    <ListGroup className="tabs">
+      <ListGroup.Item>
+        <Row className="tabs">
+          <Col md>
+            <Tabs defaultActiveKey="upload" className="mb-3">
+              <Tab eventKey="upload" title="Upload testimony">
+                <Row className="mb-3">
+                  <Col className="col-sm-2 col-form-label fw-bold mx-4">Upload file: </Col>
+                  <Col className="col-sm-9">
+                    <input className="form-control" type="file" id="formFile" />
+                  </Col>
+                </Row>
+              </Tab>
+
+              <Tab eventKey="write" title="Write testimony">
+                <Row className="mb-3">
+                  <Col className="col-sm-2 col-form-label fw-bold mx-4"> Your testimony: </Col>
+                  <div className="center-block mx-2">
+                    <textarea className="form-control" style={{ width: '1250px', height: '100px' }} />
+                  </div>
+                </Row>
+              </Tab>
+            </Tabs>
+          </Col>
+        </Row>
+      </ListGroup.Item>
+    </ListGroup>
+
+    <div className="d-md-flex justify-content-md-end mt-2">
       <Button className="btn-success me-md-2 btn-lg" type="submit"> Submit </Button>
     </div>
   </Container>
