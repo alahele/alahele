@@ -27,8 +27,8 @@ import Hearing from '../pages/Hearing';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
-function App() {
-  return (
+const App = () => (
+    return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
@@ -61,7 +61,7 @@ function App() {
  * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-function ProtectedRoute({ children }) {
+const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
@@ -73,7 +73,7 @@ function ProtectedRoute({ children }) {
  * to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-function AdminProtectedRoute({ children }) {
+const AdminProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
     return <Navigate to="/signin" />;
