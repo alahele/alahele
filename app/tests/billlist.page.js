@@ -2,7 +2,6 @@ import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
-
 class BillListPage {
   constructor() {
     this.pageId = `#${PAGE_IDS.BILL_LIST}`;
@@ -20,7 +19,5 @@ class BillListPage {
     await t.click(`#${COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON}`);
   }
 }
-
-
 
 export const billListPage = new BillListPage();

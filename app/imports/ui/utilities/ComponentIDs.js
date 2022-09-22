@@ -30,4 +30,5 @@ export const COMPONENT_IDS = {
   INDIVIDUAL_BILL_BUTTON: 'individual-bill-button',
   CREATE_TESTIMONY_FORM_FIRST_NAME: 'create-testimony-form-first-name',
   CREATE_TESTIMONY_FORM_LAST_NAME: 'create-testimony-form-last-name',
+  CREATE_ACCOUNT: 'create-account',
 };

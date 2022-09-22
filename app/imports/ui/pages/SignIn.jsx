@@ -14,7 +14,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
  * Authentication errors modify the component’s state to be displayed
  */
-function SignIn() {
+const SignIn = () => {
   const [error, setError] = useState('');
   const [redirect, setRedirect] = useState(false);
   const schema = new SimpleSchema({
@@ -54,13 +54,13 @@ function SignIn() {
           </Col>
           <Col md="6" className="px-5">
             <AutoForm schema={bridge} onSubmit={(data) => submit(data)}>
-              <TextField name="email" placeholder="E-mail address" />
+              <TextField id={COMPONENT_IDS.SIGN_IN_FORM_EMAIL} name="email" placeholder="E-mail address" />
               <TextField id={COMPONENT_IDS.SIGN_IN_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
               <ErrorsField />
               <div className="d-grid gap-2">
-                <Button variant="dark" type="submit" size="sm" id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT}>Submit</Button>
+                <Button id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} variant="dark" type="submit" size="sm">Submit</Button>
 
-                <Button variant="light" size="sm">Create an account</Button>
+                <Button id={COMPONENT_IDS.CREATE_ACCOUNT} variant="light" size="sm">Create an account</Button>
               </div>
             </AutoForm>
             {error === '' ? (
@@ -76,6 +76,6 @@ function SignIn() {
       </Card>
     </div>
   );
-}
+};
 
 export default SignIn;
