@@ -1,5 +1,5 @@
 import React from 'react';
-import '/client/style.css';
+import '/client/create-testimony.css';
 import { Container, Card, Button, Col, Row, CardGroup, ListGroup, Tab } from 'react-bootstrap';
 import Tabs from 'react-bootstrap/Tabs';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -29,10 +29,10 @@ const CreateTestimony = () => (
         <Card className="border-white shadow-none">
           <Col className="d-md-flex justify-content-md-end">
             <Card className="mt-3 border-white shadow-none">
-              <Card.Text className="col-form-label mx-3 fw-bold"> Date: </Card.Text>
-              <Card.Text className="col-form-label mx-3 fw-bold"> Time: </Card.Text>
-              <Card.Text className="col-form-label mx-3 fw-bold"> Location: </Card.Text>
-              <Card.Text className="col-form-label mx-3 fw-bold"> Committee: </Card.Text>
+              <Card.Text className="col-form-label bold-text"> Date: </Card.Text>
+              <Card.Text className="col-form-label bold-text"> Time: </Card.Text>
+              <Card.Text className="col-form-label bold-text"> Location: </Card.Text>
+              <Card.Text className="col-form-label bold-text"> Committee: </Card.Text>
             </Card>
 
             <Card className="mt-3 border-white shadow-none">
@@ -47,7 +47,7 @@ const CreateTestimony = () => (
     </Row>
 
     <Card className="mt-3 border-white shadow-none">
-      <Row className="mb-3 col-sm-2 col-form-label fw-bold mx-4"> Testifier: </Row>
+      <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier: </Row>
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label mx-4">First name </Col>
         <Col className="col-sm-3">
@@ -59,29 +59,29 @@ const CreateTestimony = () => (
         </Col>
       </Row>
 
-      <Card className="col-sm-3 col-form-label fw-bold mx-4 border-white shadow-none">Relevant Bill: </Card>
+      <Card className="col-sm-3 col-form-label bold-text border-white shadow-none">Relevant Bill: </Card>
       <CardGroup className="mb-3 ms-4">
         <Card className="mb-3 border-white shadow-none">
-          <Row className="">
-            <Col className="col-form-label fw-bold mx-4">Bill </Col>
-            <Col className="col-form-label fw-bold mx-4">Comitee </Col>
-            <Col className="col-form-label fw-bold mx-4">Room </Col>
-            <Col className="col-form-label fw-bold mx-4">Date/Time </Col>
+          <Row>
+            <Col className="col-form-label bold-text">Bill </Col>
+            <Col className="col-form-label bold-text">Committee </Col>
+            <Col className="col-form-label bold-text">Room </Col>
+            <Col className="col-form-label bold-text">Date/Time </Col>
           </Row>
-          <Row className="">
+          <Row>
             <Col className="col-form-label mx-4"> SB 144 Relating to a school supply subsidy pilot program.</Col>
             <Col className="col-form-label mx-4"> EDU </Col>
             <Col className="col-form-label mx-4"> 229 </Col>
             <Col className="col-form-label mx-4"> Feb 1, 2021 / 3:00 PM</Col>
           </Row>
-          <Col className="">
+          <Col>
             <Button className="btn btn-secondary mx-4"> Change </Button>
           </Col>
         </Card>
       </CardGroup>
 
       <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Your position </Col>
+        <Col className="col-sm-2 col-form-label bold-text"> Your position </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="support" />
@@ -95,11 +95,11 @@ const CreateTestimony = () => (
       </Row>
 
       <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label fw-bold mx-4"> Testifying </Col>
+        <Col className="col-sm-2 col-form-label bold-text"> Testifying </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="induvidual" />
-            <div className="form-check-label"> As an induvidual citizen </div>
+            <div className="form-check-label"> As an individual citizen </div>
             <input className="form-check-input" type="checkbox" id="organization" />
             <div className="form-check-label"> On behalf of an organization </div>
           </div>
@@ -108,11 +108,11 @@ const CreateTestimony = () => (
       </Row>
 
       <Row className="mb-3">
-        <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label fw-bold mx-4"> How will you be testifying? </Col>
+        <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label bold-text"> How will you be testifying? </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="support" />
-            <div className="form-check-label"> Remotly via Zoom during the hearing & submitting written testimony </div>
+            <div className="form-check-label"> Remotely via Zoom during the hearing & submitting written testimony </div>
             <input className="form-check-input" type="checkbox" id="checkbox1" />
             <div className="form-check-label"> Written testimony only </div>
           </div>
@@ -129,7 +129,7 @@ const CreateTestimony = () => (
             <Tabs defaultActiveKey="upload" className="mb-3">
               <Tab eventKey="upload" title="Upload testimony">
                 <Row className="mb-3">
-                  <Col className="col-sm-2 col-form-label fw-bold mx-4">Upload file: </Col>
+                  <Col className="col-sm-2 col-form-label bold-text">Upload file: </Col>
                   <Col className="col-sm-9">
                     <input className="form-control" type="file" id="formFile" />
                   </Col>
@@ -138,7 +138,7 @@ const CreateTestimony = () => (
 
               <Tab eventKey="write" title="Write testimony">
                 <Row className="mb-3">
-                  <Col className="col-sm-2 col-form-label fw-bold mx-4"> Your testimony: </Col>
+                  <Col className="col-sm-2 col-form-label bold-text"> Your testimony: </Col>
                   <div className="center-block mx-2">
                     <textarea className="form-control" style={{ width: '1250px', height: '100px' }} />
                   </div>
