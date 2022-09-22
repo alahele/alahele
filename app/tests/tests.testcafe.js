@@ -1,6 +1,4 @@
 import { Selector, t } from 'testcafe';
-import { /* manageDatabasePage, */ signOutPage } from './simple.page';
-import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { navBar } from './navbar.component';
 import { billListPage } from './billlist.page.js';
@@ -18,36 +16,15 @@ const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
 
-test('Test that billslist page show up', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(credentials.username, credentials.password);
-  await navBar.isLoggedIn(credentials.username);
-  await navBar.gotoBillsListPage();
-  await billListPage.isDisplayed();
-});
-
-test('Test that testimony list page shows up', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(credentials.username, credentials.password);
-  await navBar.isLoggedIn(credentials.username);
-  await navBar.gotoTestimonyListPage();
-  await testimonyListPage.isDisplayed();
-});
-
-test('Test that landing page shows up', async () => {
-  await landingPage.isDisplayed();
-});
-
 test('Test that signin and signout work', async () => {
-  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.logout();
-  await signOutPage.isDisplayed();
+  await signInPage.isDisplayed();
 });
 
 test('Test that navbar options route correctly when logged in', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoHomePage();
@@ -55,18 +32,33 @@ test('Test that navbar options route correctly when logged in', async () => {
   await navBar.gotoBillListPage();
   await navBar.gotoTestimonyListPage();
   await navBar.logout();
-  await signOutPage.isDisplayed();
+  await signInPage.isDisplayed();
+});
+
+test('Test that billslist page show up', async () => {
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoBillsListPage();
+  await billListPage.isDisplayed();
+});
+
+test('Test that testimony list page shows up', async () => {
+  // await navBar.gotoSignInPage();
+  await signInPage.signin(credentials.username, credentials.password);
+  await navBar.isLoggedIn(credentials.username);
+  await navBar.gotoTestimonyListPage();
+  await testimonyListPage.isDisplayed();
 });
 
 test('Test that admin page show up', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.logout();
 });
 
 test('Test that hearing list page shows up', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoHearingListPage();
@@ -75,14 +67,14 @@ test('Test that hearing list page shows up', async () => {
 });
 
 test('Test that user profile page shows up', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.gotoUserProfilePage();
   await userProfile.isDisplayed();
 });
 
 test('Test that individual bill page show up', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoBillsListPage();
@@ -91,7 +83,7 @@ test('Test that individual bill page show up', async () => {
 });
 
 test('Test that create testimony page show up', async () => {
-  await navBar.gotoSignInPage();
+  // await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoCreateTestimonyPage();
