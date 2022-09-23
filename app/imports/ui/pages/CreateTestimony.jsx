@@ -84,11 +84,11 @@ const CreateTestimony = () => (
         <Col className="col-sm-2 col-form-label bold-text"> Your position </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" id="support" />
+            <input className="form-check-input" type="radio" name="position" />
             <div className="form-check-label"> Support </div>
-            <input className="form-check-input" type="checkbox" id="oppose" />
+            <input className="form-check-input" type="radio" name="position" />
             <div className="form-check-label"> Oppose </div>
-            <input className="form-check-input" type="checkbox" id="comments" />
+            <input className="form-check-input" type="radio" name="position" />
             <div className="form-check-label"> Comments only </div>
           </div>
         </Col>
@@ -98,9 +98,9 @@ const CreateTestimony = () => (
         <Col className="col-sm-2 col-form-label bold-text"> Testifying </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" id="induvidual" />
+            <input className="form-check-input" type="radio" name="testify" />
             <div className="form-check-label"> As an individual citizen </div>
-            <input className="form-check-input" type="checkbox" id="organization" />
+            <input className="form-check-input" type="radio" name="testify" />
             <div className="form-check-label"> On behalf of an organization </div>
           </div>
           <input className="form-control" placeholder=" Name of organization" />
@@ -111,13 +111,14 @@ const CreateTestimony = () => (
         <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label bold-text"> How will you be testifying? </Col>
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
-            <input className="form-check-input" type="checkbox" id="support" />
+            <input className="form-check-input" type="radio" name="howTestify" />
             <div className="form-check-label"> Remotely via Zoom during the hearing & submitting written testimony </div>
-            <input className="form-check-input" type="checkbox" id="checkbox1" />
+            <input className="form-check-input" type="radio" name="howTestify" />
             <div className="form-check-label"> Written testimony only </div>
           </div>
         </Col>
       </Row>
+
     </Card>
 
     <p className="mx-4 my-3"> Please submit your written testimony using one of two options below </p>
