@@ -28,7 +28,6 @@ import Hearing from '../pages/Hearing';
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
 const App = () => (
-    return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
@@ -54,7 +53,7 @@ const App = () => (
       </div>
     </Router>
   );
-}
+
 
 /*
  * ProtectedRoute (see React Router v6 sample)
