@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <div>
       {(currentUser) ? ([
-        <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-expand-lg navbar-light bg-light">
+        <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-expand-lg navbar-light">
           <Container>
             <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
               <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
@@ -56,6 +56,6 @@ const NavBar = () => {
       ]) : ([null])}
     </div>
   );
-}
+};
 
 export default NavBar;

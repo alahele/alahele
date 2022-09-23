@@ -28,32 +28,31 @@ import Hearing from '../pages/Hearing';
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
 const App = () => (
-    <Router>
-      <div className="d-flex flex-column min-vh-100">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route exact path="/about-us" element={<Landing />} />
-          <Route path="/bill-list" element={<BillList />} />
-          <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
-          <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
-          <Route path="/hearing-list" element={<HearingList />} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-          <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/hearing" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/individual-testimony" element={<ProtectedRoute><IndividualTestimony /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
-          <Route path="/notauthorized" element={<NotAuthorized />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
-          <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
-        </Routes>
-      </div>
-    </Router>
-  );
-
+  <Router>
+    <div className="d-flex flex-column min-vh-100">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route exact path="/about-us" element={<Landing />} />
+        <Route path="/bill-list" element={<BillList />} />
+        <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
+        <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
+        <Route path="/hearing-list" element={<HearingList />} />
+        <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+        <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+        <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/hearing" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
+        <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+        <Route path="/individual-testimony" element={<ProtectedRoute><IndividualTestimony /></ProtectedRoute>} />
+        <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
+        <Route path="/notauthorized" element={<NotAuthorized />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
+        <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
+      </Routes>
+    </div>
+  </Router>
+);
 
 /*
  * ProtectedRoute (see React Router v6 sample)
@@ -62,9 +61,8 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
-}
+};
 
 /**
  * AdminProtectedRoute (see React Router v6 sample)
@@ -78,9 +76,8 @@ const AdminProtectedRoute = ({ children }) => {
     return <Navigate to="/signin" />;
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
-  console.log('AdminProtectedRoute', isLogged, isAdmin);
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
-}
+};
 
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
