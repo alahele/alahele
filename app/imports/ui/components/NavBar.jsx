@@ -7,6 +7,7 @@ import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, CloudDownload, Person } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import SearchBar from './SearchBar';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -39,6 +40,7 @@ const NavBar = () => {
                       </NavDropdown.Item>
                     </NavDropdown>]
                 ) : ''}
+                <SearchBar />
               </Nav>
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile">
@@ -56,6 +58,6 @@ const NavBar = () => {
       ]) : ([null])}
     </div>
   );
-}
+};
 
 export default NavBar;
