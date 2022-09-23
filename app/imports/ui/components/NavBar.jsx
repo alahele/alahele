@@ -56,6 +56,6 @@ const NavBar = () => {
       ]) : ([null])}
     </div>
   );
-}
+};
 
 export default NavBar;
