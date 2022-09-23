@@ -24,6 +24,7 @@ import TestimonyList from '../pages/TestimonyList';
 import IndividualBill from '../pages/IndividualBill';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
+import SignUpAdmin from '../pages/SignUpAdmin';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -45,6 +46,7 @@ const App = () => (
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
         <Route path="/individual-testimony" element={<ProtectedRoute><IndividualTestimony /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
+        <Route path="/signup" element={<AdminProtectedRoute><SignUpAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
