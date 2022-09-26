@@ -2,12 +2,13 @@ import React from 'react';
 import '/client/style.css';
 import { Accordion, Button, Card, Col, Container, Nav, Row, Tab } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import CountDown from '../components/CountDown';
+import DateTime from '../utilities/DateTimeUtil';
 
 /** Render an up-coming hearing . */
 const Hearing = () => {
   const mockHearingData = {
-    date: 'August 19, 1975',
-    time: '2:45 pm',
+    timeStamp: '2022-12-25T18:20:00+05:30',
     room: 229,
     code: 'SCR 010',
     description: 'This is a description of hearing',
@@ -120,6 +121,7 @@ const Hearing = () => {
 
     ],
   };
+
   return (
     <Container id={PAGE_IDS.HEARING} className="py-3">
       <Card>
@@ -128,14 +130,14 @@ const Hearing = () => {
           <Container className="py-3">
             <Row className="fw-bold">
               <Col> Hearing Code</Col>
-              <Col> Date</Col>
-              <Col> Time</Col>
+              <Col> Date/Time</Col>
+              <Col>Time Till Close</Col>
               <Col> Room#</Col>
             </Row>
             <Row>
               <Col> {mockHearingData.code}</Col>
-              <Col> {mockHearingData.date}</Col>
-              <Col> {mockHearingData.time}</Col>
+              <Col> {DateTime.dateTimeToString(mockHearingData.timeStamp)}</Col>
+              <Col><CountDown dateTimeStr={mockHearingData.timeStamp} /></Col>
               <Col> {mockHearingData.room}</Col>
             </Row>
           </Container>
