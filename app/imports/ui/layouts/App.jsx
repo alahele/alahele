@@ -25,6 +25,7 @@ import IndividualBill from '../pages/IndividualBill';
 import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
+import SignOut from '../pages/SignOut';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -33,7 +34,8 @@ const App = () => (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signout" element={<SignOut />} />
         <Route exact path="/about-us" element={<Landing />} />
         <Route path="/bill-list" element={<BillList />} />
         <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
