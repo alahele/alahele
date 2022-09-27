@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'react-bootstrap';
 import DateTime from '../utilities/DateTimeUtil';
 
 const CountDown = props => {
