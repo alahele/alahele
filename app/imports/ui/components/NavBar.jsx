@@ -45,6 +45,11 @@ const NavBar = () => {
                               {' '}
                               Admin Option 2: Dropdown
                             </NavDropdown.Item>
+                            <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} key="sign-up" as={NavLink} to="/signup">
+                              <Person />
+                              {' '}
+                              Create User
+                            </NavDropdown.Item>
                           </NavDropdown>
                   ]) : ''}
               </Nav>
