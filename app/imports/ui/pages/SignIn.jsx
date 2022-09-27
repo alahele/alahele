@@ -59,8 +59,6 @@ const SignIn = () => {
               <ErrorsField />
               <div className="d-grid gap-2">
                 <Button id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} variant="dark" type="submit" size="sm">Submit</Button>
-
-                <Button id={COMPONENT_IDS.CREATE_ACCOUNT} variant="light" size="sm">Create an account</Button>
               </div>
             </AutoForm>
             {error === '' ? (
