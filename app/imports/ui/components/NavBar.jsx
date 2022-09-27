@@ -24,7 +24,7 @@ const NavBar = () => {
               <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
             </Navbar.Brand>,
           ]) : ([
-            <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/about-us">
+            <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/">
               <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
             </Navbar.Brand>,
           ])}
