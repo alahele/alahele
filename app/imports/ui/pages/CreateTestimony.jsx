@@ -22,7 +22,7 @@ const CreateTestimony = () => (
   <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
     <Row>
       <CardGroup>
-        <Card className="mt-5 ms-5 border-white shadow-none">
+        <Card className="mt-1 pt-lg-5 ps-lg-5 border-white shadow-none">
           <h1>Create Testimony</h1>
         </Card>
 
