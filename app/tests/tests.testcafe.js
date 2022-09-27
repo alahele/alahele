@@ -20,7 +20,6 @@ test('Test that signin and signout work', async () => {
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.logout();
-  await signInPage.isDisplayed();
 });
 
 test('Test that navbar options route correctly when logged in', async () => {
@@ -32,7 +31,6 @@ test('Test that navbar options route correctly when logged in', async () => {
   await navBar.gotoBillListPage();
   await navBar.gotoTestimonyListPage();
   await navBar.logout();
-  await signInPage.isDisplayed();
 });
 
 test('Test that billslist page show up', async () => {
