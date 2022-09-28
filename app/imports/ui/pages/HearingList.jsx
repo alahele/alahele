@@ -18,8 +18,9 @@ const HearingList = () => (
           <th scope="col">Branch</th>
           <th scope="col">Lead Office</th>
           <th scope="col">Testifier</th>
-          <th scope="col">Committee Re?</th>
+          <th scope="col">Committee Representing</th>
           <th scope="col">Comments</th>
+          <th scope="col">View Hearing</th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
@@ -55,38 +56,8 @@ const HearingList = () => (
           <td>
             Interesting Comments
           </td>
-        </tr>
-        <tr>
           <td>
-            <p className="fw-normal mb-1">09/09/2022</p>
-          </td>
-          <td>
-            <p className="fw-normal mb-1">02:45 PM</p>
-          </td>
-          <td>
-            <p className="fw-normal mb-1">229</p>
-          </td>
-          <td>SCR 010</td>
-          <td>
-            REQUESTING THE DEPARTMENT OF EDUCATION TO EXPLORE THE POSSIBILITY OF UPDATING
-          </td>
-          <td>
-            Senate Education
-          </td>
-          <td>
-            ESB-SNS
-          </td>
-          <td>
-            OSSS, DEPUTY, BOE
-          </td>
-          <td>
-            David Ige
-          </td>
-          <td>
-            EDU
-          </td>
-          <td>
-            Interesting Comments
+            <a href="/hearing" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
         <tr>
@@ -121,6 +92,9 @@ const HearingList = () => (
           <td>
             Interesting Comments
           </td>
+          <td>
+            <a href="/hearing" type="button" className="btn btn-primary btn-sm">View</a>
+          </td>
         </tr>
         <tr>
           <td>
@@ -153,6 +127,45 @@ const HearingList = () => (
           </td>
           <td>
             Interesting Comments
+          </td>
+          <td>
+            <a href="/hearing" type="button" className="btn btn-primary btn-sm">View</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p className="fw-normal mb-1">09/09/2022</p>
+          </td>
+          <td>
+            <p className="fw-normal mb-1">02:45 PM</p>
+          </td>
+          <td>
+            <p className="fw-normal mb-1">229</p>
+          </td>
+          <td>SCR 010</td>
+          <td>
+            REQUESTING THE DEPARTMENT OF EDUCATION TO EXPLORE THE POSSIBILITY OF UPDATING
+          </td>
+          <td>
+            Senate Education
+          </td>
+          <td>
+            ESB-SNS
+          </td>
+          <td>
+            OSSS, DEPUTY, BOE
+          </td>
+          <td>
+            David Ige
+          </td>
+          <td>
+            EDU
+          </td>
+          <td>
+            Interesting Comments
+          </td>
+          <td>
+            <a href="/hearing" type="button" className="btn btn-primary btn-sm">View</a>
           </td>
         </tr>
       </MDBTableBody>

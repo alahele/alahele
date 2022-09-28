@@ -28,4 +28,9 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_PASSWORD: 'sign-up-form-password',
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
   INDIVIDUAL_BILL_BUTTON: 'individual-bill-button',
+  CREATE_TESTIMONY_FORM_FIRST_NAME: 'create-testimony-form-first-name',
+  CREATE_TESTIMONY_FORM_LAST_NAME: 'create-testimony-form-last-name',
+  CREATE_ACCOUNT: 'create-account',
+  SEARCH_BAR: 'search-bar',
+  SEARCH_BAR_INPUT: 'search-bar-input',
 };

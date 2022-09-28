@@ -16,10 +16,12 @@ class SignInPage {
 
   /** Fills out and submits the form to signin, then checks to see that login was successful. */
   async signin(username, password) {
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN}`);
     await this.isDisplayed();
     await t.typeText(`#${COMPONENT_IDS.SIGN_IN_FORM_EMAIL}`, username);
     await t.typeText(`#${COMPONENT_IDS.SIGN_IN_FORM_PASSWORD}`, password);
-    await t.click(`#${COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} input.btn.btn-primary`);
+    await t.click(`#${COMPONENT_IDS.SIGN_IN_FORM_SUBMIT}`);
     await navBar.isLoggedIn(username);
   }
 }

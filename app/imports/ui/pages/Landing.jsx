@@ -93,7 +93,7 @@ const Landing = () => {
 
                             <Form.Group className="mb-3">
                               <Form.Label>Email Address</Form.Label>
-                              <Form.Control placeholder="name@example.com" disabled />
+                              <Form.Control placeholder="name@example.com" />
                             </Form.Group>
 
                             <FloatingLabel controlId="floatingTextarea2" label="Comments">

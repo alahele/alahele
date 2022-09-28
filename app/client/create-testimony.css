@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+
+.bold-text {
+  margin-left: 1.45rem !important;
+  margin-right: 1.45rem !important;
+  font-weight: bold;
+}
