@@ -35,6 +35,7 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimony List</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearing List</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
+                <SearchBar />,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
@@ -51,7 +52,6 @@ const NavBar = () => {
                   </NavDropdown.Item>
                 </NavDropdown>,
               ]) : ''}
-              <SearchBar />
             </Nav>
             {(currentUser) ? ([
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
