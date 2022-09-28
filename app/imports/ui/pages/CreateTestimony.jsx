@@ -4,6 +4,7 @@ import { Container, Card, Button, Col, Row, CardGroup, ListGroup, Tab } from 're
 import Tabs from 'react-bootstrap/Tabs';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import ChangeBill from '../components/ChangeBill';
 
 const time = new Date();
 
@@ -22,20 +23,20 @@ const CreateTestimony = () => (
   <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
     <Row>
       <CardGroup>
-        <Card className="mt-5 ms-5 border-white shadow-none">
+        <Card className="mt-5 ms-5 border-0 bg-transparent shadow-none">
           <h1>Create Testimony</h1>
         </Card>
-
-        <Card className="border-white shadow-none">
+        {/* Show date, time, location and committee */}
+        <Card className="border-0 bg-transparent shadow-none">
           <Col className="d-md-flex justify-content-md-end">
-            <Card className="mt-3 border-white shadow-none">
+            <Card className="mt-3 border-0 bg-transparent shadow-none">
               <Card.Text className="col-form-label bold-text"> Date: </Card.Text>
               <Card.Text className="col-form-label bold-text"> Time: </Card.Text>
               <Card.Text className="col-form-label bold-text"> Location: </Card.Text>
               <Card.Text className="col-form-label bold-text"> Committee: </Card.Text>
             </Card>
 
-            <Card className="mt-3 border-white shadow-none">
+            <Card className="mt-3 border-0 bg-transparent shadow-none">
               <Card.Text className="col-form-label mx-3"> {`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} </Card.Text>
               <Card.Text className="col-form-label mx-3"> {`${formatAMPM(time)}`}  </Card.Text>
               <Card.Text className="col-form-label mx-3"> 329 </Card.Text>
@@ -46,7 +47,7 @@ const CreateTestimony = () => (
       </CardGroup>
     </Row>
 
-    <Card className="mt-3 border-white shadow-none">
+    <Card className="mt-3 border-0 bg-transparent shadow-none">
       <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier: </Row>
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label mx-4">First name </Col>
@@ -59,24 +60,26 @@ const CreateTestimony = () => (
         </Col>
       </Row>
 
-      <Card className="col-sm-3 col-form-label bold-text border-white shadow-none">Relevant Bill: </Card>
+      <Card className="col-sm-3 col-form-label bold-text border-0 bg-transparent shadow-none">Relevant Bill: </Card>
       <CardGroup className="mb-3 ms-4">
-        <Card className="mb-3 border-white shadow-none">
+        <Card className="mb-3 border-0 bg-transparent shadow-none">
           <Row>
             <Col className="col-form-label bold-text">Bill </Col>
             <Col className="col-form-label bold-text">Committee </Col>
             <Col className="col-form-label bold-text">Room </Col>
             <Col className="col-form-label bold-text">Date/Time </Col>
           </Row>
+
           <Row>
             <Col className="col-form-label mx-4"> SB 144 Relating to a school supply subsidy pilot program.</Col>
             <Col className="col-form-label mx-4"> EDU </Col>
             <Col className="col-form-label mx-4"> 229 </Col>
             <Col className="col-form-label mx-4"> Feb 1, 2021 / 3:00 PM</Col>
           </Row>
-          <Col>
-            <Button className="btn btn-secondary mx-4"> Change </Button>
-          </Col>
+
+          {/* Add pop up modal so the user has the possibility to change bill */}
+          <ChangeBill />
+
         </Card>
       </CardGroup>
 
@@ -152,7 +155,7 @@ const CreateTestimony = () => (
     </ListGroup>
 
     <div className="d-md-flex justify-content-md-end mt-2">
-      <Button className="btn-success me-md-2 btn-lg" type="submit"> Submit </Button>
+      <Button className="btn-success me-md-2 btn-lg" type="submit" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT}> Submit </Button>
     </div>
   </Container>
 );
