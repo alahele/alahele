@@ -4,6 +4,7 @@ import { Container, Card, Button, Col, Row, CardGroup, ListGroup, Tab } from 're
 import Tabs from 'react-bootstrap/Tabs';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import ChangeBill from '../components/ChangeBill';
 
 const time = new Date();
 
@@ -25,7 +26,7 @@ const CreateTestimony = () => (
         <Card className="mt-5 ms-5 border-0 bg-transparent shadow-none">
           <h1>Create Testimony</h1>
         </Card>
-
+        {/* Show date, time, location and committee */}
         <Card className="border-0 bg-transparent shadow-none">
           <Col className="d-md-flex justify-content-md-end">
             <Card className="mt-3 border-0 bg-transparent shadow-none">
@@ -68,15 +69,17 @@ const CreateTestimony = () => (
             <Col className="col-form-label bold-text">Room </Col>
             <Col className="col-form-label bold-text">Date/Time </Col>
           </Row>
+
           <Row>
             <Col className="col-form-label mx-4"> SB 144 Relating to a school supply subsidy pilot program.</Col>
             <Col className="col-form-label mx-4"> EDU </Col>
             <Col className="col-form-label mx-4"> 229 </Col>
             <Col className="col-form-label mx-4"> Feb 1, 2021 / 3:00 PM</Col>
           </Row>
-          <Col>
-            <Button className="btn btn-secondary mx-4"> Change </Button>
-          </Col>
+
+          {/* Add pop up modal so the user has the possibility to change bill */}
+          <ChangeBill />
+
         </Card>
       </CardGroup>
 
@@ -152,7 +155,7 @@ const CreateTestimony = () => (
     </ListGroup>
 
     <div className="d-md-flex justify-content-md-end mt-2">
-      <Button className="btn-success me-md-2 btn-lg" type="submit"> Submit </Button>
+      <Button className="btn-success me-md-2 btn-lg" type="submit" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT}> Submit </Button>
     </div>
   </Container>
 );
