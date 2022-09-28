@@ -12,6 +12,8 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
   "public": {
-    "development": true
+    "development": true,
+    "measuresFileName": "measures.json",
+    "loadMeasures": true
   }
 }
