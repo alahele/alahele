@@ -1,11 +1,23 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Dropdown } from 'react-bootstrap';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
 const HearingList = () => (
   <Container id={PAGE_IDS.HEARING_LIST}>
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Sort By
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Hearing #</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Date</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Committee</Dropdown.Item>
+        <Dropdown.Item href="#/action-4">Testifier</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
     <MDBTable align="middle">
       <MDBTableHead>
         <tr>
