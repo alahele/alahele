@@ -13,6 +13,7 @@ body {
   --bs-body-bg: #f9f9f9;
 }
 
+
 .navbar-toggler .navbar-toggler-icon{
   background-image: var(--bs-navbar-toggler-icon-bg) !important;
 }
@@ -26,6 +27,15 @@ body {
   z-index: 9999;
 }
 
+/* Define custom calendar style */
+
+.react-calendar {
+  border: 0px !important;
+}
+
+.react-calendar__tile--now{
+  background-color: #39c0ed !important;
+}
 
 /* Set the SignIn and SignUp alerts background. */
 .signin {

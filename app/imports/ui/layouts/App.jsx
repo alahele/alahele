@@ -26,6 +26,7 @@ import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
 import SignOut from '../pages/SignOut';
+import Secretary from '../pages/Secretary';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -53,6 +54,7 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
         <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
         <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
+        <Route path="/secretary" element={<ProtectedRoute><Secretary /></ProtectedRoute>} />
       </Routes>
     </div>
   </Router>
