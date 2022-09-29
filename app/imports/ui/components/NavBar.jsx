@@ -17,7 +17,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-expand-lg">
+      <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-light">
         <Container>
           {(currentUser) ? ([
             <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
