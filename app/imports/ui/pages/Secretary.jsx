@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Row, Container, Tab, ListGroup, ListGroupItem, Accordion, Table, Badge } from 'react-bootstrap';
+import { Col, Row, Container, Tab, ListGroup, ListGroupItem, Accordion, Table, Badge, Button } from 'react-bootstrap';
 import Tabs from 'react-bootstrap/Tabs';
 import AccordionHeader from 'react-bootstrap/AccordionHeader';
 import Calendar from 'react-calendar';
@@ -9,7 +9,7 @@ import { Stuffs } from '../../api/stuff/StuffCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
-const AdminDashboard = () => {
+const Secretary = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 
   const { ready } = useTracker(() => {
@@ -68,8 +68,8 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="info">Add to calendar</Badge>{' '}
-                              <Badge pill bg="danger">Share</Badge>{' '}
+                              <Button variant="outline-success" size="sm">Add to calendar</Button>{' '}
+                              <Button variant="outline-danger" size="sm">Share</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -98,8 +98,8 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="info">Add to calendar</Badge>{' '}
-                              <Badge pill bg="danger">Share</Badge>{' '}
+                              <Button variant="outline-success" size="sm">Add to calendar</Button>{' '}
+                              <Button variant="outline-danger" size="sm">Share</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -128,8 +128,8 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="info">Add to calendar</Badge>{' '}
-                              <Badge pill bg="danger">Share</Badge>{' '}
+                              <Button variant="outline-success" size="sm">Add to calendar</Button>{' '}
+                              <Button variant="outline-danger" size="sm">Share</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -181,8 +181,8 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="info">Approve</Badge>{' '}
-                              <Badge pill bg="danger">View</Badge>{' '}
+                              <Button variant="outline-success" size="sm">Aprrove</Button>{' '}
+                              <Button href="/individual-testimony" variant="outline-danger" size="sm">View</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -217,8 +217,8 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="info">Approve</Badge>{' '}
-                              <Badge pill bg="danger">View</Badge>{' '}
+                              <Button variant="outline-success" size="sm">Aprrove</Button>{' '}
+                              <Button href="/individual-testimony" variant="outline-danger" size="sm">View</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -253,7 +253,7 @@ const AdminDashboard = () => {
                               </dl>
                             </Col>
                             <Col md="auto">
-                              <Badge pill bg="danger">View</Badge>{' '}
+                              <Button href="/individual-testimony" variant="outline-danger" size="sm">View</Button>{' '}
                             </Col>
                           </Row>
                         </Accordion.Body>
@@ -270,7 +270,7 @@ const AdminDashboard = () => {
                           <th>Title</th>
                           <th>Status</th>
                           <th>DOE Tracker</th>
-                          <th>Action</th>
+                          <th className="col-sm-4">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -280,8 +280,8 @@ const AdminDashboard = () => {
                           <td>Pending</td>
                           <td>Accepting Testimonies</td>
                           <td>
-                            <Badge pill bg="danger">Add Testimony</Badge>{' '}
-                            <Badge pill bg="info">View</Badge>{' '}
+                            <Button href="/create-testimony" variant="outline-success" size="sm">Add Testimony</Button>{' '}
+                            <Button href="/individualbill" variant="outline-danger" size="sm">View</Button>{' '}
                           </td>
                         </tr>
 
@@ -291,8 +291,8 @@ const AdminDashboard = () => {
                           <td>Pending</td>
                           <td>Accepting Testimonies</td>
                           <td>
-                            <Badge pill bg="danger">Add Testimony</Badge>{' '}
-                            <Badge pill bg="info">View</Badge>{' '}
+                            <Button href="/create-testimony" variant="outline-success" size="sm">Add Testimony</Button>{' '}
+                            <Button href="/individualbill" variant="outline-danger" size="sm">View</Button>{' '}
                           </td>
                         </tr>
 
@@ -302,8 +302,8 @@ const AdminDashboard = () => {
                           <td>Pending</td>
                           <td>Accepting Testimonies</td>
                           <td>
-                            <Badge pill bg="danger">Add Testimony</Badge>{' '}
-                            <Badge pill bg="info">View</Badge>{' '}
+                            <Button href="/create-testimony" variant="outline-success" size="sm">Add Testimony</Button>{' '}
+                            <Button href="/individualbill" variant="outline-danger" size="sm">View</Button>{' '}
                           </td>
                         </tr>
 
@@ -313,7 +313,7 @@ const AdminDashboard = () => {
                           <td>Passed into Law</td>
                           <td>None</td>
                           <td>
-                            <Badge pill bg="info">View</Badge>{' '}
+                            <Button href="/individualbill" variant="outline-danger" size="sm">View</Button>{' '}
                           </td>
                         </tr>
                       </tbody>
@@ -342,4 +342,4 @@ const AdminDashboard = () => {
   ) : <LoadingSpinner />);
 };
 
-export default AdminDashboard;
+export default Secretary;

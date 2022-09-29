@@ -10,7 +10,7 @@
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-body-bg: #f9f9f9;
+  --bs-body-bg: #ffffff;
 }
 
 
@@ -23,7 +23,7 @@ body {
 }
 
 .navbar-collapse{
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   z-index: 9999;
 }
 
