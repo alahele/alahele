@@ -13,7 +13,7 @@
   ],
   "public": {
     "development": true,
-    "measuresFileName": "measures.json",
+    "measuresFileName": "smallMeasures.json",
     "loadMeasures": true
   }
 }
