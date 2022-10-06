@@ -20,6 +20,7 @@ if (Stuffs.count() === 0) {
 if (Meteor.settings.public.loadMeasures && Measures.count() === 0) {
   if (Meteor.settings.public.measuresFileName) {
     const assetsFileName = Meteor.settings.public.measuresFileName;
+    console.log("--------------------------------------");
     console.log(`Loading data from private/${assetsFileName}`);
     // eslint-disable-next-line no-undef
     const jsonData = JSON.parse(Assets.getText(assetsFileName));
