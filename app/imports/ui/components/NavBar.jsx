@@ -16,36 +16,36 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-light">
+    <Navbar collapseOnSelect expand="lg" className="my-2 navbar navbar-light">
       <Container>
         {(currentUser) ? ([
-          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
+          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
         ]) : ([
-          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/">
+          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/">
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
         ])}
         <Navbar.Toggle className="nav" aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
         <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
-          <Nav className="nav-fill me-auto ms-5 flex-grow-1 pe-3">
+          <Nav className="nav-fill text-center mx-3">
             {(currentUser) ? ([
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills List</Nav.Link>,
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimony List</Nav.Link>,
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearing List</Nav.Link>,
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
               <SearchBar />,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
-              <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
-              <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option 2: Dropdown" key="manage-dropdown">
+              // <Nav.Link className="my-auto" id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
+              <NavDropdown className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option: Dropdown" key="manage-dropdown">
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                   <CloudDownload />
                   {' '}
                   Admin Option 2: Dropdown
                 </NavDropdown.Item>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} key="sign-up" as={NavLink} to="/signup">
+                <NavDropdown.Item className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} key="sign-up" as={NavLink} to="/signup">
                   <Person />
                   {' '}
                   Create User
