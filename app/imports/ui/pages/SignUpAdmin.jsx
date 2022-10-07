@@ -22,6 +22,7 @@ const SignUpAdmin = () => {
     lastName: String,
     email: String,
     password: String,
+    role: String,
   });
 
   const bridge = new SimpleSchema2Bridge(schema);
@@ -58,6 +59,15 @@ const SignUpAdmin = () => {
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME} name="lastName" placeholder="Last name" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL} name="email" placeholder="E-mail address" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
+                <div>Role:
+                  <select className="form-select" aria-label="Default select example">
+                    <option selected>Select the Role</option>
+                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Secretary</option>
+                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Office Approver</option>
+                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">PIPE Approver</option>
+                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Final Approver</option>
+                  </select>
+                </div>
                 <ErrorsField />
                 <SubmitField id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} />
               </Card.Body>
