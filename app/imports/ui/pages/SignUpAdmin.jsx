@@ -3,7 +3,7 @@ import { Navigate } from 'react-router';
 import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -22,7 +22,7 @@ const SignUpAdmin = () => {
     lastName: String,
     email: String,
     password: String,
-    role: String,
+    role: { type: String, allowedValues: ['SECRETARY', 'WRITER', 'OFFICE APPROVER', 'PIPE APPROVER', 'FINAL APPROVER'] },
   });
 
   const bridge = new SimpleSchema2Bridge(schema);
@@ -59,15 +59,7 @@ const SignUpAdmin = () => {
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME} name="lastName" placeholder="Last name" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL} name="email" placeholder="E-mail address" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
-                <div>Role:
-                  <select className="form-select" aria-label="Default select example">
-                    <option selected>Select the Role</option>
-                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Secretary</option>
-                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Office Approver</option>
-                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">PIPE Approver</option>
-                    <option id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role">Final Approver</option>
-                  </select>
-                </div>
+                <SelectField id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role" placeholder="Select the Role" />
                 <ErrorsField />
                 <SubmitField id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} />
               </Card.Body>
