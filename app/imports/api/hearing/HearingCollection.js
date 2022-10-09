@@ -17,21 +17,14 @@ class HearingCollection extends BaseCollection {
       year: Number,
       measureType: String,
       measureNumber: Number,
-      measureRelativeUrl: { type: String, optional: true },
-      code: { type: String, optional: true },
-      committee: { type: String, optional: true },
-      lastUpdated: { type: Date, optional: true },
-      timestamp: { type: Date, optional: true },
       datetime: { type: String, optional: true },
       description: { type: String, optional: true },
       room: { type: String, optional: true },
       notice: { type: String, optional: true },
-      noticeUrl: { type: String, optional: true },
-      noticePdfUrl: { type: String, optional: true },
     }));
   }
 
-  define({ year, measureType, measureNumber, measureRelativeUrl, code, committee, lastUpdated, timestamp, datetime, description, room, notice, noticeUrl, noticePdfUrl }) {
+  define({ year, measureType, measureNumber, datetime, description, room, notice }) {
     // UNIQUE (year, measureType, measureNumber, notice)
     if (this.isDefined({ year, measureType, measureNumber, notice })) {
       return this.findDoc({ year, measureType, measureNumber, notice })._id;
@@ -39,13 +32,13 @@ class HearingCollection extends BaseCollection {
     if (!isValidMeasureType(measureType)) {
       throw new Meteor.Error(`${measureType} is an invalid Measure Type.`);
     }
-    const docID = this._collection.insert({ year, measureType, measureNumber, measureRelativeUrl, code, committee, lastUpdated, timestamp, datetime, description, room, notice, noticeUrl, noticePdfUrl });
+    const docID = this._collection.insert({ year, measureType, measureNumber, datetime, description, room, notice });
     return docID;
   }
 
   update(docID, {
-    year, measureType, measureNumber, measureRelativeUrl, code, committee, timestamp, datetime, description,
-    room, notice, noticeUrl, noticePdfUrl,
+    year, measureType, measureNumber, datetime, description,
+    room, notice,
   }) {
     const updateData = {};
     // if (year) { NOTE: 0 is falsy, so we need to check if the year is a number.
@@ -61,19 +54,6 @@ class HearingCollection extends BaseCollection {
     if (_.isNumber(measureNumber)) {
       updateData.measureNumber = measureNumber;
     }
-    if (measureRelativeUrl) {
-      updateData.measureRelativeUrl = measureRelativeUrl;
-    }
-    if (code) {
-      updateData.code = code;
-    }
-    if (committee) {
-      updateData.committee = committee;
-    }
-    updateData.lastUpdated = new Date();
-    if (timestamp) {
-      updateData.timestamp = timestamp;
-    }
     if (datetime) {
       updateData.datetime = datetime;
     }
@@ -88,12 +68,6 @@ class HearingCollection extends BaseCollection {
     }
     if (notice) {
       updateData.notice = notice;
-    }
-    if (noticeUrl) {
-      updateData.noticeUrl = noticeUrl;
-    }
-    if (noticePdfUrl) {
-      updateData.noticePdfUrl = noticePdfUrl;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -149,18 +123,11 @@ class HearingCollection extends BaseCollection {
     const year = doc.year;
     const measureType = doc.measureType;
     const measureNumber = doc.measureNumber;
-    const measureRelativeUrl = doc.measureRelativeUrl;
-    const code = doc.code;
-    const committee = doc.committee;
-    const lastUpdated = doc.lastUpdated;
-    const timestamp = doc.timestamp;
     const datetime = doc.datetime;
     const description = doc.description;
     const room = doc.room;
     const notice = doc.notice;
-    const noticeUrl = doc.noticeUrl;
-    const noticePdfUrl = doc.noticePdfUrl;
-    return { year, measureType, measureNumber, measureRelativeUrl, code, committee, lastUpdated, timestamp, datetime, description, room, notice, noticeUrl, noticePdfUrl };
+    return { year, measureType, measureNumber, datetime, description, room, notice };
   }
 }
 
