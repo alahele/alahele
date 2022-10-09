@@ -11,9 +11,17 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
-  "public": {
-    "development": true,
-    "measuresFileName": "measures.json",
-    "loadMeasures": true
-  }
+
+  "public": [
+    {
+      "development": true,
+      "measuresFileName": "testMeasures.json",
+      "loadMeasures": true
+    },
+    {
+      "development": true,
+      "hearingsFileName": "testHearing.json",
+      "loadHearings": true
+    }
+  ]
 }
