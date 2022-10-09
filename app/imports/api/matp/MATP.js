@@ -42,6 +42,24 @@ class MATPClass {
 
     }
 
+  constructor() {
+    // list of all the MATP collections
+    this.collections = [
+      AdminProfiles,
+      Stuffs,
+      UserProfiles,
+      Measures,
+    ];
+    /*
+     * A list of collection class instances in the order required for them to be sequentially loaded from a file.
+     */
+    this.collectionLoadSequence = [
+      AdminProfiles,
+      UserProfiles,
+      Stuffs,
+      Measures,
+    ];
+    
     /**
      * Return the collection class instance given its name.
      * @param collectionName The name of the collection.

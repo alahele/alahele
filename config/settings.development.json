@@ -41,7 +41,6 @@
       "condition": "excellent"
     }
   ],
-
   "defaultHearing": [
     {
       "year": 2022,
@@ -197,11 +196,10 @@
       "notice": "HEARING_EET-GVO_02-07-22_"
     }
   ],
-  "public": [
-    {
-      "development": true,
-      "measuresFileName": "measures.json",
-      "loadMeasures": true
+  "public": {
+    "development": true,
+    "measuresFileName": "smallMeasures.json",
+    "loadMeasures": true
     },
     {
       "development": true,
