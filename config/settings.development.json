@@ -199,12 +199,7 @@
   "public": {
     "development": true,
     "measuresFileName": "smallMeasures.json",
+    "hearingsFileName": "testHearing.json",
     "loadMeasures": true
-    },
-    {
-      "development": true,
-      "hearingsFileName": "testHearing.json",
-      "loadHearings": true
     }
-  ]
 }
