@@ -21,11 +21,6 @@ body {
   color: transparent !important;
 }
 
-.navbar-collapse{
-  background-color: #f9f9f9;
-  z-index: 9999;
-}
-
 
 /* Set the SignIn and SignUp alerts background. */
 .signin {
