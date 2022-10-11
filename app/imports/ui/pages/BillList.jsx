@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Dropdown } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { Measures } from '../../api/measure/MeasureCollection';
@@ -26,6 +26,18 @@ const BillList = () => {
   console.log(measures);
   return (ready ? (
   <Container id={PAGE_IDS.BILL_LIST}>
+    <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        Sort By
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="#/action-1">Bill #</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Office</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Status</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Hearing Date</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
     <MDBTable align="middle">
       <MDBTableHead>
         <tr>
