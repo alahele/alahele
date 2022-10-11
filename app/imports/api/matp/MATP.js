@@ -39,9 +39,8 @@ class MATPClass {
         this.collections.forEach((collection) => {
             this.collectionAssociation[collection.getCollectionName()] = collection;
         });
-
     }
-
+    
     /**
      * Return the collection class instance given its name.
      * @param collectionName The name of the collection.
