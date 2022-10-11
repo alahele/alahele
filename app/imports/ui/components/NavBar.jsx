@@ -16,60 +16,52 @@ const NavBar = () => {
   }), []);
 
   return (
-    <div>
-      <Navbar style={{ height: '60px' }} collapseOnSelect expand="lg" className="my-2 navbar navbar-expand-lg navbar-light">
-        <Container>
-          {(currentUser) ? ([
-            <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
-              <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
-            </Navbar.Brand>,
-          ]) : ([
-            <Navbar.Brand id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/">
-              <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
-            </Navbar.Brand>,
-          ])}
-          <Navbar.Toggle className="nav" aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
-          <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
-            <Nav className="nav-fill me-auto ms-5 flex-grow-1 pe-3">
-              {(currentUser) ? ([
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills List</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimony List</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearing List</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
-                <SearchBar />,
-              ]) : ''}
-              {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
-                <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option 2: Dropdown" key="manage-dropdown">
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
-                    <CloudDownload />
-                    {' '}
-                    Admin Option 2: Dropdown
-                  </NavDropdown.Item>
+    <Navbar collapseOnSelect expand="lg" className="my-2 navbar navbar-light">
+      <Container>
+        {(currentUser) ? ([
+          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
+            <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
+          </Navbar.Brand>,
+        ]) : ([
+          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/">
+            <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
+          </Navbar.Brand>,
+        ])}
+        <Navbar.Toggle className="nav" aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
+        <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
+          <Nav className="nav-fill text-center mx-3">
+            {(currentUser) ? ([
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>,
+              <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
+              <SearchBar />,
+            ]) : ''}
+            {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
+              <NavDropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Options" key="manage-dropdown">
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP} key="sign-up" as={NavLink} to="/signup">
                     <Person />
                     {' '}
-                    Create User
+                    Create a New User
                   </NavDropdown.Item>
                 </NavDropdown>,
-              ]) : ''}
-            </Nav>
-            {(currentUser) ? ([
-              <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile">
-                  Profile
-                  <Person />
-                </NavDropdown.Item>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout"><BoxArrowRight /> Sign out</NavDropdown.Item>
-              </NavDropdown>,
-            ]) : ([
-              <NavDropdown id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN} title="Login">
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin"><PersonFill />Sign in</NavDropdown.Item>
-              </NavDropdown>])}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>,
-    </div>
+            ]) : ''}
+          </Nav>
+          {(currentUser) ? ([
+            <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
+              <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_USER_PROFILE} as={NavLink} to="/user-profile">
+                Profile
+                <Person />
+              </NavDropdown.Item>
+              <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout"><BoxArrowRight /> Sign out</NavDropdown.Item>
+            </NavDropdown>,
+          ]) : ([
+            <NavDropdown id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN} title="Login">
+              <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin"><PersonFill />Sign in</NavDropdown.Item>
+            </NavDropdown>])}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
