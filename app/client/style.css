@@ -122,10 +122,12 @@ body {
   height: 350px;
 }
 
+/* Homepage css */
+
 .homepage-text {
   font-family: "Playfair Display", sans-serif;
   text-align: center;
-  color: yellow;
+  color: white;
   font-size: 50px;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -133,16 +135,22 @@ body {
 .homepage-subtext {
   font-family: "Playfair Display", sans-serif;
   text-align: center;
-  color: yellow;
+  color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .homepage-background {
-  background: url(https://media.bizj.us/view/img/11601807/queen-liliuokalani-bldg-01*1200xx3000-1688-0-156.jpg) no-repeat center;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Queen-Liliuokalani-building.JPG/1920px-Queen-Liliuokalani-building.JPG) no-repeat center;
   background-size: cover;
-  height: 1000px;
+  height: 900px;
 }
 
 .no-style {
   text-decoration:none;
+}
+/* Define homepage card item styles */
+.card-title.card-items {
+  margin-top: 120px;
+  text-align: center;
+  font-size: 30px;
 }
