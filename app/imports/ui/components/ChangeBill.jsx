@@ -10,7 +10,7 @@ const ChangeBill = () => {
   const toggleShow = () => setShowModal(!showModal);
   const [selectBill, setSelectBill] = React.useState([]);
   const [haveSelectedBill, setHaveSelectedBill] = React.useState(false);
-  const showBill = () => setHaveSelectedBill(!haveSelectedBill);
+  const toggleShowBill = () => setHaveSelectedBill(!haveSelectedBill);
 
   const { ready, measures } = useTracker(() => {
     const subscription = Measures.subscribeMeasures();
@@ -33,26 +33,31 @@ const ChangeBill = () => {
       <Card className="col-sm-3 col-form-label bold-text border-0 bg-transparent shadow-none">Relevant Bill: </Card>
       <CardGroup className="mb-3 ms-4">
         <Card className="mb-3 border-0 bg-transparent shadow-none">
-          <Container show={showBill}>
-            <Row>
-              <Col className="col-form-label bold-text">Bill </Col>
-              <Col className="col-form-label bold-text">Number </Col>
-              <Col className="col-form-label bold-text">Committee </Col>
-              <Col className="col-form-label bold-text">Status </Col>
-              <Col className="col-form-label bold-text">Date/Time </Col>
-            </Row>
+          {haveSelectedBill ? (
+            <Container show={haveSelectedBill}>
+              <Row>
+                <Col className="col-form-label bold-text">Bill </Col>
+                <Col className="col-form-label bold-text">Number </Col>
+                <Col className="col-form-label bold-text">Committee </Col>
+                <Col className="col-form-label bold-text">Status </Col>
+                <Col className="col-form-label bold-text">Year </Col>
+              </Row>
 
-            <Row>
-              <Col className="col-form-label mx-4"> {selectBill.code} {selectBill.measureTitle}</Col>
-              <Col className="col-form-label mx-4"> {selectBill.measureNumber} </Col>
-              <Col className="col-form-label mx-4"> {selectBill.currentReferral} </Col>
-              <Col className="col-form-label mx-4"> {selectBill.status} </Col>
-              <Col className="col-form-label mx-4"> {selectBill.year} </Col>
-            </Row>
-          </Container>
+              <Row>
+                <Col className="col-form-label mx-4"> {selectBill.code} {selectBill.measureTitle}</Col>
+                <Col className="col-form-label mx-4"> {selectBill.measureNumber} </Col>
+                <Col className="col-form-label mx-4"> {selectBill.currentReferral} </Col>
+                <Col className="col-form-label mx-4"> {selectBill.status} </Col>
+                <Col className="col-form-label mx-4"> {selectBill.year} </Col>
+              </Row>
+            </Container>
+          ) : (
+            null
+          )}
 
           <Col className="mt-4">
-            <Button className="btn btn-secondary mx-4" onClick={toggleShow}> Change </Button>
+            <Button className="btn btn-secondary mx-4" onClick={toggleShow}> {haveSelectedBill ? ('Change') : ('Select') } </Button>
+
             <Modal className="fade modal-centered" show={showModal} data-bs-target="#staticBackdrop" centered>
               <ModalHeader>
                 <ModalTitle> List of bills </ModalTitle>
@@ -79,7 +84,7 @@ const ChangeBill = () => {
                             <p>
                               <Button
                                 className="btn-secondary btn-sm"
-                                onClick={() => { toggleShow(); changeSelectedBill(measure); }}
+                                onClick={() => { toggleShow(); changeSelectedBill(measure); toggleShowBill(); }}
                               >
                                 Select {selectBill === measure}
                               </Button>
