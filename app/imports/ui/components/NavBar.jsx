@@ -7,7 +7,7 @@ import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, CloudDownload, Person, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import SearchBar from './SearchBar';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -35,10 +35,9 @@ const NavBar = () => {
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>,
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>,
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
-              <SearchBar />,
+              <Nav.Link className="my-auto mx-2" id={PAGE_IDS.SEARCH} href="/search">Search</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
-              // <Nav.Link className="my-auto" id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin Option</Nav.Link>,
               <NavDropdown className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option: Dropdown" key="manage-dropdown">
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} to="/manage-database">
                   <CloudDownload />
