@@ -1,16 +1,100 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
+    { "email": "Admin@foo.com",
+      "password": "changeme",
+      "role": "ADMIN",
+      "firstName": "ADMIN",
+      "lastName": "MATRP",
+      "office": "",
+      "testimonyRole": "",
+      "Responsibilities": ""
     },
-    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
+    { "email": "john@foo.com",
+      "password": "changeme",
+      "role": "USER" ,
+      "firstName": "John",
+      "lastName": "Doe",
+      "office": "",
+      "testimonyRole": "",
+      "Responsibilities": ""
+    },
+    { "email": "secretary@foo.com",
+      "password": "changeme",
+      "role": "SECRETARY",
+      "firstName": "SECRET",
+      "lastName": "ARY",
+      "office": "",
+      "testimonyRole": "processor",
+      "Responsibilities": [
+        "Assigns testimony to appropriate subject matter expert",
+        "Submits final version of testimony to Legislature, email partners, loads testimony onto measures"
+      ]
+    },
+    { "email": "specialist@foo.com",
+      "password": "changeme",
+      "role": "SPECIALIST",
+      "firstName": "EDUCATIONAL",
+      "lastName": "SPECIALIST",
+      "office": "",
+      "testimonyRole": "writer",
+      "Responsibilities": "Drafts testimony; routes to Office Approver"
+    },
+    { "email": "analyst@foo.com",
+      "password": "changeme",
+      "role": "ANALYST",
+      "firstName": "INSTITUTIONAL",
+      "lastName": "ANALYST",
+      "office": "",
+      "testimonyRole": "writer",
+      "Responsibilities": "Drafts testimony; routes to Office Approver"
+    },
+    { "email": "assistant@foo.com",
+      "password": "changeme",
+      "role": "ASSISTANT",
+      "firstName": "ASSISTANT",
+      "lastName": "SUPERINTENDENT",
+      "office": "",
+      "testimonyRole": "office",
+      "Responsibilities": "Reviews testimony for accuracy, thoroughness, and alignment with HIDOE priorities and positions, routes to PIPE approver"
+    },
+    { "email": "director@foo.com",
+      "password": "changeme",
+      "role": "DIRECTOR",
+      "firstName": "DIRECT",
+      "lastName": "OR",
+      "office": "",
+      "testimonyRole": "office",
+      "Responsibilities": "Reviews testimony for accuracy, thoroughness, and alignment with HIDOE priorities and positions, routes to PIPE approver "
+    },
+    { "email": "administrator@foo.com",
+      "password": "changeme",
+      "role": "ADMINISTRATOR",
+      "firstName": "ADMIN",
+      "lastName": "ISTRATOR",
+      "office": "",
+      "testimonyRole": "office",
+      "Responsibilities": "Reviews testimony for accuracy, thoroughness, and alignment with HIDOE priorities and positions, routes to PIPE approver "
+    },
+    { "email": "pipe@foo.com",
+      "password": "changeme",
+      "role": "PIPE",
+      "firstName": "PIPE",
+      "lastName": "STAFF",
+      "office": "",
+      "testimonyRole": "pipe",
+      "Responsibilities": "Reviews for potential policy conflicts; works with Office on any substantive changes; routes to Final Approver"
+    },
+    { "email": "leadership@foo.com",
+      "password": "changeme",
+      "role": "leadership",
+      "firstName": "HIDOE",
+      "lastName": "LEADERSHIP",
+      "office": "",
+      "testimonyRole": "final",
+      "Responsibilities": "Ensures testimony best reflects the superintendents thinking and voice; approves final version of testimony, routes to secretary"
+    }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
   "public": {
     "development": true,
     "measuresFileName": "measures.json",
