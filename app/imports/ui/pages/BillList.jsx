@@ -22,8 +22,9 @@ const BillList = () => {
     };
   }, []);
 
+  // console.log(measures);
+  let filteredData = measures.filter((measure) => measure.measureNumber === 124);
 
-  console.log(measures);
   return (ready ? (
   <Container id={PAGE_IDS.BILL_LIST}>
     <Dropdown>
@@ -52,7 +53,7 @@ const BillList = () => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
+        {filteredData.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
       </MDBTableBody>
     </MDBTable>
     <MDBPagination className="mb-0 justify-content-center">
