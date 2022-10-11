@@ -69,6 +69,7 @@ class BaseCollection {
     return this._collection.find(theSelector, options);
   }
 
+
   /**
    * A stricter form of findOne, in that it throws an exception if the entity isn't found in the collection.
    * @param { String | Object } name Either the docID, or an object selector, or the 'name' field value.
