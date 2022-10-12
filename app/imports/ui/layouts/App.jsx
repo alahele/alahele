@@ -26,7 +26,6 @@ import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
 import SignOut from '../pages/SignOut';
-import Search from '../pages/Search';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
