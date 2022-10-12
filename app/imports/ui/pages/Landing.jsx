@@ -11,7 +11,6 @@ const Landing = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
 
-
   return (
     <div>
       {currentUser ? ([null]) :
