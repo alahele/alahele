@@ -6,7 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 /* A simple static component to render some text for the landing page. */
 const TestimonyList = () => (
   <Container id={PAGE_IDS.TESTIMONY_LIST}>
-    <Dropdown>
+    <Dropdown className="float-end">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Sort By
       </Dropdown.Toggle>

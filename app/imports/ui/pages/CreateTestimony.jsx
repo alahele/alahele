@@ -60,28 +60,8 @@ const CreateTestimony = () => (
         </Col>
       </Row>
 
-      <Card className="col-sm-3 col-form-label bold-text border-0 bg-transparent shadow-none">Relevant Bill: </Card>
-      <CardGroup className="mb-3 ms-4">
-        <Card className="mb-3 border-0 bg-transparent shadow-none">
-          <Row>
-            <Col className="col-form-label bold-text">Bill </Col>
-            <Col className="col-form-label bold-text">Committee </Col>
-            <Col className="col-form-label bold-text">Room </Col>
-            <Col className="col-form-label bold-text">Date/Time </Col>
-          </Row>
-
-          <Row>
-            <Col className="col-form-label mx-4"> SB 144 Relating to a school supply subsidy pilot program.</Col>
-            <Col className="col-form-label mx-4"> EDU </Col>
-            <Col className="col-form-label mx-4"> 229 </Col>
-            <Col className="col-form-label mx-4"> Feb 1, 2021 / 3:00 PM</Col>
-          </Row>
-
-          {/* Add pop up modal so the user has the possibility to change bill */}
-          <ChangeBill />
-
-        </Card>
-      </CardGroup>
+      {/* Select and show bill */}
+      <ChangeBill />
 
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label bold-text"> Your position </Col>

@@ -21,11 +21,6 @@ body {
   color: transparent !important;
 }
 
-.navbar-collapse{
-  background-color: #f9f9f9;
-  z-index: 9999;
-}
-
 
 /* Set the SignIn and SignUp alerts background. */
 .signin {
@@ -143,4 +138,10 @@ body {
   margin-top: 120px;
   text-align: center;
   font-size: 30px;
+}
+
+.filter {
+  position: sticky !important;
+  top: 30px;
+  width: 300px;
 }
