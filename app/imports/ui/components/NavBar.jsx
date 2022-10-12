@@ -35,7 +35,6 @@ const NavBar = () => {
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>,
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>,
               <Nav.Link className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>,
-              <Nav.Link className="my-auto mx-2" id={PAGE_IDS.SEARCH} href="/search">Search</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
               <NavDropdown className="my-auto mx-2" id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} title="Admin Option: Dropdown" key="manage-dropdown">

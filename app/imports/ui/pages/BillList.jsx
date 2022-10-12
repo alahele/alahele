@@ -1,11 +1,13 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import MeasureItem from '../components/MeasureItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+import SearchBar from '../components/SearchBar';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
@@ -23,42 +25,87 @@ const BillList = () => {
 
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
-      <MDBTable align="middle">
-        <MDBTableHead>
-          <tr>
-            <th scope="col">Year</th>
-            <th scope="col">Type</th>
-            <th scope="col">Number</th>
-            <th scope="col">Code</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-            <th scope="col">Link</th>
-          </tr>
-        </MDBTableHead>
-        <MDBTableBody>
-          {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
-        </MDBTableBody>
-      </MDBTable>
-      <MDBPagination className="mb-0 justify-content-center">
-        <MDBPaginationItem>
-          <MDBPaginationLink href="#">Previous</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink href="#">1</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink href="#">2</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink href="#">3</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink href="#">Next</MDBPaginationLink>
-        </MDBPaginationItem>
-      </MDBPagination>
+      <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
+      <Row>
+        <Col xs={3}>
+          <Card className="filter">
+            <Card.Header>Filter</Card.Header>
+            <Card.Body>
+              <Form>
+                <Form.Label>Date</Form.Label>
+                <Form.Control type="date" placeholder="Date" />
+
+                <Form.Label>Number</Form.Label>
+                <Form.Control type="number" placeholder="Number" />
+
+                <Form.Label>Code</Form.Label>
+                <Form.Control type="text" placeholder="code" />
+
+                <Form.Label inline>Office</Form.Label>
+                <br />
+                <Form.Check inline label="OSIP" />
+                <Form.Check inline label="OFS" />
+                <Form.Check inline label="OCID" />
+                <Form.Check inline label="OSSS" />
+                <Form.Check inline label="OTM" />
+                <Form.Check inline label="DEPUTY" />
+                <Button className="mt-4 float-end" type="submit">Filter</Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={9}>
+          <Dropdown className="float-end">
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Sort By
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
+              <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
+              <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <MDBTable align="middle">
+            <MDBTableHead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Type</th>
+                <th scope="col">Number</th>
+                <th scope="col">Code</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Link</th>
+              </tr>
+            </MDBTableHead>
+            <MDBTableBody>
+              {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
+            </MDBTableBody>
+          </MDBTable>
+          <MDBPagination className="mb-0 justify-content-center">
+            <MDBPaginationItem>
+              <MDBPaginationLink href="#">Previous</MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink href="#">1</MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink href="#">2</MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink href="#">3</MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink href="#">Next</MDBPaginationLink>
+            </MDBPaginationItem>
+          </MDBPagination>
+        </Col>
+      </Row>
     </Container>
-  ) : <LoadingSpinner meassure="Loading Measures"/>);
+  ) : <LoadingSpinner meassure="Loading Measures" />);
 };
 
 export default BillList;
