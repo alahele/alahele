@@ -17,13 +17,14 @@ fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that signin and signout work', async () => {
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.logout();
 });
 
 test('Test that navbar options route correctly when logged in', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoHomePage();
@@ -34,6 +35,7 @@ test('Test that navbar options route correctly when logged in', async () => {
 });
 
 test('Test that billslist page show up', async () => {
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoBillsListPage();
@@ -41,7 +43,7 @@ test('Test that billslist page show up', async () => {
 });
 
 test('Test that testimony list page shows up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoTestimonyListPage();
@@ -49,14 +51,14 @@ test('Test that testimony list page shows up', async () => {
 });
 
 test('Test that admin page show up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.logout();
 });
 
 test('Test that hearing list page shows up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoHearingListPage();
@@ -65,14 +67,14 @@ test('Test that hearing list page shows up', async () => {
 });
 
 test('Test that user profile page shows up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.gotoUserProfilePage();
   await userProfile.isDisplayed();
 });
 
 test('Test that individual bill page show up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoBillsListPage();
@@ -81,7 +83,7 @@ test('Test that individual bill page show up', async () => {
 });
 
 test('Test that create testimony page show up', async () => {
-  // await navBar.gotoSignInPage();
+  await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoCreateTestimonyPage();
