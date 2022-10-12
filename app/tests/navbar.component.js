@@ -14,7 +14,6 @@ class NavBar {
 
   async gotoSignInPage() {
     await this.ensureLogout(t);
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN}`);
   }
 
