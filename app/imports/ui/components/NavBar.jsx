@@ -22,8 +22,8 @@ const NavBar = () => {
     <Navbar expand="xxxl" className="my-2 navbar navbar-light">
       <Container>
         {(currentUser) ? ([
-          <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_SIDEBAR} onClick={handleShow} />,
           <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
+            <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_SIDEBAR} onClick={handleShow} />
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
         ]) : ([
