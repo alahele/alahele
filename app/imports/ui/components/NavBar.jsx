@@ -7,7 +7,6 @@ import { Navbar, Nav, NavDropdown, Offcanvas, Container } from 'react-bootstrap'
 import { BoxArrowRight, Person, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import { PAGE_IDS } from '../utilities/PageIDs';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
@@ -23,7 +22,7 @@ const NavBar = () => {
     <Navbar expand="xxxl" className="my-2 navbar navbar-light">
       <Container>
         {(currentUser) ? ([
-          <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} onClick={handleShow} />,
+          <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_SIDEBAR} onClick={handleShow} />,
           <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
