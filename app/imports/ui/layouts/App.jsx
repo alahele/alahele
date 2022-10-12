@@ -26,6 +26,7 @@ import CreateTestimony from '../pages/CreateTestimony';
 import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
 import SignOut from '../pages/SignOut';
+import Search from '../pages/Search';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -37,10 +38,10 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
         <Route exact path="/" element={<Landing />} />
-        <Route path="/bill-list" element={<BillList />} />
+        <Route path="/bill-list" element={<ProtectedRoute> <BillList /> </ProtectedRoute>} />
         <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
-        <Route path="/hearing-list" element={<HearingList />} />
+        <Route path="/hearing-list" element={<ProtectedRoute> <HearingList /> </ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />

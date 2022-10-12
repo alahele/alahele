@@ -139,3 +139,9 @@ body {
   text-align: center;
   font-size: 30px;
 }
+
+.filter {
+  position: sticky !important;
+  top: 30px;
+  width: 300px;
+}

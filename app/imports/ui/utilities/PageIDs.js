@@ -18,4 +18,5 @@ export const PAGE_IDS = {
   INDIVIDUAL_BILL: 'individual-bill',
   BILL_LIST: 'bill-list',
   CREATE_TESTIMONY: 'create-testimony',
+  SEARCH: 'search',
 };

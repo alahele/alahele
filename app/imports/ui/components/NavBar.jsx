@@ -7,7 +7,7 @@ import { Navbar, Nav, NavDropdown, Offcanvas, Container } from 'react-bootstrap'
 import { BoxArrowRight, Person, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import SearchBar from './SearchBar';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
@@ -32,7 +32,6 @@ const NavBar = () => {
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
         ])}
-
         <Nav className="nav-fill mx-3">
           {(currentUser) ? ([
             <Offcanvas show={show} onHide={handleClose}>
@@ -42,7 +41,6 @@ const NavBar = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <SearchBar />
                 <Container className="my-3">
                   <h6>Dashboard</h6>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_BILLS} href="/">My Bills</Nav.Link>
