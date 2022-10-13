@@ -23,6 +23,36 @@ const BillList = () => {
     };
   }, []);
 
+  let sortedMeasures;
+
+  sortedMeasures = measures;
+  console.log(sortedMeasures);
+
+  function handleSort(sortOption) {
+    switch (sortOption) {
+    case 1:
+      console.log('1');
+      break;
+    case 2:
+      console.log('2');
+      break;
+    case 3:
+      console.log('3');
+      break;
+    case 4:
+      console.log('4');
+      break;
+    case 5:
+      sortedMeasures = measures.sort(function (a, b) {
+        window.location.pathname = '/bill-list';
+        return b.measureNumber - a.measureNumber;
+      });
+      console.log(sortedMeasures);
+      break;
+    default:
+    }
+  }
+
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
       <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
@@ -61,11 +91,11 @@ const BillList = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
-              <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
+              <Dropdown.Item href="#/action-1" onClick={() => handleSort(1)}>Measure Number</Dropdown.Item>
+              <Dropdown.Item href="#/action-2" onClick={() => handleSort(2)}>Bill/Resolution #</Dropdown.Item>
+              <Dropdown.Item href="#/action-3" onClick={() => handleSort(3)}>Date</Dropdown.Item>
+              <Dropdown.Item href="#/action-4" onClick={() => handleSort(4)}>Status</Dropdown.Item>
+              <Dropdown.Item href="#/action-5" onClick={() => handleSort(5)}>Testifier</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <MDBTable align="middle">
@@ -82,7 +112,7 @@ const BillList = () => {
               </tr>
             </MDBTableHead>
             <MDBTableBody>
-              {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
+              {sortedMeasures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
             </MDBTableBody>
           </MDBTable>
           <MDBPagination className="mb-0 justify-content-center">
