@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -12,6 +11,7 @@ const MeasureItem = ({ measure }) => (
     <td>{measure.code}</td>
     <td>{measure.measureTitle}</td>
     <td>{measure.description}</td>
+    {/* eslint-disable-next-line react/prop-types */}
     <td>{measure.status}</td>
     <td><a id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a></td>
   </tr>

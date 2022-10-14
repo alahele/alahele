@@ -7,7 +7,6 @@ import { Navbar, Nav, NavDropdown, Offcanvas, Container } from 'react-bootstrap'
 import { BoxArrowRight, Person, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import { PAGE_IDS } from '../utilities/PageIDs';
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
@@ -23,8 +22,8 @@ const NavBar = () => {
     <Navbar expand="xxxl" className="my-2 navbar navbar-light">
       <Container>
         {(currentUser) ? ([
-          <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} onClick={handleShow} />,
           <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
+            <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_SIDEBAR} onClick={handleShow} />
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
         ]) : ([
@@ -82,9 +81,8 @@ const NavBar = () => {
             <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/signout"><BoxArrowRight /> Sign out</NavDropdown.Item>
           </NavDropdown>,
         ]) : ([
-          <NavDropdown id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN} title="Login">
-            <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN} as={NavLink} to="/signin"><PersonFill />Sign in</NavDropdown.Item>
-          </NavDropdown>])}
+          <Nav.Link id={COMPONENT_IDS.NAVBAR_LOGIN} as={NavLink} to="/signin"><PersonFill />Sign in</Nav.Link>,
+        ])}
       </Container>
     </Navbar>
 
