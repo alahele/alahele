@@ -29,15 +29,13 @@ if (Meteor.settings.public.loadMeasures && Measures.count() === 0) {
   }
 }
 
-function addHearing(data) {
-  console.log(`  Adding: ${data.measureNumber}`);
-  Hearings.define(data);
-}
-
-// Initialize the StuffsCollection if empty.
-if (Hearings.count() === 0) {
-  if (Meteor.settings.defaultHearing) {
-    console.log('Creating default Hearings.');
-    Meteor.settings.defaultHearing.map(data => addHearing(data));
+if (Meteor.settings.public.loadHearings && Hearings.count() === 0) {
+  if (Meteor.settings.public.hearingsFileName) {
+    const assetsFileName = Meteor.settings.public.hearingsFileName;
+    console.log('--------------------------------------');
+    console.log(`Loading data from private/${assetsFileName}`);
+    // eslint-disable-next-line no-undef
+    const jsonData = JSON.parse(Assets.getText(assetsFileName));
+    jsonData.forEach(hearing => Hearings.define(hearing));
   }
 }
