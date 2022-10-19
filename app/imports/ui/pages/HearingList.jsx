@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -54,52 +54,70 @@ const HearingList = () => {
           </Card>
         </Col>
         <Col xs={9}>
-          <Dropdown className="float-end">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Sort By
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Hearing #</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Date</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Committee</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Testifier</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <MDBTable align="middle">
-            <MDBTableHead>
-              <tr>
-                <th scope="col">Year</th>
-                <th scope="col">Measure Type</th>
-                <th scope="col">Measure Number</th>
-                <th scope="col">Date Time</th>
-                <th scope="col">Description</th>
-                <th scope="col">Room</th>
-                <th scope="col">Notice</th>
-                <th scope="col">View Hearing</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              {hearings.map((hearing) => <HearingItem key={hearing._id} hearing={hearing} />)}
-            </MDBTableBody>
-          </MDBTable>
-          <MDBPagination className="mb-0 justify-content-center">
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">Previous</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">1</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">2</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">3</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">Next</MDBPaginationLink>
-            </MDBPaginationItem>
-          </MDBPagination>
+          <Row className="float-end">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Sort By
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Hearing #</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Date</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Committee</Dropdown.Item>
+                <Dropdown.Item href="#/action-4">Testifier</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Row>
+          <Row />
+          <Row className="d-inline">
+            <Card className="my-4">
+              <Card.Header>
+                <Nav variant="tabs" defaultActiveKey="#first">
+                  <Nav.Item>
+                    <Nav.Link href="#first">Hearings</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#link">My Hearings</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card.Header>
+              <Card.Body>
+                <MDBTable align="middle">
+                  <MDBTableHead>
+                    <tr>
+                      <th scope="col">Year</th>
+                      <th scope="col">Measure Type</th>
+                      <th scope="col">Measure Number</th>
+                      <th scope="col">Date Time</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Room</th>
+                      <th scope="col">Notice</th>
+                      <th scope="col">View Hearing</th>
+                    </tr>
+                  </MDBTableHead>
+                  <MDBTableBody>
+                    {hearings.map((hearing) => <HearingItem key={hearing._id} hearing={hearing} />)}
+                  </MDBTableBody>
+                </MDBTable>
+                <MDBPagination className="mb-0 justify-content-center">
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">Previous</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">1</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">2</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">3</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">Next</MDBPaginationLink>
+                  </MDBPaginationItem>
+                </MDBPagination>
+              </Card.Body>
+            </Card>
+          </Row>
         </Col>
       </Row>
     </Container>

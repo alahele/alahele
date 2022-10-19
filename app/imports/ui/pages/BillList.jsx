@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { Measures } from '../../api/measure/MeasureCollection';
@@ -55,53 +55,72 @@ const BillList = () => {
           </Card>
         </Col>
         <Col xs={9}>
-          <Dropdown className="float-end">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Sort By
-            </Dropdown.Toggle>
+          <Row className="float-end">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Sort By
+              </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
-              <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <MDBTable align="middle">
-            <MDBTableHead>
-              <tr>
-                <th scope="col">Year</th>
-                <th scope="col">Type</th>
-                <th scope="col">Number</th>
-                <th scope="col">Code</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Status</th>
-                <th scope="col">Link</th>
-              </tr>
-            </MDBTableHead>
-            <MDBTableBody>
-              {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
-            </MDBTableBody>
-          </MDBTable>
-          <MDBPagination className="mb-0 justify-content-center">
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">Previous</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">1</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">2</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">3</MDBPaginationLink>
-            </MDBPaginationItem>
-            <MDBPaginationItem>
-              <MDBPaginationLink href="#">Next</MDBPaginationLink>
-            </MDBPaginationItem>
-          </MDBPagination>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
+                <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
+                <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Row>
+
+          <Row className="d-inline">
+            <Card className="my-4">
+              <Card.Header>
+                <Nav variant="tabs" defaultActiveKey="#first">
+                  <Nav.Item>
+                    <Nav.Link href="#first">Bills</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#link">My Bills</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card.Header>
+              <Card.Body>
+                <MDBTable align="middle">
+                  <MDBTableHead>
+                    <tr>
+                      <th scope="col">Year</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Number</th>
+                      <th scope="col">Code</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Link</th>
+                    </tr>
+                  </MDBTableHead>
+                  <MDBTableBody>
+                    {measures.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
+                  </MDBTableBody>
+                </MDBTable>
+                <MDBPagination className="mb-0 justify-content-center">
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">Previous</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">1</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">2</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">3</MDBPaginationLink>
+                  </MDBPaginationItem>
+                  <MDBPaginationItem>
+                    <MDBPaginationLink href="#">Next</MDBPaginationLink>
+                  </MDBPaginationItem>
+                </MDBPagination>
+              </Card.Body>
+            </Card>
+          </Row>
         </Col>
       </Row>
     </Container>
