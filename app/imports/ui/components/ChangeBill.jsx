@@ -30,7 +30,7 @@ const ChangeBill = () => {
 
   return (ready ? (
     <div>
-      <Card className="col-sm-3 col-form-label bold-text border-0 bg-transparent shadow-none">Relevant Bill: </Card>
+      <Card className="col-sm-3 col-form-label bold-text border-0 bg-transparent shadow-none">Relevant Bill </Card>
       <CardGroup className="mb-3 ms-4">
         <Card className="mb-3 border-0 bg-transparent shadow-none">
           {haveSelectedBill ? (
