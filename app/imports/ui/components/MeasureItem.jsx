@@ -5,6 +5,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MeasureItem = ({ measure }) => (
   <tr>
+    <td>{measure.bitAppropriation}</td>
     <td>{measure.year}</td>
     <td>{measure.measureType}</td>
     <td>{measure.measureNumber}</td>
@@ -20,6 +21,7 @@ const MeasureItem = ({ measure }) => (
 // Require a document to be passed to this component.
 MeasureItem.propTypes = {
   measure: PropTypes.shape({
+    bitAppropriation: PropTypes.number,
     year: PropTypes.number,
     measureType: PropTypes.string,
     measureNumber: PropTypes.number,
