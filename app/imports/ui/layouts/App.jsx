@@ -11,7 +11,7 @@ import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import BillList from '../pages/BillList';
-import UserProfile from '../pages/UserProfile';
+import UserProfile from '../pages/User';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import NavBar from '../components/NavBar';
