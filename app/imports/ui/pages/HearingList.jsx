@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
+import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, SortDown } from 'react-bootstrap-icons';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Hearings } from '../../api/hearing/HearingCollection';
 import HearingItem from '../components/HearingItem';
@@ -11,7 +12,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /* A simple static component to render some text for the landing page. */
 const HearingList = () => {
-
+  let sortedHearings;
   const { ready, hearings } = useTracker(() => {
     const subscription = Hearings.subscribeHearings();
     const rdy = subscription.ready();
@@ -21,6 +22,42 @@ const HearingList = () => {
       ready: rdy,
     };
   }, []);
+
+  const [sort, setSort] = useState(1);
+  switch (sort) {
+  case 1:
+    sortedHearings = hearings.sort(function (a, b) {
+      return a.measureType - b.measureType;
+    });
+    break;
+  case 2:
+    sortedHearings = hearings.sort(function (a, b) {
+      return b.measureType - a.measureType;
+    });
+    break;
+  case 3:
+    sortedHearings = hearings.sort(function (a, b) {
+      return a.measureNumber - b.measureNumber;
+    });
+    break;
+  case 4:
+    sortedHearings = hearings.sort(function (a, b) {
+      return b.measureNumber - a.measureNumber;
+    });
+    break;
+  case 5:
+    sortedHearings = hearings.sort(function (a, b) {
+      return new Date(a.datetime) - new Date(b.datetime);
+    });
+    break;
+  case 6:
+    sortedHearings = hearings.sort(function (a, b) {
+      return new Date(b.datetime) - new Date(a.datetime);
+    });
+    break;
+  default:
+    break;
+  }
 
   return (ready ? (
     <Container id={PAGE_IDS.HEARING_LIST}>
@@ -60,10 +97,12 @@ const HearingList = () => {
                 Sort By
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Hearing #</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Date</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Committee</Dropdown.Item>
-                <Dropdown.Item href="#/action-4">Testifier</Dropdown.Item>
+                <Dropdown.Item href="#/action-1" onClick={() => setSort(1)}>Measure Type <SortAlphaUp /> </Dropdown.Item>
+                <Dropdown.Item href="#/action-2" onClick={() => setSort(2)}>Measure Type <SortAlphaDown /> </Dropdown.Item>
+                <Dropdown.Item href="#/action-2" onClick={() => setSort(3)}>Measure Number <SortNumericUp /> </Dropdown.Item>
+                <Dropdown.Item href="#/action-2" onClick={() => setSort(4)}>Measure Number <SortNumericDown /> </Dropdown.Item>
+                <Dropdown.Item href="#/action-3" onClick={() => setSort(5)}>Date / Time <SortUp /> </Dropdown.Item>
+                <Dropdown.Item href="#/action-3" onClick={() => setSort(6)}>Date / Time <SortDown /> </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Row>
@@ -84,7 +123,6 @@ const HearingList = () => {
                 <MDBTable align="middle">
                   <MDBTableHead>
                     <tr>
-                      <th scope="col">Year</th>
                       <th scope="col">Measure Type</th>
                       <th scope="col">Measure Number</th>
                       <th scope="col">Date Time</th>
@@ -95,7 +133,7 @@ const HearingList = () => {
                     </tr>
                   </MDBTableHead>
                   <MDBTableBody>
-                    {hearings.map((hearing) => <HearingItem key={hearing._id} hearing={hearing} />)}
+                    {sortedHearings.map((hearing) => <HearingItem key={hearing._id} hearing={hearing} />)}
                   </MDBTableBody>
                 </MDBTable>
                 <MDBPagination className="mb-0 justify-content-center">

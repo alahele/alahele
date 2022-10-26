@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
+import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, SortDown } from 'react-bootstrap-icons';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import MeasureItem from '../components/MeasureItem';
@@ -91,8 +92,8 @@ const BillList = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setSort(1)}>Bill # (Ascending)</Dropdown.Item>
-                <Dropdown.Item onClick={() => setSort(2)}>Bill # (Descending)</Dropdown.Item>
+                <Dropdown.Item onClick={() => setSort(1)}>Bill # <SortNumericUp /> </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSort(2)}>Bill # <SortNumericDown /> </Dropdown.Item>
                 <Dropdown.Item onClick={() => setSort(3)}>Appropriation Bill</Dropdown.Item>
                 <Dropdown.Item onClick={() => setSort(4)}>Non-Appropriation Bill</Dropdown.Item>
               </Dropdown.Menu>
