@@ -1,13 +1,11 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Row, Container, Accordion, Tab, ListGroup, Badge, Table } from 'react-bootstrap';
+import { Col, Row, Container, Accordion, Badge, } from 'react-bootstrap';
 import Tabs from 'react-bootstrap/Tabs';
 import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Measures } from '../../api/measure/MeasureCollection';
-import { Link } from 'react-router-dom';
-
 
 
 const IndividualBill = () => {
@@ -32,12 +30,9 @@ const IndividualBill = () => {
       // Measure Number & Measure Title
       <Container id={PAGE_IDS.INDIVIDUAL_BILL} >
         <a className="btn btn-primary btn-sm mb-2" href="/bill-list">back to bill list</a>
-        <Row>
-          <Col md="auto"><h3></h3></Col>
-        </Row>
-        <Row>
-          <Col md="auto" key="secondary"><h5>{measures.code}  &nbsp; | &nbsp;  {measures.measureTitle}</h5></Col>
-          <Col md="auto"><h5>{measures.year}</h5></Col>
+
+        <Row className="individual-bill-header">
+          <Col className="display-1" md="auto" key="secondary"><h5>{measures.code}  &nbsp; | &nbsp;  {measures.measureTitle}  &nbsp; | &nbsp; {measures.year}</h5></Col>
           <Col>
             <Badge bg="danger">PDF</Badge>{' '}
             <Badge bg="info">Archive</Badge>{' '}
@@ -46,14 +41,12 @@ const IndividualBill = () => {
         </Row>
 
         <Row className="my-4">
-          <Col md>
+          <Col md={"auto"}>
 
             <Accordion defaultActiveKey="0" className="accordion">
               <Accordion.Item eventKey="0">
-                <Accordion.Body>
-
+                <Accordion.Body className = "individual-bill">
                   <dl className="row">
-
                     <dt className="col-sm-2">Measure:</dt>
                     <dd className="col-sm-9">{measures.code}</dd>
 
@@ -63,25 +56,27 @@ const IndividualBill = () => {
                     <dt className="col-sm-2">Report Title:</dt>
                     <dd className="col-sm-9">{measures.reportTitle}</dd>
 
-
                     <dt className="col-sm-2">Description:</dt>
                     <dd className="col-sm-9">{measures.description}</dd>
 
-                    <dt className="col-sm-2">Introducer</dt>
+                    <dt className="col-sm-2">Introducer:</dt>
                     <dd className="col-sm-9">{measures.introducer}</dd>
 
-                    <dt className="col-sm-2">Current Referral</dt>
+                    <dt className="col-sm-2">Current Referral:</dt>
                     <dd className="col-sm-9">{measures.currentReferral}</dd>
 
-                    <dt className="col-sm-2"><a href={measures.measurePdfUrl}>View Official Measure</a></dt>
 
                   </dl>
                 </Accordion.Body>
               </Accordion.Item>
+
+              <Accordion.Item className = "individual-bill">
+                  <dt className="col-sm-3"><a href={measures.measurePdfUrl}>View Official Measure</a></dt>
+              </Accordion.Item>
+
             </Accordion>
           </Col>
         </Row>
-
       </Container>
   ) : <LoadingSpinner/>);
 };
