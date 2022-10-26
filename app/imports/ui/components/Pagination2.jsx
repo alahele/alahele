@@ -22,15 +22,29 @@ const PageLi = styled.li`
 
 const PageSpan = styled.span`
   float: center;
+  color: black;
   &:hover::after,
   &:focus::after {
     border-radius: 100%;
     color: white;
     background-color: #263a6c;
   }
+  
+  &[disabled] {
+    background: grey;
+    cursor: revert;
+    transform: revert;
+  }
+
+  &[aria-current] {
+    background: #D6AC60;
+    font-weight: bold;
+    cursor: revert;
+    transform: revert;
+  }
 `;
 
-const Pagination2 = ({ measuresPerPage, totalMeasures, paginate }) => {
+const Pagination2 = ({ measuresPerPage, totalMeasures, paginate, currentPage }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalMeasures / measuresPerPage); i++) {
     pageNumbers.push(i);
@@ -41,7 +55,7 @@ const Pagination2 = ({ measuresPerPage, totalMeasures, paginate }) => {
         <PageUl className="pagination">
           {pageNumbers.map((number) => (
             <PageLi key={number} className="page-item">
-              <PageSpan onClick={() => paginate(number)} className="page-link">
+              <PageSpan onClick={() => paginate(number)} aria-current={number === currentPage ? 'page' : null} className="page-link">
                 {number}
               </PageSpan>
             </PageLi>
@@ -56,5 +70,6 @@ Pagination2.propTypes = {
   measuresPerPage: PropTypes.number.isRequired,
   totalMeasures: PropTypes.number.isRequired,
   paginate: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 export default Pagination2;
