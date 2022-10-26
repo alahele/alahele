@@ -11,16 +11,11 @@ export const hearingPublications = {
   hearingsAdmin: 'hearingsAdmin', // not sure if we need this.
 };
 
-class OfficeCollection extends BaseCollection {
+class MeasureOfficeCollection extends BaseCollection {
   constructor() {
-    super('Hearings', new SimpleSchema({
-      year: Number,
+    super('Measure Office', new SimpleSchema({
       measureType: String,
       measureNumber: Number,
-      datetime: { type: String, optional: true },
-      description: { type: String, optional: true },
-      room: { type: String, optional: true },
-      notice: { type: String, optional: true },
     }));
   }
 
@@ -134,4 +129,4 @@ class OfficeCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Hearings = new OfficeCollection();
+export const Hearings = new MeasureOfficeCollection();

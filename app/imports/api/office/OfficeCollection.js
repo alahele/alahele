@@ -36,7 +36,7 @@ class OfficeCollection extends BaseCollection {
     // if (year) { NOTE: 0 is falsy, so we need to check if the year is a number.
     if (officeName) {
       if (!isValidOfficeType(officeName)) {
-        throw new Meteor.Error(`${officeName} is an invalid Measure Type.`);
+        throw new Meteor.Error(`${officeName} is an invalid Office Type.`);
       }
       updateData.officeName = officeName;
     }
@@ -49,7 +49,7 @@ class OfficeCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the HearingCollection instance.
+      // get the OfficeCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(officePublications.offices, function publish() {
@@ -71,14 +71,14 @@ class OfficeCollection extends BaseCollection {
 
   subscribeOffices() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(officePublications.hearings);
+      return Meteor.subscribe(officePublications.offices);
     }
     return null;
   }
 
   subscribeOfficesAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(officePublications.hearingsAdmin);
+      return Meteor.subscribe(officePublications.officesAdmin);
     }
     return null;
   }
