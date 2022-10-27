@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { Link } from 'react-router-dom';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MeasureItem = ({ measure }) => (
@@ -16,7 +16,7 @@ const MeasureItem = ({ measure }) => (
     {/* eslint-disable-next-line react/prop-types */}
     <td>{measure.status}</td>
     <td>
-        <Link className={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
+      <Link className={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
     </td>
   </tr>
 );

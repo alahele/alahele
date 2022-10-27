@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {COMPONENT_IDS} from "../utilities/ComponentIDs";
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const HearingItem = ({ hearing }) => (

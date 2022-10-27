@@ -2,12 +2,11 @@ import React from 'react';
 import '/client/style.css';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Accordion, Button, Card, Col, Container, Nav, Row, Tab } from 'react-bootstrap';
+import { useParams } from 'react-router';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import CountDown from '../components/CountDown';
-import DateTime from '../utilities/DateTimeUtil';
-import { useParams } from "react-router";
-import { Hearings } from "../../api/hearing/HearingCollection";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { Hearings } from '../../api/hearing/HearingCollection';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 /** Render an up-coming hearing . */
 const Hearing = () => {
@@ -144,7 +143,7 @@ const Hearing = () => {
     ],
   };
 
-  return ( ready ? (
+  return (ready ? (
     <Container id={PAGE_IDS.HEARING} className="py-3">
       <a className="btn btn-primary btn-sm mb-2" href="/hearing-list">back to hearing list</a>
       <Card>
@@ -292,7 +291,7 @@ const Hearing = () => {
         </Tab.Container>
       </Container>
     </Container>
-  ) : <LoadingSpinner/>);
+  ) : <LoadingSpinner />);
 };
 
 export default Hearing;
