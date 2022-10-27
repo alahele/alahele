@@ -117,6 +117,10 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.offcanvas {
+  max-width: 300px !important;
+}
+
 .homepage-subtext {
   font-family: "Playfair Display", sans-serif;
   text-align: center;
