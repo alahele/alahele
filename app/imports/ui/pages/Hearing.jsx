@@ -1,12 +1,34 @@
 import React from 'react';
 import '/client/style.css';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Accordion, Button, Card, Col, Container, Nav, Row, Tab } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import CountDown from '../components/CountDown';
 import DateTime from '../utilities/DateTimeUtil';
+import { useParams } from "react-router";
+import { Hearings } from "../../api/hearing/HearingCollection";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 /** Render an up-coming hearing . */
 const Hearing = () => {
+
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const { _id } = useParams();
+
+  const { ready, hearings } = useTracker(() => {
+    // Get access to Stuff documents.
+    const subscription = Hearings.subscribeHearings();
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    const hearingItems = Hearings.find({ _id: _id }, { sort: { name: 1 } }).fetch();
+    const hearingDoc = hearingItems[0];
+    return {
+      hearings: hearingDoc,
+      ready: rdy,
+    };
+
+  }, [_id]);
+
   const mockHearingData = {
     timeStamp: '2022-12-25T18:20:00+05:30',
     room: 229,
@@ -122,23 +144,26 @@ const Hearing = () => {
     ],
   };
 
-  return (
+  return ( ready ? (
     <Container id={PAGE_IDS.HEARING} className="py-3">
+      <a className="btn btn-primary btn-sm mb-2" href="/hearing-list">back to hearing list</a>
       <Card>
         <Card.Header>State of Hawaii Legislator Hearing</Card.Header>
         <Card.Body>
           <Container className="py-3">
             <Row className="fw-bold">
-              <Col> Hearing Code</Col>
+              <Col> Hearing #</Col>
+              <Col> Hearing Type</Col>
               <Col> Date/Time</Col>
               <Col>Time Till Close</Col>
-              <Col> Room#</Col>
+              <Col> Room #</Col>
             </Row>
             <Row>
-              <Col> {mockHearingData.code}</Col>
-              <Col> {DateTime.dateTimeToString(mockHearingData.timeStamp)}</Col>
+              <Col> {hearings.measureNumber}</Col>
+              <Col> {hearings.measureType}</Col>
+              <Col> {hearings.datetime}</Col>
               <Col><CountDown dateTimeStr={mockHearingData.timeStamp} /></Col>
-              <Col> {mockHearingData.room}</Col>
+              <Col> {hearings.room}</Col>
             </Row>
           </Container>
           <Container className="py-3">
@@ -147,8 +172,8 @@ const Hearing = () => {
               <Col> Notice</Col>
             </Row>
             <Row>
-              <Col> {mockHearingData.description}</Col>
-              <Col> {mockHearingData.notice}</Col>
+              <Col> {hearings.description}</Col>
+              <Col> {hearings.notice}</Col>
             </Row>
           </Container>
         </Card.Body>
@@ -267,7 +292,7 @@ const Hearing = () => {
         </Tab.Container>
       </Container>
     </Container>
-  );
+  ) : <LoadingSpinner/>);
 };
 
 export default Hearing;
