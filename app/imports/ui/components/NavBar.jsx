@@ -22,7 +22,7 @@ const NavBar = () => {
     <Navbar expand="xxxl" className="my-2 navbar navbar-light">
       <Container>
         {(currentUser) ? ([
-          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="/home">
+          <Navbar.Brand className="my-auto" id={COMPONENT_IDS.NAVBAR_HOME_PAGE} as={NavLink} to="#">
             <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_SIDEBAR} onClick={handleShow} />
             <img width="100px" src="../images/alahele.png" alt="ala hele logo" />
           </Navbar.Brand>,
@@ -41,21 +41,18 @@ const NavBar = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Container className="my-3">
-                  <h6>Dashboard</h6>
-                  <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_BILLS} href="/">My Bills</Nav.Link>
-                  <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_HEARINGS} href="/">My Hearings</Nav.Link>
-                  <Nav.Link id={COMPONENT_IDS.NAVBAR_MY_TESTIMONIES} href="/">My testimonies</Nav.Link>
-                </Container>
-                <Container className="my-3">
                   <h6>Pages</h6>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills</Nav.Link>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>
                 </Container>
+                {/*
+                // Filler here for now
                 <Container className="my-3">
-                  <h6>Apps</h6>
+                <h6>Apps</h6>
                 </Container>
+                */}
 
               </Offcanvas.Body>
             </Offcanvas>,
