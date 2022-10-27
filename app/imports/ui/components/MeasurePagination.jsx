@@ -37,6 +37,7 @@ const MeasurePagination = ({ sortedMeasures }) => {
         measuresPerPage={measuresPerPage}
         totalMeasures={measure.length}
         paginate={setCurrentPage}
+        currentPage={currentPage}
       />
     </div>
   );
