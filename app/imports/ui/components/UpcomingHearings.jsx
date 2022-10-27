@@ -9,8 +9,8 @@ import CountDown from '../components/CountDown';
 import DateTime from '../utilities/DateTimeUtil';
 import { Card, Container, Row, Col, ToastContainer, ListGroup, Badge, Button } from "react-bootstrap";
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UpcomingHearings = () => {
+    /*
     const { ready, hearings } = useTracker(() => {
         const subscription = Hearings.subscribeHearings();
         const rdy = subscription.ready();
@@ -21,8 +21,12 @@ const UpcomingHearings = () => {
         };
     }, []);
     const hearing = hearings[0];
-    hearing.dateTime = "Tuesday, October 25, 2022 2:00 pm";
-    return (ready ? (
+    console.log(hearings);
+    hearing.dateTime = "Friday, October 27, 2022 2:00 pm";
+
+     */
+    const date = "Friday, October 27, 2022 2:00 pm";
+    return (true ? (
         <Container>
             <Card>
                 <Card.Header>Upcoming Hearings</Card.Header>
@@ -30,18 +34,20 @@ const UpcomingHearings = () => {
             <Card>
                 <Card.Header>
                     <Row>
-                        {`${hearing.measureType.toUpperCase()} ${hearing.measureNumber}`}
+                        Hearing Number
                     </Row>
                     <Row>
-                        {hearing.dateTime}
+                        Date
                     </Row>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Text>{hearing.description}</Card.Text>
+                    <Card.Text>
+                        Description
+                    </Card.Text>
                     <Row>
                         <Col>
                             <Card.Text>
-                                <CountDown dateTimeStr={hearing.dateTime} />
+                                <CountDown dateTimeStr={date}/>
                             </Card.Text>
                         </Col>
                         <Col>
