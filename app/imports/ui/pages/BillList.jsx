@@ -1,10 +1,10 @@
-import React from 'react';
-import { Button, Card, Col, Container, Dropdown, Form, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
+import { MDBTable } from 'mdb-react-ui-kit';
+import { SortNumericUp, SortNumericDown } from 'react-bootstrap-icons';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import MeasureItem from '../components/MeasureItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
@@ -12,18 +12,47 @@ import MeasurePagination from '../components/MeasurePagination';
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
+  let sortedMeasures;
+  const { ready, measures } = useTracker(
+    () => {
+      const subscription = Measures.subscribeMeasures();
+      const rdy = subscription.ready();
+      const measureItems = Measures.find({}).fetch();
 
-  const { ready, measures } = useTracker(() => {
-    const subscription = Measures.subscribeMeasures();
-    const rdy = subscription.ready();
-    const measureItems = Measures.find({}).fetch();
+      return {
+        measures: measureItems,
+        ready: rdy,
+      };
+    },
 
-    return {
-      measures: measureItems,
-      ready: rdy,
-    };
-  }, []);
+    [],
+  );
+  const [sort, setSort] = useState(1);
 
+  switch (sort) {
+  case 1:
+    sortedMeasures = measures.sort(function (a, b) {
+      return a.measureNumber - b.measureNumber;
+    });
+    break;
+  case 2:
+    sortedMeasures = measures.sort(function (a, b) {
+      return b.measureNumber - a.measureNumber;
+    });
+    break;
+  case 3:
+    sortedMeasures = measures.sort(function (a, b) {
+      return b.bitAppropriation - a.bitAppropriation;
+    });
+    break;
+  case 4:
+    sortedMeasures = measures.sort(function (a, b) {
+      return a.bitAppropriation - b.bitAppropriation;
+    });
+    break;
+  default:
+    break;
+  }
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
       <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
@@ -56,22 +85,40 @@ const BillList = () => {
           </Card>
         </Col>
         <Col xs={9}>
-          <Dropdown className="float-end">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Sort By
-            </Dropdown.Toggle>
+          <Row className="float-end">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Sort By
+              </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
-              <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <MDBTable align="middle">
-            <MeasurePagination />
-          </MDBTable>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => setSort(1)}>Bill # <SortNumericUp /> </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSort(2)}>Bill # <SortNumericDown /> </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSort(3)}>Appropriation Bill</Dropdown.Item>
+                <Dropdown.Item onClick={() => setSort(4)}>Non-Appropriation Bill</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Row>
+
+          <Row className="d-inline">
+            <Card className="my-4">
+              <Card.Header>
+                <Nav variant="tabs" defaultActiveKey="#first">
+                  <Nav.Item>
+                    <Nav.Link href="#first">Bills</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#link">My Bills</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card.Header>
+              <Card.Body>
+                <MDBTable align="middle">
+                  <MeasurePagination sortedMeasures={sortedMeasures} />
+                </MDBTable>
+              </Card.Body>
+            </Card>
+          </Row>
         </Col>
       </Row>
     </Container>
