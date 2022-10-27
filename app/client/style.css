@@ -117,6 +117,10 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.offcanvas {
+  max-width: 300px !important;
+}
+
 .homepage-subtext {
   font-family: "Playfair Display", sans-serif;
   text-align: center;
@@ -146,4 +150,12 @@ body {
   width: 300px;
 }
 
+.individual-bill-header {
+  padding-top: 20px;
+}
 
+.individual-bill {
+  font-size: 16px;
+  padding: 15px;
+
+}

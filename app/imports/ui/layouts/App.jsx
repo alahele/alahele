@@ -11,7 +11,7 @@ import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import BillList from '../pages/BillList';
-import UserProfile from '../pages/UserProfile';
+import UserProfile from '../pages/User';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import NavBar from '../components/NavBar';
@@ -51,7 +51,7 @@ const App = () => (
         <Route path="/signup" element={<AdminProtectedRoute><SignUpAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
+        <Route path="/individualbill/:_id" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
         <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
       </Routes>
     </div>

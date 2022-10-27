@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const MeasureItem = ({ measure }) => (
   <tr>
+    <td>{measure.bitAppropriation}</td>
     <td>{measure.year}</td>
     <td>{measure.measureType}</td>
     <td>{measure.measureNumber}</td>
@@ -13,13 +15,16 @@ const MeasureItem = ({ measure }) => (
     <td>{measure.description}</td>
     {/* eslint-disable-next-line react/prop-types */}
     <td>{measure.status}</td>
-    <td><a id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} href="/individualbill" type="button" className="btn btn-primary btn-sm">View</a></td>
+    <td>
+        <Link className={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
+    </td>
   </tr>
 );
 
 // Require a document to be passed to this component.
 MeasureItem.propTypes = {
   measure: PropTypes.shape({
+    bitAppropriation: PropTypes.number,
     year: PropTypes.number,
     measureType: PropTypes.string,
     measureNumber: PropTypes.number,

@@ -32,15 +32,11 @@ const CreateTestimony = () => (
             <Card className="mt-3 border-0 bg-transparent shadow-none">
               <Card.Text className="col-form-label bold-text"> Date: </Card.Text>
               <Card.Text className="col-form-label bold-text"> Time: </Card.Text>
-              <Card.Text className="col-form-label bold-text"> Location: </Card.Text>
-              <Card.Text className="col-form-label bold-text"> Committee: </Card.Text>
             </Card>
 
             <Card className="mt-3 border-0 bg-transparent shadow-none">
               <Card.Text className="col-form-label mx-3"> {`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} </Card.Text>
               <Card.Text className="col-form-label mx-3"> {`${formatAMPM(time)}`}  </Card.Text>
-              <Card.Text className="col-form-label mx-3"> 329 </Card.Text>
-              <Card.Text className="col-form-label mx-3"> House Finance </Card.Text>
             </Card>
           </Col>
         </Card>
@@ -48,7 +44,7 @@ const CreateTestimony = () => (
     </Row>
 
     <Card className="mt-3 border-0 bg-transparent shadow-none">
-      <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier: </Row>
+      <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier </Row>
       <Row className="mb-3">
         <Col className="col-sm-2 col-form-label mx-4">First name </Col>
         <Col className="col-sm-3">
@@ -68,9 +64,9 @@ const CreateTestimony = () => (
         <Col className="col-sm-9 mt-2">
           <div className="form-check">
             <input className="form-check-input" type="radio" name="position" />
-            <div className="form-check-label"> Support </div>
+            <div id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_POSITION} className="form-check-label"> Support </div>
             <input className="form-check-input" type="radio" name="position" />
-            <div className="form-check-label"> Oppose </div>
+            <div id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_POSITION} className="form-check-label"> Oppose </div>
             <input className="form-check-input" type="radio" name="position" />
             <div className="form-check-label"> Comments only </div>
           </div>

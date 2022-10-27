@@ -72,7 +72,7 @@ const Landing = () => {
                                 <li>Cathy Kim</li>
                                 <li>Steven Le</li>
                                 <li>William Liang</li>
-                                <li>Lise Nilsen</li>
+                                <li>Lise Marie Nilsen</li>
                                 <li>Kristine Rivera</li>
                                 <li>Hyunjun Song</li>
                               </ul>
