@@ -1,23 +1,22 @@
-import React from "react";
-import "/client/style.css";
-import PropTypes from "prop-types";
-import { Toast, Card, Container, Row, Col } from "react-bootstrap";
+import React from 'react';
+import '/client/style.css';
+import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const UpcomingHearing = props => {
-    const {hearing} = props;
-    return (
-        <Card>
-            <Card.Header>
-                {`${hearing.measureType.toUpperCase()} ${hearing.measureNumber}`}
-            </Card.Header>
-            <Card.Body>
-                <Card.Text>{hearing.description}</Card.Text>
-            </Card.Body>
-        </Card>
-    );
+  const { hearing } = props;
+  return (
+    <Card>
+      <Card.Header>
+        {`${hearing.measureType.toUpperCase()} ${hearing.measureNumber}`}
+      </Card.Header>
+      <Card.Body>
+        <Card.Text>{hearing.description}</Card.Text>
+      </Card.Body>
+    </Card>
+  );
 };
-
 
 UpcomingHearing.propTypes = {
   hearing: PropTypes.shape({
