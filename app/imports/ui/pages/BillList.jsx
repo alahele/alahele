@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
-import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, SortDown } from 'react-bootstrap-icons';
+import { MDBTable } from 'mdb-react-ui-kit';
+import { SortNumericUp, SortNumericDown } from 'react-bootstrap-icons';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import MeasureItem from '../components/MeasureItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import MeasurePagination from '../components/MeasurePagination';
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
@@ -114,40 +114,8 @@ const BillList = () => {
               </Card.Header>
               <Card.Body>
                 <MDBTable align="middle">
-                  <MDBTableHead>
-                    <tr>
-                      <th scope="col">Appropriation</th>
-                      <th scope="col">Year</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Number</th>
-                      <th scope="col">Code</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Link</th>
-                    </tr>
-                  </MDBTableHead>
-                  <MDBTableBody>
-                    {sortedMeasures?.map((measure) => <MeasureItem key={measure._id} measure={measure} />)}
-                  </MDBTableBody>
+                  <MeasurePagination sortedMeasures={sortedMeasures} />
                 </MDBTable>
-                <MDBPagination className="mb-0 justify-content-center">
-                  <MDBPaginationItem>
-                    <MDBPaginationLink href="#">Previous</MDBPaginationLink>
-                  </MDBPaginationItem>
-                  <MDBPaginationItem>
-                    <MDBPaginationLink href="#">1</MDBPaginationLink>
-                  </MDBPaginationItem>
-                  <MDBPaginationItem>
-                    <MDBPaginationLink href="#">2</MDBPaginationLink>
-                  </MDBPaginationItem>
-                  <MDBPaginationItem>
-                    <MDBPaginationLink href="#">3</MDBPaginationLink>
-                  </MDBPaginationItem>
-                  <MDBPaginationItem>
-                    <MDBPaginationLink href="#">Next</MDBPaginationLink>
-                  </MDBPaginationItem>
-                </MDBPagination>
               </Card.Body>
             </Card>
           </Row>
