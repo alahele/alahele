@@ -16,7 +16,7 @@ const MeasureItem = ({ measure }) => (
     {/* eslint-disable-next-line react/prop-types */}
     <td>{measure.status}</td>
     <td>
-      <Link className={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
+      <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
     </td>
   </tr>
 );
