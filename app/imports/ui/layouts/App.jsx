@@ -51,7 +51,7 @@ const App = () => (
         <Route path="/signup" element={<AdminProtectedRoute><SignUpAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/individualbill" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
+        <Route path="/individualbill/:_id" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
         <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
       </Routes>
     </div>
