@@ -10,7 +10,7 @@ const HearingForPagination = ({ hearings, loading }) => (
       <tr>
         <th scope="col">Measure Type</th>
         <th scope="col">Measure Number</th>
-        <th scope="col">Date Time</th>
+        <th scope="col">Date/Time</th>
         <th scope="col">Description</th>
         <th scope="col">Room</th>
         <th scope="col">Notice</th>

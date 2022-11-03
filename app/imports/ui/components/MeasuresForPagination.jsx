@@ -8,6 +8,7 @@ const MeasuresForPagination = ({ measures, loading }) => (
     {loading && <div> loading... </div>}
     <MDBTableHead>
       <tr>
+        <th scope="col">Approp.</th>
         <th scope="col">Year</th>
         <th scope="col">Type</th>
         <th scope="col">Number</th>
