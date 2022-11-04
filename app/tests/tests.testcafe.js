@@ -88,5 +88,6 @@ test('Test that create testimony page show up', async () => {
   await navBar.isLoggedIn(credentials.username);
   await navBar.gotoCreateTestimonyPage();
   await createTestimonyPage.isDisplayed();
-  await createTestimonyPage.gotoSelectBill();
+  await createTestimonyPage.selectBill();
+  await createTestimonyPage.submitTestimony();
 });

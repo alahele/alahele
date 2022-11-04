@@ -14,10 +14,16 @@ class CreateTestimonyPage {
   }
 
   /* Asserts that the selected bill is shown. */
-  async gotoSelectBill() {
+  async selectBill() {
     await t.click(`#${COMPONENT_IDS.CREATE_TESTIMONY_CHOOSE_FROM_BILLS_BUTTON}`);
     await t.click(`#${COMPONENT_IDS.CREATE_TESTIMONY_SELECT_BILL_BUTTON}`);
     await Selector(`#${COMPONENT_IDS.CREATE_TESTIMONY_BILL}`).exists;
+  }
+
+  /* Submit testimony */
+  async submitTestimony() {
+    await t.click(`#${COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT}`);
+
   }
 }
 
