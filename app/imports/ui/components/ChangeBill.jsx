@@ -4,6 +4,7 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink,
 import { useTracker } from 'meteor/react-meteor-data';
 import { Measures } from '../../api/measure/MeasureCollection';
 import LoadingSpinner from './LoadingSpinner';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const ChangeBill = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -44,7 +45,7 @@ const ChangeBill = () => {
               </Row>
 
               <Row>
-                <Col className="col-form-label mx-4"> {selectBill.code} {selectBill.measureTitle}</Col>
+                <Col className="col-form-label mx-4" id={COMPONENT_IDS.CREATE_TESTIMONY_BILL}> {selectBill.code} {selectBill.measureTitle}</Col>
                 <Col className="col-form-label mx-4"> {selectBill.measureNumber} </Col>
                 <Col className="col-form-label mx-4"> {selectBill.currentReferral} </Col>
                 <Col className="col-form-label mx-4"> {selectBill.status} </Col>
@@ -56,7 +57,7 @@ const ChangeBill = () => {
           )}
 
           <Col className="mt-4">
-            <Button className="btn btn-secondary mx-4" onClick={toggleShow}> {haveSelectedBill ? ('Change') : ('Select') } </Button>
+            <Button className="btn btn-secondary mx-4" id={COMPONENT_IDS.CREATE_TESTIMONY_CHOOSE_FROM_BILLS_BUTTON} onClick={toggleShow}> {haveSelectedBill ? ('Change') : ('Select') } </Button>
 
             <Modal className="fade modal-centered" show={showModal} data-bs-target="#staticBackdrop" centered>
               <ModalHeader>
@@ -84,6 +85,7 @@ const ChangeBill = () => {
                             <p>
                               <Button
                                 className="btn-secondary btn-sm"
+                                id={COMPONENT_IDS.CREATE_TESTIMONY_SELECT_BILL_BUTTON}
                                 onClick={() => { toggleShow(); changeSelectedBill(measure); toggleShowBill(); }}
                               >
                                 Select {selectBill === measure}
