@@ -22,8 +22,12 @@ const SignUpAdmin = () => {
     lastName: String,
     email: String,
     password: String,
-    role: { type: String, allowedValues: ['SECRETARY', 'WRITER', 'OFFICE APPROVER', 'PIPE APPROVER', 'FINAL APPROVER'] },
+    role: { type: String, allowedValues: ['ADMIN', 'USER', 'SECRETARY', 'SPECIALIST', 'ANALYST', 'ASSISTANT', 'DIRECTOR', 'ADMINISTRATOR', 'PIPE', 'LEADERSHIP'] },
+    phone: { type: String, required: false },
+    img: { type: String, required: false },
     office: { type: String, allowedValues: ['OSIP', 'OFS', 'OCID', 'OSSS', 'OTEM', 'DEPUTY', 'ALL'] },
+    testimonyRole: { type: String, allowedValues: ['Processor', 'Writer', 'Office Approver', 'PIPE Approver', 'Final Approver', 'None'] },
+    task: { type: String, required: false },
   });
 
   const bridge = new SimpleSchema2Bridge(schema);
@@ -60,8 +64,12 @@ const SignUpAdmin = () => {
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME} name="lastName" placeholder="Last name" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL} name="email" placeholder="E-mail address" />
                 <TextField id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD} name="password" placeholder="Password" type="password" />
+                <TextField id={COMPONENT_IDS.SIGN_UP_FORM_IMG} name="img" placeholder="Profile Picture" />
+                <TextField id={COMPONENT_IDS.SIGN_UP_FORM_PHONE} name="phone" placeholder="Phone Number" />
                 <SelectField id={COMPONENT_IDS.SIGN_UP_FORM_ROLE} name="role" placeholder="Select the Role" />
                 <SelectField id={COMPONENT_IDS.SIGN_UP_FORM_OFFICE} name="office" placeholder="Select the Office" />
+                <SelectField id={COMPONENT_IDS.SIGN_UP_FORM_TESTIMONY_ROLE} name="testimonyRole" placeholder="Select the testimony role" />
+                <TextField id={COMPONENT_IDS.SIGN_UP_FORM_TASK} name="task" placeholder="List of Responsibilities" />
                 <ErrorsField />
                 <SubmitField id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} />
               </Card.Body>
