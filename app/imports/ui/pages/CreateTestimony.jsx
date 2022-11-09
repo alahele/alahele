@@ -74,7 +74,7 @@ const CreateTestimony = () => {
   };
 
   if (redirectToReferer) {
-    return <Navigate to="/TestimonyList" />;
+    return <Navigate to="/testimony-list" />;
   }
   return (
     <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
