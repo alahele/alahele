@@ -31,12 +31,12 @@ const TestimonyList = () => {
   switch (sort) {
     case 1:
       sortedTestimonies = testimony.sort(function (a, b) {
-        return new Date(a.datetime) - new Date(b.datetime);
+        return new Date(a.date) - new Date(b.date);
       });
       break;
     case 2:
       sortedTestimonies = testimony.sort(function (a, b) {
-        return new Date(b.datetime) - new Date(a.datetime);
+        return new Date(b.date) - new Date(a.date);
       });
       break;
     case 3:

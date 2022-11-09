@@ -7,7 +7,7 @@ const TestimonyItem = ({ testimony }) => (
     <tr>
       <td>{testimony.chair}</td>
       <td>{testimony.date}</td>
-      <td>{testimony.measureType}</td>
+      <td>{testimony.measureType} {testimony.measureNumber}</td>
       <td>{testimony.body}</td>
       <td>{testimony.status}</td>
       <td><Link to={`/individual-testimony/${testimony._id}`}>View</Link></td>
