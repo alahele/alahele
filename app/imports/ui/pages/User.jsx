@@ -32,9 +32,6 @@ const User = () => {
   return (ready ? (
     <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
       <Container>
-        <UserNotifications />
-      </Container>
-      <Container>
         <Row>
           {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
             <Col> <AdminCard /> </Col>,
