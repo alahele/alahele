@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import MeasureItem from './MeasureItem';
 import { ROLE } from '../../api/role/Role';
-import { ArrowRight, PersonPlus } from 'react-bootstrap-icons';
 
 const MeasuresForPagination = ({ measures, loading }) => (
   <>
