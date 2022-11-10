@@ -118,6 +118,12 @@ class MeasureCollection extends BaseCollection {
     return null;
   }
 
+  getMeasure(id) {
+    const measures = this._collection.find().fetch();
+    const final = measures.filter(measure => measure._id === id);
+    return final[0];
+  }
+
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const year = doc.year;

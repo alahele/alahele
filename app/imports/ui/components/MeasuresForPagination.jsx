@@ -2,21 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import MeasureItem from './MeasureItem';
+import { ROLE } from '../../api/role/Role';
 
 const MeasuresForPagination = ({ measures, loading }) => (
   <>
     {loading && <div> loading... </div>}
     <MDBTableHead>
       <tr>
-        <th scope="col">Approp.</th>
-        <th scope="col">Year</th>
-        <th scope="col">Type</th>
-        <th scope="col">Number</th>
-        <th scope="col">Code</th>
+        <th scope="col">Apr.&nbsp;</th>
+        <th scope="col">Year&nbsp;</th>
+        <th scope="col">Type&nbsp;</th>
+        <th scope="col">Num&nbsp;</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Status</th>
         <th scope="col">Link</th>
+
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
+          <th scope="col">Assign</th>,
+        ]) : ''}
       </tr>
     </MDBTableHead>
     <MDBTableBody>

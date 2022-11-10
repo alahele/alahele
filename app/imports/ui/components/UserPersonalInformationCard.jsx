@@ -1,6 +1,6 @@
 import React from 'react';
 import '/client/style.css';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
@@ -11,18 +11,52 @@ import { UserProfiles } from '../../api/user/UserProfileCollection';
 const UserPersonalInformationCard = ({ user, ready }) => ((ready) ? (
   <Card>
     <Card.Body>
+      <Row>
+        <Col md="5" className="align-middle text-center">
+          <Card.Img
+            src={user.img}
+            className="rounded-circle img-fluid img-thumbnail"
+            style={{ width: '12rem' }}
+          />
+        </Col>
+        <Col md="7">
+          <Card.Text className="user-profile-main-card">
+            <dl className="row">
+              <dt className="col-sm-auto">First Name:</dt>
+              <dd className="col-sm-7">{user.firstName}</dd>
 
-      <Card.Img
-        src="/images/sharky.png"
-        className="rounded-circle img-fluid img-thumbnail"
-        style={{ width: '12rem' }}
-      />,
-      <Card.Text className="user-profile-main-card">Name: {user.firstName} {user.lastName}
+              <dt className="col-sm-auto">last Name:</dt>
+              <dd className="col-sm-7">{user.lastName}</dd>
 
-      </Card.Text>
-      <Card.Text className="user-profile-main-card">Role: {user.role}</Card.Text>
-      <Card.Text className="user-profile-main-card">Email: {user.email}</Card.Text>
+              <dt className="col-sm-auto">Email:</dt>
+              <dd className="col-sm-7">{user.email}</dd>
 
+              <dt className="col-sm-auto">Phone:</dt>
+              <dd className="col-sm-7">{user.phone}</dd>
+
+              <dt className="col-sm-auto">Office:</dt>
+              <dd className="col-sm-8">{user.office}</dd>
+
+              <dt className="col-sm-auto">Role:</dt>
+              <dd className="col-sm-7">{user.role}</dd>
+            </dl>
+          </Card.Text>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="auto">
+          <Card.Text className="user-profile-main-card">
+            <dl className="row">
+
+              <dt className="col-sm-auto">Testimony Role:</dt>
+              <dd className="col-sm-8">{user.testimonyRole}</dd>
+
+              <dt className="col-sm-auto">Responsibility:</dt>
+              <dd className="col-sm-8">{user.task}</dd>
+            </dl>
+          </Card.Text>
+        </Col>
+      </Row>
     </Card.Body>
   </Card>
 
