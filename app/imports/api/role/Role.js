@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 export const ROLE = {
   ADMIN: 'ADMIN',
   USER: 'USER',
-  SECRETARY: 'SECRETARY',
+  PROCESSOR: 'PROCESSOR',
   WRITER: 'WRITER',
   OFFICE_APPROVER: 'OFFICE APPROVER',
   PIPE_APPROVER: 'PIPE APPROVER',

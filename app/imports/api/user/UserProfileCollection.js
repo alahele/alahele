@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
@@ -5,7 +6,17 @@ import { Users } from './UserCollection';
 
 class UserProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('UserProfile', new SimpleSchema({}));
+    super('UserProfile', new SimpleSchema({
+      email: String,
+      role: String,
+      firstName: String,
+      lastName: String,
+      phone: { type: String, defaultValue: 'N/A' },
+      img: { type: String, defaultValue: 'https://www.nicepng.com/png/detail/115-1150821_default-avatar-comments-sign-in-icon-png.png' },
+      office: { type: String, defaultValue: 'N/A' },
+      testimonyRole: { type: String, defaultValue: 'N/A' },
+      task: { type: String, defaultValue: 'N/A' },
+    }));
   }
 
   /**
@@ -13,22 +24,27 @@ class UserProfileCollection extends BaseProfileCollection {
      * @param email The email associated with this profile. Will be the username.
      * @param password The password for this user.
      * @param firstName The first name.
-     * @param lastName The last name.
+     * @param lastName The last name..
+     * @param phone The phone number of the user
+     * @param img The profile picture of the user
+     * @param office The office the user belongs in.
+     * @param testimonyRole The role user has regarding testimonies.
+     * @param task Responsibilities of the user.
      */
-  define({ email, firstName, lastName, password }) {
-    // if (Meteor.isServer) {
-    const username = email;
-    const user = this.findOne({ email, firstName, lastName });
-    if (!user) {
-      const role = ROLE.USER;
-      const userID = Users.define({ username, role, password });
-      const profileID = this._collection.insert({ email, firstName, lastName, userID, role });
-      // this._collection.update(profileID, { $set: { userID } });
-      return profileID;
+  define({ email, firstName, lastName, password, phone, img, office, testimonyRole, task }) {
+    if (Meteor.isServer) {
+      const username = email;
+      const user = this.findOne({ email, firstName, lastName });
+      if (!user) {
+        const role = ROLE.USER;
+        const userID = Users.define({ username, email, role, password });
+        const profileID = this._collection.insert({ email, firstName, lastName, userID, role, phone, img, office, testimonyRole, task });
+        this._collection.update(profileID, { $set: { userID } });
+        return profileID;
+      }
+      return user._id;
     }
-    return user._id;
-    // }
-    // return undefined;
+    return undefined;
   }
 
   /**
@@ -37,7 +53,7 @@ class UserProfileCollection extends BaseProfileCollection {
      * @param firstName new first name (optional).
      * @param lastName new last name (optional).
      */
-  update(docID, { firstName, lastName }) {
+  update(docID, { firstName, lastName, role, phone, img, office, testimonyRole, task }) {
     this.assertDefined(docID);
     const updateData = {};
     if (firstName) {
@@ -45,6 +61,24 @@ class UserProfileCollection extends BaseProfileCollection {
     }
     if (lastName) {
       updateData.lastName = lastName;
+    }
+    if (role) {
+      updateData.role = role;
+    }
+    if (phone) {
+      updateData.phone = phone;
+    }
+    if (img) {
+      updateData.img = img;
+    }
+    if (office) {
+      updateData.office = office;
+    }
+    if (testimonyRole) {
+      updateData.testimonyRole = testimonyRole;
+    }
+    if (task) {
+      updateData.task = task;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -98,7 +132,13 @@ class UserProfileCollection extends BaseProfileCollection {
     const email = doc.email;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    return { email, firstName, lastName };
+    const role = doc.role;
+    const phone = doc.phone;
+    const img = doc.img;
+    const office = doc.office;
+    const testimonyRole = doc.testimonyRole;
+    const task = doc.task;
+    return { email, firstName, lastName, role, phone, img, office, testimonyRole, task };
   }
 }
 
