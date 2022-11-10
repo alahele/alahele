@@ -38,6 +38,7 @@ const App = () => (
         <Route path="/signout" element={<SignOut />} />
         <Route exact path="/" element={<Landing />} />
         <Route path="/bill-list" element={<ProtectedRoute> <BillList /> </ProtectedRoute>} />
+        <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
         <Route path="/hearing-list" element={<ProtectedRoute> <HearingList /> </ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
@@ -45,6 +46,7 @@ const App = () => (
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/hearing/:_id" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+        <Route path="/individual-testimony" element={<ProtectedRoute><IndividualTestimony /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/signup" element={<AdminProtectedRoute><SignUpAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
