@@ -43,9 +43,7 @@ class TestimonyCollection extends BaseCollection {
       year: Number,
       measureType: String,
       measureNumber: Number,
-      // Use Date().toString() to convert to String
-      date: String,
-      time: String,
+      date: Date,
       chair: { type: String, optional: true },
       viceChair: { type: String, optional: true },
       type: { type: String, allowedValues: testimonyType, defaultValue: 'Organization' },
@@ -80,7 +78,7 @@ class TestimonyCollection extends BaseCollection {
    * @param docName The saved document name for a testimony. Assuming user will be creating drafts and final draft, allows multiple testimony documents per bill.
    */
 
-  define({ year, measureType, measureNumber, date, time, chair, viceChair, type, name, position, method, body, comment, status, docName }) {
+  define({ year, measureType, measureNumber, date, chair, viceChair, type, name, position, method, body, comment, status, docName }) {
     // UNIQUE (year, measureType, measureNumber)
     if (this.isDefined({ year, measureType, measureNumber, docName })) {
       return this.findDoc({ year, measureType, measureNumber, docName })._id;
@@ -93,7 +91,6 @@ class TestimonyCollection extends BaseCollection {
       measureType,
       measureNumber,
       date,
-      time,
       chair,
       viceChair,
       type,
@@ -108,7 +105,7 @@ class TestimonyCollection extends BaseCollection {
     return docID;
   }
 
-  update(docID, { year, measureType, measureNumber, date, time, chair, viceChair, type, name, position, method, body, comment, status, docName }) {
+  update(docID, { year, measureType, measureNumber, date, chair, viceChair, type, name, position, method, body, comment, status, docName }) {
     const updateData = {};
     if (_.isNumber(year)) {
       updateData.year = year;
@@ -124,9 +121,6 @@ class TestimonyCollection extends BaseCollection {
     }
     if (date) {
       updateData.date = date;
-    }
-    if (time) {
-      updateData.time = time;
     }
     if (chair) {
       updateData.chair = chair;
@@ -328,7 +322,6 @@ class TestimonyCollection extends BaseCollection {
     const measureType = doc.measureType;
     const measureNumber = doc.measureNumber;
     const date = doc.date;
-    const time = doc.time;
     const chair = doc.chair;
     const viceChair = doc.viceChair;
     const type = doc.type;
@@ -339,7 +332,7 @@ class TestimonyCollection extends BaseCollection {
     const comment = doc.comment;
     const status = doc.status;
     const docName = doc.docName;
-    return { year, measureType, measureNumber, date, time, chair, viceChair, type, name, position, method, body, comment, status, docName };
+    return { year, measureType, measureNumber, date, chair, viceChair, type, name, position, method, body, comment, status, docName };
   }
 }
 
