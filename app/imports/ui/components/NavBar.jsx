@@ -43,7 +43,6 @@ const NavBar = () => {
                 <Container className="my-3">
                   <h6>Pages</h6>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_BILL_LIST} href="/bill-list">Bills</Nav.Link>
-                  <Nav.Link id={COMPONENT_IDS.NAVBAR_TESTIMONY_LIST} href="/testimony-list">Testimonies</Nav.Link>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_HEARING_LIST} href="/hearing-list">Hearings</Nav.Link>
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_CREATE_TESTIMONY} href="/create-testimony">Create Testimony</Nav.Link>
                 </Container>
