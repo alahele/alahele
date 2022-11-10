@@ -20,6 +20,7 @@ TestimonyItem.propTypes = {
     chair: PropTypes.string,
     date: PropTypes.string,
     measureType: PropTypes.string,
+    measureNumber: PropTypes.number,
     body: PropTypes.string,
     status: PropTypes.string,
     _id: PropTypes.string,

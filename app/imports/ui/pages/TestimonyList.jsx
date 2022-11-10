@@ -10,7 +10,6 @@ import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, Sor
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Testimony } from '../../api/testimony/TestimonyCollection';
 import TestimonyItem from '../components/TestimonyItem';
-/*import TestimonyItem from '../components/TestimonyItem';*/
 
 /* A simple static component to render some text for the landing page. */
 const TestimonyList = () => {
