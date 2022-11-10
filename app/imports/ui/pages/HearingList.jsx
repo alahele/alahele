@@ -7,7 +7,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Hearings } from '../../api/hearing/HearingCollection';
 import HearingItem from '../components/HearingItem';
 import LoadingSpinner from '../components/LoadingSpinner';
-import SearchBar from '../components/SearchBar';
+import SearchBarHearings from '../components/SearchBarHearings';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import MeasurePagination from "../components/MeasurePagination";
 import HearingPagination from "../components/HearingPagination";
@@ -63,7 +63,7 @@ const HearingList = () => {
 
   return (ready ? (
     <Container id={PAGE_IDS.HEARING_LIST}>
-      <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
+      <SearchBarHearings id={COMPONENT_IDS.SEARCH_BAR_HEARINGS} />
       <Row>
         <Col xs={3}>
           <Card className="filter">
