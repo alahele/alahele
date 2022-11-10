@@ -19,8 +19,7 @@ const MeasuresForPagination = ({ measures, loading }) => (
         <th scope="col">Link</th>
 
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
-            <th scope="col">Assign</th>
-          ,
+          <th scope="col">Assign</th>,
         ]) : ''}
       </tr>
     </MDBTableHead>
