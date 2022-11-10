@@ -138,7 +138,7 @@ const CreateTestimony = () => {
           </Row>
         </Card>
         <ErrorsField />
-        <SubmitField id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} />
+        <SubmitField id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT} />
       </AutoForm>
       {error === '' ? (
         ''
