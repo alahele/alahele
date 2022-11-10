@@ -63,7 +63,7 @@ const HearingList = () => {
 
   return (ready ? (
     <Container id={PAGE_IDS.HEARING_LIST}>
-      <SearchBarHearings id={COMPONENT_IDS.SEARCH_BAR} />
+      <SearchBarHearings id={COMPONENT_IDS.SEARCH_BAR_HEARINGS} />
       <Row>
         <Col xs={3}>
           <Card className="filter">
