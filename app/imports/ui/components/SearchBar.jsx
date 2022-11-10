@@ -33,6 +33,7 @@ const SearchBar = () => {
 
   const filterTitle = measures.filter((p) => p.measureTitle.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
   const filterCode = measures.filter((p) => p.code.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+  const filterDescription = measures.filter((p) => p.description.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
   return (ready ? (
     <Container>
@@ -41,16 +42,19 @@ const SearchBar = () => {
       </Form>
       <Card>
         {filterTitle.map(measure => (
-          <div><span> {measure.measureTitle}
-            <li> {measure.code} <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link> </li>
+          <span> {measure.measureTitle} {measure.code}
+            <li className="search-detail"> {measure.description} <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link> </li>
           </span>
-          </div>
         ))}
         {filterCode.map(measure => (
-          <div><span> {measure.code}
-            <li> {measure.measureTitle} <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link> </li>
+          <span> {measure.measureTitle} {measure.code}
+            <li className="search-detail"> {measure.description} <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link> </li>
           </span>
-          </div>
+        ))}
+        {filterDescription.map(measure => (
+          <span> {measure.measureTitle} {measure.code}
+            <li className="search-detail"> {measure.description} <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link> </li>
+          </span>
         ))}
       </Card>
     </Container>

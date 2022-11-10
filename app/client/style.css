@@ -163,3 +163,7 @@ body {
 .inputSearch {
   width: 100%;
 }
+
+.search-detail {
+  font-size: 14px;
+}
