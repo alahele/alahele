@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { ROLE } from '../../api/role/Role';
+import { Button, Modal } from 'react-bootstrap';
+import { PersonPlus } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+
+
 const MeasureItem = ({ measure }) => (
   <tr>
-    <td>{measure.bitAppropriation}</td>
-    <td>{measure.year}</td>
-    <td>{measure.measureType}</td>
-    <td>{measure.measureNumber}</td>
-    <td>{measure.code}</td>
-    <td>{measure.measureTitle}</td>
-    <td>{measure.description}</td>
-    {/* eslint-disable-next-line react/prop-types */}
-    <td>{measure.status}</td>
-    <td>
+    <td scope={"col"}>{measure.bitAppropriation}</td>
+    <td scope={"col"}>{measure.year}</td>
+    <td scope={"col"} align="middle">{measure.measureType}</td>
+    <td scope={"col"}>{measure.measureNumber}</td>
+    <td scope={"col"}>{measure.measureTitle}</td>
+    <td className="measure-item-align"scope={"col"}>{measure.description}</td>
+
+    <td className="measure-item-align" scope={"col"}>{measure.status}</td>
+
+    <td className="measure-item-align" scope="col">
       <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
+    </td>
+
+    <td scope="col">
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
+        <Button variant="secondary">
+          <PersonPlus className="fs-8 mb-1"/>
+        </Button>
+      ]) : ''}
     </td>
   </tr>
 );
