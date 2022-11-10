@@ -3,40 +3,40 @@ import SimpleSchema from 'simpl-schema';
 import BaseCollection from '../base/BaseCollection';
 
 export const measureOfficePublications = {
-  measures: 'measures',
-  office: 'office',
+  measureID: 'measureID',
+  officeID: 'officeID',
 };
 
 class MeasureOfficeCollection extends BaseCollection {
   constructor() {
     super('Measure Office', new SimpleSchema({
-      measure: Object,
-      office: String,
+      measureID: Number,
+      officeID: Number,
     }));
   }
 
-  define({ measures, office }) {
+  define({ measureID, officeID }) {
     // UNIQUE (year, measureType, measureNumber, notice)
-    if (this.isDefined({ measures, office })) {
-      return this.findDoc({ measures, office })._id;
+    if (this.isDefined({ measureID, officeID })) {
+      return this.findDoc({ measureID, officeID })._id;
     }
     const docID = this._collection.insert({
-      measures,
-      office,
+      measureID,
+      officeID,
     });
     return docID;
   }
 
   update(docID, {
-    measures, office,
+    measureID, officeID,
   }) {
     const updateData = {};
 
-    if (measures) {
-      updateData.measures = measures;
+    if (measureID) {
+      updateData.measureID = measureID;
     }
-    if (office) {
-      updateData.office = office;
+    if (officeID) {
+      updateData.officeID = officeID;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -50,14 +50,14 @@ class MeasureOfficeCollection extends BaseCollection {
       // get the MeasureOfficeCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(measureOfficePublications.measures, function publish() {
+      Meteor.publish(measureOfficePublications.measureID, function publish() {
         if (this.userId) {
           return instance._collection.find({});
         }
         return this.ready();
       });
 
-      Meteor.publish(measureOfficePublications.office, function publish() {
+      Meteor.publish(measureOfficePublications.officeID, function publish() {
         if (this.userId) {
           return instance._collection.find({});
         }
@@ -68,14 +68,14 @@ class MeasureOfficeCollection extends BaseCollection {
 
   subscribeMeasures() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(measureOfficePublications.measures);
+      return Meteor.subscribe(measureOfficePublications.measureID);
     }
     return null;
   }
 
   subscribeOffice() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(measureOfficePublications.office);
+      return Meteor.subscribe(measureOfficePublications.officeID);
     }
     return null;
   }
@@ -88,13 +88,13 @@ class MeasureOfficeCollection extends BaseCollection {
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const measures = doc.measures;
-    const office = doc.office;
-    return { measures, office };
+    const measureID = doc.measureID;
+    const officeID = doc.officeID;
+    return { measureID, officeID };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const MeasureOfficePublications = new MeasureOfficeCollection();
+export const MeasureOffices = new MeasureOfficeCollection();

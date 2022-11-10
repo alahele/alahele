@@ -126,7 +126,10 @@
     "development": true,
     "measuresFileName": "smallMeasures.json",
     "hearingsFileName": "testHearing.json",
+    "officesFileName": "testOffices.json",
     "loadMeasures": true,
-    "loadHearings": true
+    "loadHearings": true,
+    "loadOffices": true,
+    "loadMeasureOffices": true
     }
 }
