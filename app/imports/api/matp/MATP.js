@@ -4,8 +4,8 @@ import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Hearings } from '../hearing/HearingCollection';
 import { Measures } from '../measure/MeasureCollection';
-import {Offices} from '../office/OfficeCollection'
-import { MeasureOffices } from "../office/MeasureOfficeCollection";
+import { Offices } from '../office/OfficeCollection';
+import { MeasureOffices } from '../office/MeasureOfficeCollection';
 
 class MATPClass {
   collections;
@@ -22,8 +22,8 @@ class MATPClass {
       Measures,
       Stuffs,
       UserProfiles,
-        Offices,
-        MeasureOffices,
+      Offices,
+      MeasureOffices,
     ];
     /*
          * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -34,8 +34,8 @@ class MATPClass {
       Measures,
       UserProfiles,
       Stuffs,
-        Offices,
-        MeasureOffices,
+      Offices,
+      MeasureOffices,
     ];
 
     /*

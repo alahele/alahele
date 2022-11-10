@@ -4,6 +4,8 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable } from 'mdb-react-ui-kit';
 import { SortNumericUp, SortNumericDown } from 'react-bootstrap-icons';
 import { Measures } from '../../api/measure/MeasureCollection';
+import { Offices } from '../../api/office/OfficeCollection';
+import { MeasureOffices } from '../../api/office/MeasureOfficeCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
@@ -27,7 +29,24 @@ const BillList = () => {
 
     [],
   );
+
+  const { officeRdy, offices } = useTracker(
+    () => {
+      const subscription = Offices.subscribeOffices();
+      const rdy = subscription.ready();
+      const officeItems = Offices.find({}).fetch();
+      return {
+        offices: officeItems,
+        officeRdy: rdy,
+      };
+    },
+    [],
+  );
   const [sort, setSort] = useState(1);
+
+  // measures.map((measure) => MeasureOffices._collection.insert({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
+  console.log(measures);
+  console.log(offices);
 
   switch (sort) {
   case 1:

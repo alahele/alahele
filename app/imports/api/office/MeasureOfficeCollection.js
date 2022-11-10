@@ -3,15 +3,14 @@ import SimpleSchema from 'simpl-schema';
 import BaseCollection from '../base/BaseCollection';
 
 export const measureOfficePublications = {
-  measureID: 'measureID',
-  officeID: 'officeID',
+  measureOffices: 'measureOffices',
 };
 
 class MeasureOfficeCollection extends BaseCollection {
   constructor() {
     super('Measure Office', new SimpleSchema({
-      measureID: Number,
-      officeID: Number,
+      measureID: String,
+      officeID: String,
     }));
   }
 
@@ -50,14 +49,7 @@ class MeasureOfficeCollection extends BaseCollection {
       // get the MeasureOfficeCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(measureOfficePublications.measureID, function publish() {
-        if (this.userId) {
-          return instance._collection.find({});
-        }
-        return this.ready();
-      });
-
-      Meteor.publish(measureOfficePublications.officeID, function publish() {
+      Meteor.publish(measureOfficePublications.measureOffices, function publish() {
         if (this.userId) {
           return instance._collection.find({});
         }
@@ -66,16 +58,9 @@ class MeasureOfficeCollection extends BaseCollection {
     }
   }
 
-  subscribeMeasures() {
+  subscribeMeasureOffices() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(measureOfficePublications.measureID);
-    }
-    return null;
-  }
-
-  subscribeOffice() {
-    if (Meteor.isClient) {
-      return Meteor.subscribe(measureOfficePublications.officeID);
+      return Meteor.subscribe(measureOfficePublications.measureOffices);
     }
     return null;
   }

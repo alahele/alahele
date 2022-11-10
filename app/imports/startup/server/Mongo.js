@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
-import { Offices } from "../../api/office/OfficeCollection";
-import { MeasureOffices } from "../../api/office/MeasureOfficeCollection";
+import { Offices } from '../../api/office/OfficeCollection';
+import { MeasureOffices } from '../../api/office/MeasureOfficeCollection';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { Hearings } from '../../api/hearing/HearingCollection';
 /* eslint-disable no-console */
@@ -40,6 +40,12 @@ if (Meteor.settings.public.loadMeasures && Measures.count() === 0) {
     jsonData.forEach(measure => Measures.define(measure));
   }
 }
+
+// if (Meteor.settings.public.loadMeasureOffice && MeasureOffices.count() === 0) {
+//   const measures = Measures.find({}).fetch();
+//  // const offices = Offices.find({}).fetch();
+//   measures.map((measure) => MeasureOffices.define({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
+// }
 
 if (Meteor.settings.public.loadHearings && Hearings.count() === 0) {
   if (Meteor.settings.public.hearingsFileName) {
