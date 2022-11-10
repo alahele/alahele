@@ -37,4 +37,5 @@ export const COMPONENT_IDS = {
   CREATE_ACCOUNT: 'create-account',
   SEARCH_BAR: 'search-bar',
   SEARCH_BAR_INPUT: 'search-bar-input',
+  SEARCH_BAR_HEARINGS: 'search-bar-hearings',
 };
