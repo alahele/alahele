@@ -1,6 +1,6 @@
 import React from 'react';
 import '/client/style.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
@@ -9,10 +9,12 @@ import MeasuresGrid from '../components/MeasuresGrid';
 import UserPersonalInformationCard from '../components/UserPersonalInformationCard';
 import UserNotifications from '../components/UserNotfications';
 import UpcomingHearings from '../components/UpcomingHearings';
+
 import { Measures } from '../../api/measure/MeasureCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ROLE } from '../../api/role/Role';
 import AdminCard from '../components/AdminCard';
+import MeasurePagination from '../components/MeasurePagination';
 
 /** Render the current users personal information. */
 const User = () => {
@@ -32,9 +34,6 @@ const User = () => {
   return (ready ? (
     <Container id={PAGE_IDS.USER_PROFILE} className="py-3">
       <Container>
-        <UserNotifications />
-      </Container>
-      <Container>
         <Row>
           {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
             <Col> <AdminCard /> </Col>,
@@ -43,7 +42,12 @@ const User = () => {
           ])}
           <Col> <UpcomingHearings /> </Col>
         </Row>
-        <Row> <MeasuresGrid measures={measures} /> </Row>
+        <Row>
+          <Card>
+            <Card.Header>Measures</Card.Header>
+            <MeasurePagination sortedMeasures={measures}/>
+          </Card>
+        </Row>
       </Container>
     </Container>
   ) : <LoadingSpinner message="Loading Measures" />);
