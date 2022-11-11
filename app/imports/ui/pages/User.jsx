@@ -1,6 +1,6 @@
 import React from 'react';
 import '/client/style.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col ,Card} from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
@@ -13,6 +13,7 @@ import { Measures } from '../../api/measure/MeasureCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ROLE } from '../../api/role/Role';
 import AdminCard from '../components/AdminCard';
+import MeasurePagination from '../components/MeasurePagination';
 
 /** Render the current users personal information. */
 const User = () => {
@@ -40,7 +41,14 @@ const User = () => {
           ])}
           <Col> <UpcomingHearings /> </Col>
         </Row>
-        <Row> <MeasuresGrid measures={measures} /> </Row>
+        <Row>
+          <Card>
+            <Card.Header>
+              Mearsures
+            </Card.Header>
+            <MeasurePagination sortedMeasures={measures} />
+          </Card>
+        </Row>
       </Container>
     </Container>
   ) : <LoadingSpinner message="Loading Measures" />);
