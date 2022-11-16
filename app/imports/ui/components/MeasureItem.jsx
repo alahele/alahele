@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import { PersonPlus } from 'react-bootstrap-icons';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
+import swal from 'sweetalert';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -12,6 +13,10 @@ const MeasureItem = ({ measure }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleAssign = function() {
+      swal("Office successfully assigned.");
+      setShow(false);
+  }
 
   return (
     <tr>
@@ -45,19 +50,38 @@ const MeasureItem = ({ measure }) => {
               </Modal.Header>
               <Modal.Body>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="OSIP" />
-                  <Form.Check type="checkbox" label="OFS" />
-                  <Form.Check type="checkbox" label="OCID" />
-                  <Form.Check type="checkbox" label="OSSS" />
-                  <Form.Check type="checkbox" label="OTM" />
-                  <Form.Check type="checkbox" label="DEPUTY" />
+                    <Row>
+                        <Col>
+                            <h5>Primary Office</h5>
+                            <Form.Select aria-label="Primary Office">
+                                <option>Select Office..</option>
+                                <option >OSIP</option>
+                                <option >OFS</option>
+                                <option >OCID</option>
+                                <option >OSSS</option>
+                                <option >OTM</option>
+                                <option >DEPUTY</option>
+                            </Form.Select>
+                        </Col>
+                        <Col>
+                            <h5>Secondary Office(s)</h5>
+                            <Form.Check type="checkbox" label="OSIP" />
+                            <Form.Check type="checkbox" label="OFS" />
+                            <Form.Check type="checkbox" label="OCID" />
+                            <Form.Check type="checkbox" label="OSSS" />
+                            <Form.Check type="checkbox" label="OTM" />
+                            <Form.Check type="checkbox" label="DEPUTY" />
+                        </Col>
+                    </Row>
                 </Form.Group>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary">Assign</Button>
+                <Button variant="primary" onClick={handleAssign}>
+                  Assign
+                </Button>
               </Modal.Footer>
             </Modal>
           </>,
