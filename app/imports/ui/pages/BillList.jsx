@@ -11,6 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import MeasurePagination from '../components/MeasurePagination';
+import {defineMethod} from "../../api/base/BaseCollection.methods";
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
@@ -44,7 +45,12 @@ const BillList = () => {
   );
   const [sort, setSort] = useState(1);
 
-  // measures.map((measure) => MeasureOffices._collection.insert({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
+  //measures.map((measure) => MeasureOffices._collection.insert({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
+  const collectionName = MeasureOffices.getCollectionName();
+  measures.map((measure) => {
+    let definitionData = { measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' };
+    defineMethod.callPromise({ collectionName, definitionData })
+  });
   console.log(measures);
   console.log(offices);
 

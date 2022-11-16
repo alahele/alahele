@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '../base/BaseCollection';
+import {ROLE} from "../role/Role";
 
 export const measureOfficePublications = {
   measureOffices: 'measureOffices',
@@ -8,10 +9,21 @@ export const measureOfficePublications = {
 
 class MeasureOfficeCollection extends BaseCollection {
   constructor() {
-    super('Measure Office', new SimpleSchema({
+    super('MeasureOffice', new SimpleSchema({
       measureID: String,
       officeID: String,
     }));
+  }
+
+
+  /**
+   * Default implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or Advisor.
+   * This is used in the define, update, and removeIt Meteor methods associated with each class.
+   * @param userId The userId of the logged in user. Can be null or undefined
+   * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or Advisor.
+   */
+  assertValidRoleForMethod(userId) {
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
   }
 
   define({ measureID, officeID }) {
