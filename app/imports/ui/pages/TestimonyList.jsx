@@ -1,22 +1,83 @@
 import React from 'react';
+import {useState} from 'react';
 import { Container, Dropdown } from 'react-bootstrap';
+import { useTracker } from 'meteor/react-meteor-data';
 import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import SearchBar from '../components/SearchBar';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, SortDown } from 'react-bootstrap-icons';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { Testimony } from '../../api/testimony/TestimonyCollection';
+import TestimonyItem from '../components/TestimonyItem';
+/*import TestimonyItem from '../components/TestimonyItem';*/
 
 /* A simple static component to render some text for the landing page. */
-const TestimonyList = () => (
+const TestimonyList = () => {
+  let sortedTestimonies;
+  const { ready, testimony } = useTracker(
+  () => {
+    const subscription = Testimony.subscribeTestimony();
+    const rdy = subscription.ready();
+    const testimonyItems = Testimony.find({}).fetch();
+    return {
+      testimony: testimonyItems,
+      ready: rdy,
+    };
+  }, []);
+
+  const [sort, setSort] = useState(1);
+
+  switch (sort) {
+    case 1:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
+      break;
+    case 2:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+      break;
+    case 3:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return a.measureNumber - b.measureNumber;
+      });
+      break;
+    case 4:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return b.measureNumber - a.measureNumber;
+      });
+      break;
+    case 5:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return b.year - a.year;
+      });
+      break;
+    case 6:
+      sortedTestimonies = testimony.sort(function (a, b) {
+        return a.year - b.year;
+      });
+      break;
+    default:
+      break;
+  }
+
+    return ( ready ? (
   <Container id={PAGE_IDS.TESTIMONY_LIST}>
+    <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
     <Dropdown className="float-end">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Sort By
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Representative</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Bill/Resolution #</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Status</Dropdown.Item>
-        <Dropdown.Item href="#/action-5">Testifier</Dropdown.Item>
+        <Dropdown.Item href="#/action-1" onClick={() => setSort(1)}>Date / Time <SortUp/> </Dropdown.Item>
+        <Dropdown.Item href="#/action-1" onClick={() => setSort(2)}>Date / Time <SortDown/> </Dropdown.Item>
+        <Dropdown.Item href="#/action-2" onClick={() => setSort(3)}>Bill Number <SortNumericUp/> </Dropdown.Item>
+        <Dropdown.Item href="#/action-2" onClick={() => setSort(4)}>Bill Number <SortNumericDown/> </Dropdown.Item>
+        <Dropdown.Item href="#/action-4" onClick={() => setSort(5)}>Year <SortNumericUp/> </Dropdown.Item>
+        <Dropdown.Item href="#/action-4" onClick={() => setSort(6)}>Year <SortNumericDown/> </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     <MDBTable align="middle">
@@ -31,14 +92,16 @@ const TestimonyList = () => (
         </tr>
       </MDBTableHead>
       <MDBTableBody>
+        {/*{testimony.map((testimony) => <TestimonyItem key={testimony._id} testimony={testimony}/>)}*/}
+        {/*{sortedTestimonies.map((testimony) => <TestimonyItem key={testimony._id} testimony={testimony}/>)}*/}
         <tr>
           <td>
             <div className="d-flex align-items-center">
               <img
-                src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
-                alt=""
-                style={{ width: '45px', height: '45px' }}
-                className="rounded-circle"
+                  src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
+                  alt=""
+                  style={{ width: '45px', height: '45px' }}
+                  className="rounded-circle"
               />
               <div className="ms-3">
                 <p className="fw-bold mb-1">David Ige</p>
@@ -66,10 +129,10 @@ const TestimonyList = () => (
           <td>
             <div className="d-flex align-items-center">
               <img
-                src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
-                alt=""
-                style={{ width: '45px', height: '45px' }}
-                className="rounded-circle"
+                  src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
+                  alt=""
+                  style={{ width: '45px', height: '45px' }}
+                  className="rounded-circle"
               />
               <div className="ms-3">
                 <p className="fw-bold mb-1">David Shmige</p>
@@ -97,10 +160,10 @@ const TestimonyList = () => (
           <td>
             <div className="d-flex align-items-center">
               <img
-                src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
-                alt=""
-                style={{ width: '45px', height: '45px' }}
-                className="rounded-circle"
+                  src="https://cbs6albany.com/resources/media/393c9e11-c6ed-4cdb-b3db-0610871899f6-large3x4_AP20022064296602.jpg?1587153484149"
+                  alt=""
+                  style={{ width: '45px', height: '45px' }}
+                  className="rounded-circle"
               />
               <div className="ms-3">
                 <p className="fw-bold mb-1">Da Vid Ige</p>
@@ -144,6 +207,6 @@ const TestimonyList = () => (
       </MDBPaginationItem>
     </MDBPagination>
   </Container>
-);
-
+        ) : <LoadingSpinner testimony = "Loading Testimony"></LoadingSpinner>);
+};
 export default TestimonyList;

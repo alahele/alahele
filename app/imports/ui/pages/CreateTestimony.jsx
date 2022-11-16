@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '/client/create-testimony.css';
-import { Container, Card, Button, Col, Row, CardGroup, ListGroup, Tab } from 'react-bootstrap';
-import Tabs from 'react-bootstrap/Tabs';
+import { Container, Card, Col, Row, CardGroup, Alert } from 'react-bootstrap';
+import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import {
+  AutoForm,
+  DateField,
+  ErrorsField,
+  LongTextField,
+  NumField,
+  SelectField,
+  SubmitField,
+  TextField,
+} from 'uniforms-bootstrap5';
+import swal from 'sweetalert';
+import { Navigate } from 'react-router';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import ChangeBill from '../components/ChangeBill';
+import { Testimony } from '../../api/testimony/TestimonyCollection';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const time = new Date();
 
@@ -19,121 +34,122 @@ function formatAMPM(date) {
   return strTime;
 }
 
-const CreateTestimony = () => (
-  <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
-    <Row>
-      <CardGroup>
-        <Card className="mt-1 pt-lg-5 ps-lg-5 border-0 bg-transparent shadow-none">
-          <h1>Create Testimony</h1>
+const CreateTestimony = () => {
+  const [error, setError] = useState('');
+  const [redirectToReferer, setRedirectToRef] = useState(false);
+
+  const schema = new SimpleSchema({
+    year: Number,
+    measureType: { type: String, allowedValues: ['hb', 'sb', 'hr', 'sr', 'hcr', 'scr', 'gm'] },
+    measureNumber: Number,
+    // Use Date().toString() to convert to String
+    date: String,
+    chair: { type: String, required: false },
+    viceChair: { type: String, required: false },
+    type: { type: String, allowedValues: ['Individual', 'Organization'] },
+    name: String,
+    position: { type: String, required: false, allowedValues: ['Support', 'Oppose', 'Comments Only'] },
+    method: { type: String, required: false },
+    body: { type: String, required: false },
+    'body.$': { type: String },
+    comment: { type: Array, required: false },
+    'comment.$': { type: String },
+    status: { type: String, allowedValues: ['Processor', 'Writer', 'Office Approver', 'PIPE Approver', 'Final Approver', 'Complete'] },
+    docName: String,
+  });
+
+  const bridge = new SimpleSchema2Bridge(schema);
+
+  /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
+  const submit = (doc) => {
+    const collectionName = Testimony.getCollectionName();
+    const definitionData = doc;
+    // create the new Testimony
+    defineMethod.callPromise({ collectionName, definitionData })
+      .then(() => {
+        swal('Testimony has been created.');
+        setRedirectToRef(true);
+      })
+      .catch((err) => setError(err.reason));
+  };
+
+  if (redirectToReferer) {
+    return <Navigate to="/testimony-list" />;
+  }
+  return (
+    <Container id={PAGE_IDS.CREATE_TESTIMONY} className="py-3">
+      <Row>
+        <CardGroup>
+          <Card className="mt-1 pt-lg-5 ps-lg-5 border-0 bg-transparent shadow-none">
+            <h1>Create Testimony</h1>
+          </Card>
+          {/* Show date, time, location and committee */}
+          <Card className="border-0 bg-transparent shadow-none">
+            <Col className="d-md-flex justify-content-md-end">
+              <Card className="mt-3 border-0 bg-transparent shadow-none">
+                <Card.Text className="col-form-label bold-text"> Date: </Card.Text>
+                <Card.Text className="col-form-label bold-text"> Time: </Card.Text>
+              </Card>
+
+              <Card className="mt-3 border-0 bg-transparent shadow-none">
+                <Card.Text className="col-form-label mx-3"> {`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} </Card.Text>
+                <Card.Text className="col-form-label mx-3"> {`${formatAMPM(time)}`}  </Card.Text>
+              </Card>
+            </Col>
+          </Card>
+        </CardGroup>
+      </Row>
+
+      <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+        <Card className="mt-3 border-0 bg-transparent shadow-none">
+          <Row className="mb-3">
+            <Col className="col-sm-9">
+              <DateField label="Date*" name="date" placeholder={`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} />
+              <TextField label="Document Name*" name="docName" placeholder="Save as..." />
+            </Col>
+          </Row>
+
+          <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier </Row>
+          <Row className="mb-3">
+            <Col className="col-sm-9">
+              <SelectField label="Type*" name="type" placeholder="Select the Type" />
+              <TextField label="Name*" name="name" placeholder="Name of individual/organization" />
+              <TextField label="If remotely testifying, how will you be testifying? (optional)" name="method" placeholder="Zoom" />
+            </Col>
+          </Row>
+
+          {/* Select and show bill */}
+          <ChangeBill />
+          <Row className="mb-3">
+            <Col className="col-sm-9">
+              <NumField label="Year*" name="year" placeholder="2022" />
+              <SelectField label="Measure Type*" name="measureType" />
+              <NumField label="Measure Number*" name="measureNumber" />
+            </Col>
+          </Row>
+
+          <Row className="mb-3">
+            <Col className="col-sm-9 mt-2">
+              <SelectField label="Position" name="position" placeholder="" />
+              <LongTextField label="Body" name="body" />
+              <SelectField Lable="Send To*" name="status" />
+              <LongTextField label="Comment (optional)" name="comment" />
+            </Col>
+          </Row>
         </Card>
-        {/* Show date, time, location and committee */}
-        <Card className="border-0 bg-transparent shadow-none">
-          <Col className="d-md-flex justify-content-md-end">
-            <Card className="mt-3 border-0 bg-transparent shadow-none">
-              <Card.Text className="col-form-label bold-text"> Date: </Card.Text>
-              <Card.Text className="col-form-label bold-text"> Time: </Card.Text>
-            </Card>
-
-            <Card className="mt-3 border-0 bg-transparent shadow-none">
-              <Card.Text className="col-form-label mx-3"> {`${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`} </Card.Text>
-              <Card.Text className="col-form-label mx-3"> {`${formatAMPM(time)}`}  </Card.Text>
-            </Card>
-          </Col>
-        </Card>
-      </CardGroup>
-    </Row>
-
-    <Card className="mt-3 border-0 bg-transparent shadow-none">
-      <Row className="mb-3 col-sm-2 col-form-label bold-text"> Testifier </Row>
-      <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label mx-4">First name </Col>
-        <Col className="col-sm-3">
-          <input className="form-control" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_FIRST_NAME} placeholder="Type first name" />
-        </Col>
-        <Col className="col-sm-2 col-form-label mx-4">Last name </Col>
-        <Col className="col-sm-3">
-          <input className="form-control" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_LAST_NAME} placeholder="Type last name" />
-        </Col>
-      </Row>
-
-      {/* Select and show bill */}
-      <ChangeBill />
-
-      <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label bold-text"> Your position </Col>
-        <Col className="col-sm-9 mt-2">
-          <div className="form-check">
-            <input className="form-check-input" type="radio" name="position" />
-            <div id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_POSITION} className="form-check-label"> Support </div>
-            <input className="form-check-input" type="radio" name="position" />
-            <div id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_POSITION} className="form-check-label"> Oppose </div>
-            <input className="form-check-input" type="radio" name="position" />
-            <div className="form-check-label"> Comments only </div>
-          </div>
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Col className="col-sm-2 col-form-label bold-text"> Testifying </Col>
-        <Col className="col-sm-9 mt-2">
-          <div className="form-check">
-            <input className="form-check-input" type="radio" name="testify" />
-            <div className="form-check-label"> As an individual citizen </div>
-            <input className="form-check-input" type="radio" name="testify" />
-            <div className="form-check-label"> On behalf of an organization </div>
-          </div>
-          <input className="form-control" placeholder=" Name of organization" />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Col htmlFor="PurposeofBill" className="col-sm-2 col-form-label bold-text"> How will you be testifying? </Col>
-        <Col className="col-sm-9 mt-2">
-          <div className="form-check">
-            <input className="form-check-input" type="radio" name="howTestify" />
-            <div className="form-check-label"> Remotely via Zoom during the hearing & submitting written testimony </div>
-            <input className="form-check-input" type="radio" name="howTestify" />
-            <div className="form-check-label"> Written testimony only </div>
-          </div>
-        </Col>
-      </Row>
-
-    </Card>
-
-    <p className="mx-4 my-3"> Please submit your written testimony using one of two options below </p>
-
-    <ListGroup className="tabs">
-      <ListGroup.Item>
-        <Row className="tabs">
-          <Col md>
-            <Tabs defaultActiveKey="upload" className="mb-3">
-              <Tab eventKey="upload" title="Upload testimony">
-                <Row className="mb-3">
-                  <Col className="col-sm-2 col-form-label bold-text">Upload file: </Col>
-                  <Col className="col-sm-9">
-                    <input className="form-control" type="file" id="formFile" />
-                  </Col>
-                </Row>
-              </Tab>
-
-              <Tab eventKey="write" title="Write testimony">
-                <Row className="mb-3">
-                  <Col className="col-sm-2 col-form-label bold-text"> Your testimony: </Col>
-                  <div className="center-block mx-2">
-                    <textarea className="form-control" style={{ width: '1250px', height: '100px' }} />
-                  </div>
-                </Row>
-              </Tab>
-            </Tabs>
-          </Col>
-        </Row>
-      </ListGroup.Item>
-    </ListGroup>
-
-    <div className="d-md-flex justify-content-md-end mt-2">
-      <Button className="btn-success me-md-2 btn-lg" type="submit" id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT}> Submit </Button>
-    </div>
-  </Container>
-);
+        <ErrorsField />
+        <SubmitField id={COMPONENT_IDS.CREATE_TESTIMONY_FORM_SUBMIT} />
+      </AutoForm>
+      {error === '' ? (
+        ''
+      ) : (
+        <Alert variant="danger">
+          <Alert.Heading>Registration was not successful</Alert.Heading>
+          {error}
+        </Alert>
+      )}
+    </Container>
+  );
+};
 
 export default CreateTestimony;
