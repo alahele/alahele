@@ -1,5 +1,4 @@
-import React from 'react';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import { Container, Dropdown } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
@@ -10,7 +9,6 @@ import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, Sor
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Testimony } from '../../api/testimony/TestimonyCollection';
 import TestimonyItem from '../components/TestimonyItem';
-/*import TestimonyItem from '../components/TestimonyItem';*/
 
 /* A simple static component to render some text for the landing page. */
 const TestimonyList = () => {
