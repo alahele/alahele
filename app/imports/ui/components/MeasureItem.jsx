@@ -6,18 +6,50 @@ import { PersonPlus } from 'react-bootstrap-icons';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
 import swal from 'sweetalert';
+import {Offices} from "../../api/office/OfficeCollection";
+import {MeasureOffices} from "../../api/office/MeasureOfficeCollection";
+import {defineMethod} from "../../api/base/BaseCollection.methods";
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
 const MeasureItem = ({ measure }) => {
+    const [office, setOffice] = useState(1);
+    let primary;
+    const collectionName = MeasureOffices.getCollectionName();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+    console.log(office);
+    switch (office) {
+        case "1":
+            primary = 'mzdLt2fkQ3YSE2SD5';
+            break;
+        case "2":
+            primary = 'EWb7Qt3JNhoXyZFmv';
+            break;
+        case "3":
+            primary = '5vq4tdiuiNfEsGgh5';
+            break;
+        case "4":
+            primary = 'QcFrETxAb43KJY4Sg';
+            break;
+        case "5":
+            primary = 'BsfxHqp8gSJbjHCuC';
+            break;
+        case "6":
+            primary = 'KmWeeFZEhurcvtX3z';
+            break;
+        default:
+            break;
+    }
   const handleAssign = function() {
+      console.log("hi");
+      console.log(primary);
+      let definitionData = { measureID: measure._id, officeID: primary };
+      defineMethod.callPromise({ collectionName, definitionData });
       swal("Office successfully assigned.");
       setShow(false);
   }
-
   return (
     <tr>
       <td scope="col">{measure.bitAppropriation}</td>
@@ -53,14 +85,14 @@ const MeasureItem = ({ measure }) => {
                     <Row>
                         <Col>
                             <h5>Primary Office</h5>
-                            <Form.Select aria-label="Primary Office">
+                            <Form.Select aria-label="Primary Office" onChange={(event) => setOffice(event.target.value)}>
                                 <option>Select Office..</option>
-                                <option >OSIP</option>
-                                <option >OFS</option>
-                                <option >OCID</option>
-                                <option >OSSS</option>
-                                <option >OTM</option>
-                                <option >DEPUTY</option>
+                                <option value="1">OSIP</option>
+                                <option value="2">OFS</option>
+                                <option value="3">OCID</option>
+                                <option value="4">OSSS</option>
+                                <option value="5">OTM</option>
+                                <option value="6">DEPUTY</option>
                             </Form.Select>
                         </Col>
                         <Col>
