@@ -15,7 +15,6 @@ class MeasureOfficeCollection extends BaseCollection {
     }));
   }
 
-
   /**
    * Default implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or Advisor.
    * This is used in the define, update, and removeIt Meteor methods associated with each class.
