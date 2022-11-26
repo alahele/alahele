@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import HearingItem from './HearingItem';
+import {ROLE} from "../../api/role/Role";
 
 const HearingForPagination = ({ hearings, loading }) => (
   <>
@@ -15,6 +16,10 @@ const HearingForPagination = ({ hearings, loading }) => (
         <th scope="col">Room</th>
         <th scope="col">Notice</th>
         <th scope="col">View</th>
+
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
+          <th scope="col">Save Hearing</th>,
+        ]) : ''}
       </tr>
     </MDBTableHead>
     <MDBTableBody>
