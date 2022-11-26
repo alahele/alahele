@@ -63,6 +63,15 @@ const MeasureItem = ({ measure }) => {
           </>,
         ]) : ''}
       </td>
+
+      <td scope="col">
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+          />,
+        ]) : ''}
+      </td>
     </tr>
   );
 };
