@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Modal, Form } from 'react-bootstrap';
@@ -12,6 +12,22 @@ const MeasureItem = ({ measure }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [checkedList, setCheckedList] = useState([]);
+
+  const handleSelect = (event) => {
+    const value = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      // Add checked item into checkList
+      setCheckedList([...checkedList, value]);
+    } else {
+      // Remove unchecked item from checkList
+      const filteredList = checkedList.filter((item) => item !== value);
+      setCheckedList(filteredList);
+    }
+  };
 
   return (
     <tr>
@@ -66,9 +82,10 @@ const MeasureItem = ({ measure }) => {
 
       <td scope="col">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
-          <Form.Check
-            type="switch"
-            id="custom-switch"
+          <input
+            type="checkbox"
+            value={measure._id}
+            onChange={handleSelect}
           />,
         ]) : ''}
       </td>
