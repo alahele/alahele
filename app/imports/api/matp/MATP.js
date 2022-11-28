@@ -5,6 +5,7 @@ import { UserProfiles } from '../user/UserProfileCollection';
 import { Hearings } from '../hearing/HearingCollection';
 import { Measures } from '../measure/MeasureCollection';
 import { Testimony } from '../testimony/TestimonyCollection';
+import {SavedMeasures} from "../measure/SavedMeasureCollection";
 
 class MATPClass {
   collections;
@@ -22,6 +23,7 @@ class MATPClass {
       Stuffs,
       UserProfiles,
       Testimony,
+        SavedMeasures,
     ];
     /*
          * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -33,6 +35,7 @@ class MATPClass {
       UserProfiles,
       Stuffs,
       Testimony,
+      SavedMeasures,
     ];
 
     /*

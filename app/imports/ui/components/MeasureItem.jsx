@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { PersonPlus } from 'react-bootstrap-icons';
+import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
+import { SavedMeasures } from '../../api/measure/SavedMeasureCollection';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -15,13 +18,21 @@ const MeasureItem = ({ measure }) => {
 
   const [checkedList, setCheckedList] = useState([]);
 
+  const collectionName = SavedMeasures.getCollectionName();
+
   const handleSelect = (event) => {
+    const { code, measureTitle, bitAppropriation, description } = measure;
     const value = event.target.value;
+    // eslint-disable-next-line no-undef
+    const defineData = { id: code, measureTitle, bitAppropriation, description };
     const isChecked = event.target.checked;
 
     if (isChecked) {
       // Add checked item into checkList
       setCheckedList([...checkedList, value]);
+      defineMethod.callPromise({ collectionName, defineData })
+        .catch(error => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
       // Remove unchecked item from checkList
       const filteredList = checkedList.filter((item) => item !== value);
