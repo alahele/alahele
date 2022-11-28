@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
 import { SavedMeasures } from '../../api/measure/SavedMeasureCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethod, removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -22,21 +22,23 @@ const MeasureItem = ({ measure }) => {
 
   const handleSelect = (event) => {
     const { code, measureTitle, bitAppropriation, description } = measure;
-    const value = event.target.value;
-    // eslint-disable-next-line no-undef
     const defineData = { id: code, measureTitle, bitAppropriation, description };
+    const value = event.target.value;
     const isChecked = event.target.checked;
 
     if (isChecked) {
       // Add checked item into checkList
       setCheckedList([...checkedList, value]);
       defineMethod.callPromise({ collectionName, defineData })
-        .catch(error => swal('Error', error.message, 'error'))
+        .catch(function (error) {})
         .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
       // Remove unchecked item from checkList
       const filteredList = checkedList.filter((item) => item !== value);
       setCheckedList(filteredList);
+      removeItMethod.callPromise({ collectionName, defineData })
+        .catch(function (error) {})
+        .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
     }
   };
 
