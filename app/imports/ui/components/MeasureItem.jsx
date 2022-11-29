@@ -19,10 +19,10 @@ const MeasureItem = ({ measure }) => {
   const [checkedList, setCheckedList] = useState([]);
 
   const collectionName = SavedMeasures.getCollectionName();
+  const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
+  const defineData = { id: year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
 
   const handleSelect = (event) => {
-    const { code, measureTitle, bitAppropriation, description } = measure;
-    const defineData = { id: code, measureTitle, bitAppropriation, description };
     const value = event.target.value;
     const isChecked = event.target.checked;
 
@@ -30,7 +30,7 @@ const MeasureItem = ({ measure }) => {
       // Add checked item into checkList
       setCheckedList([...checkedList, value]);
       defineMethod.callPromise({ collectionName, defineData })
-        .catch(function (error) {})
+          .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
       // Remove unchecked item from checkList
@@ -97,7 +97,7 @@ const MeasureItem = ({ measure }) => {
         {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
           <input
             type="checkbox"
-            value={measure._id}
+            value={measure}
             onChange={handleSelect}
           />,
         ]) : ''}
