@@ -27,6 +27,7 @@ import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
 import SignOut from '../pages/SignOut';
 import FavoriteBillList from '../pages/FavoriteBillList';
+import MyBillList from "../pages/MyBillList";
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -45,6 +46,7 @@ const App = () => (
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/favorite" element={<ProtectedRoute><FavoriteBillList /></ProtectedRoute>} />
+        <Route path="/mybill" element={<ProtectedRoute><MyBillList /></ProtectedRoute>} />
         <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         <Route path="/hearing/:_id" element={<ProtectedRoute><Hearing /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />

@@ -13,12 +13,20 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import MeasurePagination from '../components/MeasurePagination';
 
 /* A simple static component to render some text for the BillList page. */
-const BillList = () => {
+const MyBillList = () => {
   let sortedMeasures;
 
   function pluck(array, key) {
     return array.map(o => o[key]);
   }
+
+  // function showMyBills() {
+  //   primary = offices[0]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  // }
 
   const { ready, measures } = useTracker(
     () => {
@@ -62,83 +70,96 @@ const BillList = () => {
   );
   const [sort, setSort] = useState(1);
   const [office, setOffice] = useState(1);
+  const [myBillList, setMyBillList] = useState(1);
+
+
+  console.log(measures);
+  let myBills = measureOffices.filter(measureOffice => measureOffice.officeID === offices[0]._id);
+  let myBillsPlucked = pluck(myBills, 'measureID');
+  let finalMyBills = measures.filter(measure => myBillsPlucked.indexOf(measure._id) >= 0);
+  sortedMeasures = finalMyBills;
+  console.log(sortedMeasures);
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
 
   switch (sort) {
   case 1:
-    sortedMeasures = measures.sort(function (a, b) {
+    sortedMeasures = sortedMeasures.sort(function (a, b) {
       return a.measureNumber - b.measureNumber;
     });
     break;
   case 2:
-    sortedMeasures = measures.sort(function (a, b) {
+    sortedMeasures = sortedMeasures.sort(function (a, b) {
       return b.measureNumber - a.measureNumber;
     });
     break;
   case 3:
-    sortedMeasures = measures.sort(function (a, b) {
+    sortedMeasures = sortedMeasures.sort(function (a, b) {
       return b.bitAppropriation - a.bitAppropriation;
     });
     break;
   case 4:
-    sortedMeasures = measures.sort(function (a, b) {
+    sortedMeasures = sortedMeasures.sort(function (a, b) {
       return a.bitAppropriation - b.bitAppropriation;
     });
     break;
   default:
     break;
   }
-
-  let primary;
-  let officeSortedMeasureOffices;
-  let plucked;
-  let finalResult;
-
-  switch (office) {
-  case '1':
-    primary = offices[0]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  case '2':
-    primary = offices[1]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  case '3':
-    primary = offices[2]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  case '4':
-    primary = offices[3]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  case '5':
-    primary = offices[4]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  case '6':
-    primary = offices[5]._id;
-    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-    plucked = pluck(officeSortedMeasureOffices, 'measureID');
-    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-    sortedMeasures = finalResult;
-    break;
-  default:
-    break;
-  }
+  //
+  // let primary;
+  // let officeSortedMeasureOffices;
+  // let plucked;
+  // let finalResult;
+  //
+  // switch (office) {
+  // case '1':
+  //   primary = offices[0]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // case '2':
+  //   primary = offices[1]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // case '3':
+  //   primary = offices[2]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // case '4':
+  //   primary = offices[3]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // case '5':
+  //   primary = offices[4]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // case '6':
+  //   primary = offices[5]._id;
+  //   officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+  //   plucked = pluck(officeSortedMeasureOffices, 'measureID');
+  //   finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+  //   sortedMeasures = finalResult;
+  //   break;
+  // default:
+  //   break;
+  // }
 
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
@@ -198,7 +219,7 @@ const BillList = () => {
                     <Nav.Link href="/bill-list">Bills</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link href="/mybill" onClick={() => showMyBills()}>My Bills</Nav.Link>
+                    <Nav.Link href="/mybill">My Bills</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link href="/favorite">My Favorites</Nav.Link>
@@ -218,4 +239,4 @@ const BillList = () => {
   ) : <LoadingSpinner meassure="Loading Measures" />);
 };
 
-export default BillList;
+export default MyBillList;

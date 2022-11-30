@@ -108,7 +108,7 @@ const FavoriteBillList = () => {
                     <Nav.Link href="/bill-list">Bills</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link href="#link">My Bills</Nav.Link>
+                    <Nav.Link href="/mybill">My Bills</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link href="/favorite">My Favorites</Nav.Link>
