@@ -16,6 +16,11 @@ import { defineMethod } from "../../api/base/BaseCollection.methods";
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
   let sortedMeasures;
+
+  function pluck(array, key) {
+    return array.map(o => o[key]);
+  }
+
   const { ready, measures } = useTracker(
     () => {
       const subscription = Measures.subscribeMeasures();
@@ -43,7 +48,20 @@ const BillList = () => {
     },
     [],
   );
+
+  const { measureOffices } = useTracker(
+      () => {
+        const subscription = MeasureOffices.subscribeMeasureOffices();
+        const rdy = subscription.ready();
+        const measureOfficeItems = MeasureOffices.find({}).fetch();
+        return {
+          measureOffices: measureOfficeItems
+        };
+      },
+      [],
+  );
   const [sort, setSort] = useState(1);
+  const [office, setOffice] = useState(1);
 
   //measures.map((measure) => MeasureOffices._collection.insert({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
   const collectionName = MeasureOffices.getCollectionName();
@@ -78,6 +96,49 @@ const BillList = () => {
   default:
     break;
   }
+
+  switch (office) {
+    case '1':
+      // sortedMeasures = measures.sort(function (a, b) {
+      //   return a.measureNumber - b.measureNumber;
+      // });
+        console.log("measureoffice before the sort:");
+        console.log(measureOffices);
+        let primary = offices[0]._id;
+        // let officeSortedMeasures = measureOffices.filter(function (measureOffice) {
+        //   measureOffice.officeID == primary;
+        // });
+        let officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+        let plucked = pluck(officeSortedMeasureOffices, 'measureID');
+        let finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+        console.log("printing sorted measure result:");
+        console.log(officeSortedMeasureOffices);
+        console.log("final result:");
+        console.log(finalResult);
+      break;
+    case '2':
+      sortedMeasures = measures.sort(function (a, b) {
+        return b.measureNumber - a.measureNumber;
+      });
+      break;
+    case '3':
+      sortedMeasures = measures.sort(function (a, b) {
+        return b.bitAppropriation - a.bitAppropriation;
+      });
+      break;
+    case '4':
+      sortedMeasures = measures.sort(function (a, b) {
+        return a.bitAppropriation - b.bitAppropriation;
+      });
+      break;
+    case '5':
+      break;
+    case '6':
+      break;
+    default:
+      break;
+  }
+
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
       <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
@@ -96,14 +157,17 @@ const BillList = () => {
                 <Form.Label>Code</Form.Label>
                 <Form.Control type="text" placeholder="code" />
 
-                <Form.Label inline>Office</Form.Label>
+                <Form.Label inline>Primary Office</Form.Label>
                 <br />
-                <Form.Check inline label="OSIP" />
-                <Form.Check inline label="OFS" />
-                <Form.Check inline label="OCID" />
-                <Form.Check inline label="OSSS" />
-                <Form.Check inline label="OTM" />
-                <Form.Check inline label="DEPUTY" />
+                <Form.Select aria-label="Primary Office" onChange={(event) => setOffice(event.target.value)}>
+                  <option>Select Office..</option>
+                  <option value="1">OSIP</option>
+                  <option value="2">OFS</option>
+                  <option value="3">OCID</option>
+                  <option value="4">OSSS</option>
+                  <option value="5">OTM</option>
+                  <option value="6">DEPUTY</option>
+                </Form.Select>
                 <Button className="mt-4 float-end" type="submit">Filter</Button>
               </Form>
             </Card.Body>
