@@ -6,7 +6,7 @@ import { PersonPlus } from 'react-bootstrap-icons';
 import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
-import { SavedMeasures } from '../../api/measure/SavedMeasureCollection';
+import { SavedMeasure } from '../../api/measure/SavedMeasureCollection';
 import { defineMethod, removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -16,28 +16,23 @@ const MeasureItem = ({ measure }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [checkedList, setCheckedList] = useState([]);
-
-  const collectionName = SavedMeasures.getCollectionName();
-  const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
-  const defineData = { id: year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
-
   const handleSelect = (event) => {
-    const value = event.target.value;
     const isChecked = event.target.checked;
 
+    const collectionName = SavedMeasure.getCollectionName();
+    const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
+    const defineData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
+
+
     if (isChecked) {
-      // Add checked item into checkList
-      setCheckedList([...checkedList, value]);
+      // Add item into collection
       defineMethod.callPromise({ collectionName, defineData })
-          .catch(error => swal('Error', error.message, 'error'))
+        .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
-      // Remove unchecked item from checkList
-      const filteredList = checkedList.filter((item) => item !== value);
-      setCheckedList(filteredList);
+      // Remove item from collection
       removeItMethod.callPromise({ collectionName, defineData })
-        .catch(function (error) {})
+        .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
     }
   };
@@ -94,10 +89,9 @@ const MeasureItem = ({ measure }) => {
       </td>
 
       <td scope="col">
-        {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
           <input
             type="checkbox"
-            value={measure}
             onChange={handleSelect}
           />,
         ]) : ''}

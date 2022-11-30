@@ -2,15 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
-import { isValidMeasureType } from '../legislature/measureTypes';
 
 export const savedMeasurePublications = {
-  savedMeasures: 'savedMeasure',
+  saved: 'Saved',
 };
 
 class SavedMeasureCollection extends BaseCollection {
   constructor() {
-    super('savedMeasure', new SimpleSchema({
+    super('SavedMeasure', new SimpleSchema({
       year: Number,
       measureType: String,
       measureNumber: Number,
@@ -26,17 +25,24 @@ class SavedMeasureCollection extends BaseCollection {
     if (this.isDefined({ year, measureType, measureNumber })) {
       return this.findDoc({ year, measureType, measureNumber })._id;
     }
-    if (!isValidMeasureType(measureType)) {
-      throw new Meteor.Error(`${measureType} is an invalid Measure Type.`);
-    }
     const docID = this._collection.insert({ year, measureType, measureNumber, code, measureTitle, bitAppropriation, description });
     return docID;
   }
 
-  update(docID, { code, measureTitle, bitAppropriation, description }) {
+  update(docID, { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description }) {
     const updateData = {};
     if (code) {
       updateData.code = code;
+    }
+    if (year) {
+      updateData.year = year;
+    }
+    if (measureType) {
+      updateData.measureType = measureType;
+    }
+
+    if (measureNumber) {
+      updateData.measureNumber = measureNumber;
     }
     if (measureTitle) {
       updateData.measureTitle = measureTitle;
@@ -93,4 +99,4 @@ class SavedMeasureCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const SavedMeasures = new SavedMeasureCollection();
+export const SavedMeasure = new SavedMeasureCollection();
