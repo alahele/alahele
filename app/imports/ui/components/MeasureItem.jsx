@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { Button, Modal, Form, Col, Row } from 'react-bootstrap';
 import { PersonPlus } from 'react-bootstrap-icons';
 import swal from 'sweetalert';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
 import { Offices } from '../../api/office/OfficeCollection';
@@ -60,10 +62,7 @@ const MeasureItem = ({ measure }) => {
   default:
     break;
   }
-  const handleAssign = function () {
-    // console.log('hi');
-    // console.log(primary);
-    // console.log(doc);
+  const handleAssign = () => {
     const definitionData = { measureID: measure._id, officeID: primary };
     defineMethod.callPromise({ collectionName, definitionData });
     swal('Office successfully assigned.');
@@ -71,20 +70,20 @@ const MeasureItem = ({ measure }) => {
   };
   return (
     <tr>
-      <td scope="col">{measure.bitAppropriation}</td>
-      <td scope="col">{measure.year}</td>
-      <td scope="col" align="middle">{measure.measureType}</td>
-      <td scope="col">{measure.measureNumber}</td>
-      <td scope="col">{measure.measureTitle}</td>
-      <td className="measure-item-align" scope="col">{measure.description}</td>
+      <th scope="col">{measure.bitAppropriation}</th>
+      <th scope="col">{measure.year}</th>
+      <th scope="col" align="middle">{measure.measureType}</th>
+      <th scope="col">{measure.measureNumber}</th>
+      <th scope="col">{measure.measureTitle}</th>
+      <th className="measure-item-align" scope="col">{measure.description}</th>
 
-      <td className="measure-item-align" scope="col">{measure.status}</td>
+      <th className="measure-item-align" scope="col">{measure.status}</th>
 
-      <td className="measure-item-align" scope="col">
+      <th className="measure-item-align" scope="col">
         <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
-      </td>
+      </th>
 
-      <td scope="col">
+      <th scope="col">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
           <>
             <Button variant="secondary" onClick={handleShow}>
@@ -137,7 +136,7 @@ const MeasureItem = ({ measure }) => {
             </Modal>
           </>,
         ]) : ''}
-      </td>
+      </th>
     </tr>
   );
 };
@@ -152,6 +151,7 @@ MeasureItem.propTypes = {
     code: PropTypes.string,
     measureTitle: PropTypes.string,
     description: PropTypes.string,
+    status: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

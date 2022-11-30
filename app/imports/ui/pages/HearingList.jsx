@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { MDBTable, MDBTableHead, MDBTableBody, MDBPagination, MDBPaginationLink, MDBPaginationItem } from 'mdb-react-ui-kit';
+import { MDBTable } from 'mdb-react-ui-kit';
 import { SortNumericUp, SortNumericDown, SortAlphaUp, SortAlphaDown, SortUp, SortDown } from 'react-bootstrap-icons';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Hearings } from '../../api/hearing/HearingCollection';
-import HearingItem from '../components/HearingItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBarHearings from '../components/SearchBarHearings';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import MeasurePagination from "../components/MeasurePagination";
-import HearingPagination from "../components/HearingPagination";
+import HearingPagination from '../components/HearingPagination';
 
 /* A simple static component to render some text for the landing page. */
 const HearingList = () => {

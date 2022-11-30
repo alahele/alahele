@@ -1,13 +1,11 @@
 import React from 'react';
 import '/client/style.css';
-import { Container, Row, Col ,Card} from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import MeasuresGrid from '../components/MeasuresGrid';
 import UserPersonalInformationCard from '../components/UserPersonalInformationCard';
-import UserNotifications from '../components/UserNotfications';
 import UpcomingHearings from '../components/UpcomingHearings';
 import { Measures } from '../../api/measure/MeasureCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
