@@ -34,7 +34,7 @@ const UpcomingHearing = props => {
         </Row>
       </Card.Body>
     </Card>
-  ) : <></>);
+  ) : '');
 };
 
 UpcomingHearing.propTypes = {

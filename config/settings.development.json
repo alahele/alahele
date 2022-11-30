@@ -142,9 +142,12 @@
     "development": true,
     "measuresFileName": "smallMeasures.json",
     "hearingsFileName": "testHearing.json",
+    "officesFileName": "testOffices.json",
     "testimonyFileName": "testTestimony.json",
     "loadMeasures": true,
     "loadHearings": true,
+    "loadOffices": true,
+    "loadMeasureOffices": true,
     "loadTestimony": true
+    }
   }
-}

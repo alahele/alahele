@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable } from 'mdb-react-ui-kit';
 import { SortNumericUp, SortNumericDown } from 'react-bootstrap-icons';
 import { Measures } from '../../api/measure/MeasureCollection';
+import { Offices } from '../../api/office/OfficeCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
@@ -13,6 +14,11 @@ import MeasurePagination from '../components/MeasurePagination';
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
   let sortedMeasures;
+
+  function pluck(array, key) {
+    return array.map(o => o[key]);
+  }
+
   const { ready, measures } = useTracker(
     () => {
       const subscription = Measures.subscribeMeasures();
@@ -27,7 +33,34 @@ const BillList = () => {
 
     [],
   );
+
+  const { offices } = useTracker(
+    () => {
+      const subscription = Offices.subscribeOffices();
+      const rdy = subscription.ready();
+      const officeItems = Offices.find({}).fetch();
+      return {
+        offices: officeItems,
+        officeRdy: rdy,
+      };
+    },
+    [],
+  );
+
+  const { measureOffices } = useTracker(
+    () => {
+      const subscription = MeasureOffices.subscribeMeasureOffices();
+      const rdy = subscription.ready();
+      const measureOfficeItems = MeasureOffices.find({}).fetch();
+      return {
+        measureOffices: measureOfficeItems,
+        measureOfficeRdy: rdy,
+      };
+    },
+    [],
+  );
   const [sort, setSort] = useState(1);
+  const [office, setOffice] = useState(1);
 
   switch (sort) {
   case 1:
@@ -53,6 +86,59 @@ const BillList = () => {
   default:
     break;
   }
+
+  let primary;
+  let officeSortedMeasureOffices;
+  let plucked;
+  let finalResult;
+
+  switch (office) {
+  case '1':
+    primary = offices[0]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '2':
+    primary = offices[1]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '3':
+    primary = offices[2]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '4':
+    primary = offices[3]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '5':
+    primary = offices[4]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '6':
+    primary = offices[5]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  default:
+    break;
+  }
+
   return (ready ? (
     <Container id={PAGE_IDS.BILL_LIST}>
       <SearchBar id={COMPONENT_IDS.SEARCH_BAR} />
@@ -71,14 +157,17 @@ const BillList = () => {
                 <Form.Label>Code</Form.Label>
                 <Form.Control type="text" placeholder="code" />
 
-                <Form.Label inline>Office</Form.Label>
+                <Form.Label inline>Primary Office</Form.Label>
                 <br />
-                <Form.Check inline label="OSIP" />
-                <Form.Check inline label="OFS" />
-                <Form.Check inline label="OCID" />
-                <Form.Check inline label="OSSS" />
-                <Form.Check inline label="OTM" />
-                <Form.Check inline label="DEPUTY" />
+                <Form.Select aria-label="Primary Office" onChange={(event) => setOffice(event.target.value)}>
+                  <option>Select Office..</option>
+                  <option value="1">OSIP</option>
+                  <option value="2">OFS</option>
+                  <option value="3">OCID</option>
+                  <option value="4">OSSS</option>
+                  <option value="5">OTM</option>
+                  <option value="6">DEPUTY</option>
+                </Form.Select>
                 <Button className="mt-4 float-end" type="submit">Filter</Button>
               </Form>
             </Card.Body>

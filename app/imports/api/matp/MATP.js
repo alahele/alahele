@@ -4,6 +4,8 @@ import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Hearings } from '../hearing/HearingCollection';
 import { Measures } from '../measure/MeasureCollection';
+import { Offices } from '../office/OfficeCollection';
+import { MeasureOffices } from '../office/MeasureOfficeCollection';
 import { Testimony } from '../testimony/TestimonyCollection';
 import { SavedMeasure } from '../measure/SavedMeasureCollection';
 
@@ -22,6 +24,8 @@ class MATPClass {
       Measures,
       Stuffs,
       UserProfiles,
+      Offices,
+      MeasureOffices,
       Testimony,
       SavedMeasure,
     ];
@@ -34,6 +38,8 @@ class MATPClass {
       Measures,
       UserProfiles,
       Stuffs,
+      Offices,
+      MeasureOffices,
       Testimony,
       SavedMeasure,
     ];
