@@ -6,7 +6,7 @@ import { PersonPlus } from 'react-bootstrap-icons';
 import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
-import { SavedMeasure } from '../../api/measure/SavedMeasureCollection';
+import {SavedMeasure, savedMeasurePublications} from '../../api/measure/SavedMeasureCollection';
 import { defineMethod, removeItMethod } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -21,17 +21,18 @@ const MeasureItem = ({ measure }) => {
 
     const collectionName = SavedMeasure.getCollectionName();
     const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
-    const defineData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
+    const definitionData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
+    const instance = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
 
 
     if (isChecked) {
       // Add item into collection
-      defineMethod.callPromise({ collectionName, defineData })
+      defineMethod.callPromise({ collectionName, definitionData })
         .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
       // Remove item from collection
-      removeItMethod.callPromise({ collectionName, defineData })
+      removeItMethod.callPromise({ collectionName, instance })
         .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
     }
