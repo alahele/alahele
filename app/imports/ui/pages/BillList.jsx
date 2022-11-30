@@ -11,7 +11,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import MeasurePagination from '../components/MeasurePagination';
-import { defineMethod } from "../../api/base/BaseCollection.methods";
 
 /* A simple static component to render some text for the BillList page. */
 const BillList = () => {
@@ -36,7 +35,7 @@ const BillList = () => {
     [],
   );
 
-  const { officeRdy, offices } = useTracker(
+  const { offices } = useTracker(
     () => {
       const subscription = Offices.subscribeOffices();
       const rdy = subscription.ready();
@@ -50,27 +49,19 @@ const BillList = () => {
   );
 
   const { measureOffices } = useTracker(
-      () => {
-        const subscription = MeasureOffices.subscribeMeasureOffices();
-        const rdy = subscription.ready();
-        const measureOfficeItems = MeasureOffices.find({}).fetch();
-        return {
-          measureOffices: measureOfficeItems
-        };
-      },
-      [],
+    () => {
+      const subscription = MeasureOffices.subscribeMeasureOffices();
+      const rdy = subscription.ready();
+      const measureOfficeItems = MeasureOffices.find({}).fetch();
+      return {
+        measureOffices: measureOfficeItems,
+        measureOfficeRdy: rdy,
+      };
+    },
+    [],
   );
   const [sort, setSort] = useState(1);
   const [office, setOffice] = useState(1);
-
-  //measures.map((measure) => MeasureOffices._collection.insert({ measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' }));
-  const collectionName = MeasureOffices.getCollectionName();
-  // measures.map((measure) => {
-  //   let definitionData = { measureID: measure._id, officeID: 'kemCsFCDBzDRth6So' };
-  //   defineMethod.callPromise({ collectionName, definitionData })
-  // });
-  // console.log(measures);
-  console.log(offices);
 
   switch (sort) {
   case 1:
@@ -103,50 +94,50 @@ const BillList = () => {
   let finalResult;
 
   switch (office) {
-    case '1':
-        primary = offices[0]._id;
-        officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-        plucked = pluck(officeSortedMeasureOffices, 'measureID');
-        finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-        sortedMeasures = finalResult;
-      break;
-    case '2':
-      primary = offices[1]._id;
-      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-      plucked = pluck(officeSortedMeasureOffices, 'measureID');
-      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-      sortedMeasures = finalResult;
-      break;
-    case '3':
-      primary = offices[2]._id;
-      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-      plucked = pluck(officeSortedMeasureOffices, 'measureID');
-      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-      sortedMeasures = finalResult;
-      break;
-    case '4':
-      primary = offices[3]._id;
-      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-      plucked = pluck(officeSortedMeasureOffices, 'measureID');
-      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-      sortedMeasures = finalResult;
-      break;
-    case '5':
-      primary = offices[4]._id;
-      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-      plucked = pluck(officeSortedMeasureOffices, 'measureID');
-      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-      sortedMeasures = finalResult;
-      break;
-    case '6':
-      primary = offices[5]._id;
-      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-      plucked = pluck(officeSortedMeasureOffices, 'measureID');
-      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-      sortedMeasures = finalResult;
-      break;
-    default:
-      break;
+  case '1':
+    primary = offices[0]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '2':
+    primary = offices[1]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '3':
+    primary = offices[2]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '4':
+    primary = offices[3]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '5':
+    primary = offices[4]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  case '6':
+    primary = offices[5]._id;
+    officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+    plucked = pluck(officeSortedMeasureOffices, 'measureID');
+    finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+    sortedMeasures = finalResult;
+    break;
+  default:
+    break;
   }
 
   return (ready ? (
