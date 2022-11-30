@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 import MeasureItem from './MeasureItem';
 import { ROLE } from '../../api/role/Role';
 

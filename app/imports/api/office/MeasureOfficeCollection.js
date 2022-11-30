@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import BaseCollection from '../base/BaseCollection';
-import {ROLE} from "../role/Role";
+import { ROLE } from '../role/Role';
 
 export const measureOfficePublications = {
   measureOffices: 'measureOffices',

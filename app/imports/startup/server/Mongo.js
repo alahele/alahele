@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Offices } from '../../api/office/OfficeCollection';
-import { MeasureOffices } from '../../api/office/MeasureOfficeCollection';
 import { Measures } from '../../api/measure/MeasureCollection';
 import { Hearings } from '../../api/hearing/HearingCollection';
 import { Testimony } from '../../api/testimony/TestimonyCollection';
@@ -26,6 +25,7 @@ if (Meteor.settings.public.loadOffices && Offices.count() === 0) {
     const assetsFileName = Meteor.settings.public.officesFileName;
     console.log('--------------------------------------');
     console.log('Creating default Office data...');
+    // eslint-disable-next-line no-undef
     const jsonData = JSON.parse(Assets.getText(assetsFileName));
     jsonData.forEach(office => Offices.define(office));
   }
