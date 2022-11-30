@@ -24,7 +24,6 @@ const MeasureItem = ({ measure }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const { doc } = useTracker(() => {
     // Get access to Stuff documents.
     const subscription = Offices.subscribeOffices();
@@ -71,8 +70,7 @@ const MeasureItem = ({ measure }) => {
     setShow(false);
   };
 
-
-const handleSelect = (event) => {
+  const handleSelect = (event) => {
     const isChecked = event.target.checked;
 
     const collectionName = SavedMeasure.getCollectionName();
@@ -92,7 +90,6 @@ const handleSelect = (event) => {
         .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
     }
   };
-
 
   return (
     <tr>
@@ -162,10 +159,11 @@ const handleSelect = (event) => {
             </Modal>
           </>,
         ]) : ''}
-         <td>
+        <td>
           {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
             <input
               type="checkbox"
+              onChange={handleSelect}
             />,
           ]) : ''}
         </td>
