@@ -3,21 +3,21 @@ import { Button, Card, Col, Container, Dropdown, Form, Row, Nav } from 'react-bo
 import { useTracker } from 'meteor/react-meteor-data';
 import { MDBTable } from 'mdb-react-ui-kit';
 import { SortNumericUp, SortNumericDown } from 'react-bootstrap-icons';
-import { Measures } from '../../api/measure/MeasureCollection';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SearchBar from '../components/SearchBar';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import MeasurePagination from '../components/MeasurePagination';
+import { SavedMeasure } from '../../api/measure/SavedMeasureCollection';
 
 /* A simple static component to render some text for the BillList page. */
-const BillList = () => {
+const FavoriteBillList = () => {
   let sortedMeasures;
   const { ready, measures } = useTracker(
     () => {
-      const subscription = Measures.subscribeMeasures();
+      const subscription = SavedMeasure.subscribeMeasures();
       const rdy = subscription.ready();
-      const measureItems = Measures.find({}).fetch();
+      const measureItems = SavedMeasure.find({}).fetch();
 
       return {
         measures: measureItems,
@@ -128,4 +128,4 @@ const BillList = () => {
   ) : <LoadingSpinner meassure="Loading Measures" />);
 };
 
-export default BillList;
+export default FavoriteBillList;

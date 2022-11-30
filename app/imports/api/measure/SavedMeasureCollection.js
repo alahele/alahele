@@ -4,7 +4,7 @@ import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
 
 export const savedMeasurePublications = {
-  saved: 'Saved',
+  saved: 'saved',
 };
 
 class SavedMeasureCollection extends BaseCollection {
@@ -61,7 +61,7 @@ class SavedMeasureCollection extends BaseCollection {
     if (Meteor.isServer) {
       // get the MeasureCollection instance
       const instance = this;
-      Meteor.publish(savedMeasurePublications.measures, function publish() {
+      Meteor.publish(savedMeasurePublications.saved, function publish() {
         if (this.userId) {
           return instance._collection.find({});
         }
@@ -72,7 +72,7 @@ class SavedMeasureCollection extends BaseCollection {
 
   subscribeMeasures() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(savedMeasurePublications.measures);
+      return Meteor.subscribe(savedMeasurePublications.saved);
     }
     return null;
   }

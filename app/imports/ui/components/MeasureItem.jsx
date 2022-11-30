@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { PersonPlus } from 'react-bootstrap-icons';
+import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
-import {SavedMeasure, savedMeasurePublications} from '../../api/measure/SavedMeasureCollection';
-import { defineMethod, removeItMethod } from '../../api/base/BaseCollection.methods';
+import { SavedMeasure } from '../../api/measure/SavedMeasureCollection';
+import { defineMethodUser, removeItMethodUser } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -24,15 +25,14 @@ const MeasureItem = ({ measure }) => {
     const definitionData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
     const instance = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
 
-
     if (isChecked) {
       // Add item into collection
-      defineMethod.callPromise({ collectionName, definitionData })
+      defineMethodUser.callPromise({ collectionName, definitionData })
         .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Measure saved successfully', 'success'));
     } else {
       // Remove item from collection
-      removeItMethod.callPromise({ collectionName, instance })
+      removeItMethodUser.callPromise({ collectionName, instance })
         .catch(error => swal('Error', error.message, 'error'))
         .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
     }
@@ -90,7 +90,7 @@ const MeasureItem = ({ measure }) => {
       </td>
 
       <td scope="col">
-        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? ([
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
           <input
             type="checkbox"
             onChange={handleSelect}

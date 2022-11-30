@@ -28,6 +28,21 @@ export const defineMethod = new ValidatedMethod({
   },
 });
 
+export const defineMethodUser = new ValidatedMethod({
+  name: 'BaseCollection.defineUser',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, definitionData }) {
+    if (Meteor.isServer) {
+      // console.log(collectionName, this.userId, definitionData);
+      const collection = MATP.getCollection(collectionName);
+      collection.assertUserValidRoleForMethod(this.userId);
+      return collection.define(definitionData);
+    }
+    return '';
+  },
+});
+
 export const updateMethod = new ValidatedMethod({
   name: 'BaseCollection.update',
   mixins: [CallPromiseMixin],
@@ -50,6 +65,20 @@ export const removeItMethod = new ValidatedMethod({
     if (Meteor.isServer) {
       const collection = MATP.getCollection(collectionName);
       collection.assertValidRoleForMethod(this.userId);
+      return collection.removeIt(instance);
+    }
+    return true;
+  },
+});
+
+export const removeItMethodUser = new ValidatedMethod({
+  name: 'BaseCollection.removeItUser',
+  mixins: [CallPromiseMixin],
+  validate: null,
+  run({ collectionName, instance }) {
+    if (Meteor.isServer) {
+      const collection = MATP.getCollection(collectionName);
+      collection.assertUserValidRoleForMethod(this.userId);
       return collection.removeIt(instance);
     }
     return true;

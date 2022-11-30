@@ -204,6 +204,10 @@ class BaseCollection {
     this.assertRole(userId, [ROLE.ADMIN]);
   }
 
+  assertUserValidRoleForMethod(userId) {
+    this.assertRole(userId, [ROLE.USER]);
+  }
+
   /**
    * Define the default integrity checker for all applications.
    * Returns an array with a string indicating that this method is not overridden.
