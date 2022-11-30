@@ -7,6 +7,7 @@ import { Measures } from '../measure/MeasureCollection';
 import { Offices } from '../office/OfficeCollection';
 import { MeasureOffices } from '../office/MeasureOfficeCollection';
 import { Testimony } from '../testimony/TestimonyCollection';
+import { SavedMeasure } from '../measure/SavedMeasureCollection';
 
 class MATPClass {
   collections;
@@ -26,6 +27,7 @@ class MATPClass {
       Offices,
       MeasureOffices,
       Testimony,
+      SavedMeasure,
     ];
     /*
          * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -39,6 +41,7 @@ class MATPClass {
       Offices,
       MeasureOffices,
       Testimony,
+      SavedMeasure,
     ];
 
     /*

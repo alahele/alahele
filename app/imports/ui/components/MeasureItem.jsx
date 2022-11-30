@@ -9,9 +9,10 @@ import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { ROLE } from '../../api/role/Role';
+import { SavedMeasure } from '../../api/measure/SavedMeasureCollection';
 import { Offices } from '../../api/office/OfficeCollection';
 import { MeasureOffices } from '../../api/office/MeasureOfficeCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethod, defineMethodUser, removeItMethodUser } from '../../api/base/BaseCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -22,6 +23,7 @@ const MeasureItem = ({ measure }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 
   const { doc } = useTracker(() => {
     // Get access to Stuff documents.
@@ -68,6 +70,30 @@ const MeasureItem = ({ measure }) => {
     swal('Office successfully assigned.');
     setShow(false);
   };
+
+
+const handleSelect = (event) => {
+    const isChecked = event.target.checked;
+
+    const collectionName = SavedMeasure.getCollectionName();
+    const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
+    const definitionData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
+    const instance = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
+
+    if (isChecked) {
+      // Add item into collection
+      defineMethodUser.callPromise({ collectionName, definitionData })
+        .catch(error => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', 'Measure saved successfully', 'success'));
+    } else {
+      // Remove item from collection
+      removeItMethodUser.callPromise({ collectionName, instance })
+        .catch(error => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', 'Saved measure removed successfully', 'success'));
+    }
+  };
+
+
   return (
     <tr>
       <th scope="col">{measure.bitAppropriation}</th>
@@ -136,6 +162,13 @@ const MeasureItem = ({ measure }) => {
             </Modal>
           </>,
         ]) : ''}
+         <td>
+          {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
+            <input
+              type="checkbox"
+            />,
+          ]) : ''}
+        </td>
       </th>
     </tr>
   );
