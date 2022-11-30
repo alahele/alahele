@@ -97,43 +97,53 @@ const BillList = () => {
     break;
   }
 
+  let primary;
+  let officeSortedMeasureOffices;
+  let plucked;
+  let finalResult;
+
   switch (office) {
     case '1':
-      // sortedMeasures = measures.sort(function (a, b) {
-      //   return a.measureNumber - b.measureNumber;
-      // });
-        console.log("measureoffice before the sort:");
-        console.log(measureOffices);
-        let primary = offices[0]._id;
-        // let officeSortedMeasures = measureOffices.filter(function (measureOffice) {
-        //   measureOffice.officeID == primary;
-        // });
-        let officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
-        let plucked = pluck(officeSortedMeasureOffices, 'measureID');
-        let finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
-        console.log("printing sorted measure result:");
-        console.log(officeSortedMeasureOffices);
-        console.log("final result:");
-        console.log(finalResult);
+        primary = offices[0]._id;
+        officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+        plucked = pluck(officeSortedMeasureOffices, 'measureID');
+        finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+        sortedMeasures = finalResult;
       break;
     case '2':
-      sortedMeasures = measures.sort(function (a, b) {
-        return b.measureNumber - a.measureNumber;
-      });
+      primary = offices[1]._id;
+      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+      plucked = pluck(officeSortedMeasureOffices, 'measureID');
+      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+      sortedMeasures = finalResult;
       break;
     case '3':
-      sortedMeasures = measures.sort(function (a, b) {
-        return b.bitAppropriation - a.bitAppropriation;
-      });
+      primary = offices[2]._id;
+      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+      plucked = pluck(officeSortedMeasureOffices, 'measureID');
+      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+      sortedMeasures = finalResult;
       break;
     case '4':
-      sortedMeasures = measures.sort(function (a, b) {
-        return a.bitAppropriation - b.bitAppropriation;
-      });
+      primary = offices[3]._id;
+      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+      plucked = pluck(officeSortedMeasureOffices, 'measureID');
+      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+      sortedMeasures = finalResult;
       break;
     case '5':
+      primary = offices[4]._id;
+      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+      plucked = pluck(officeSortedMeasureOffices, 'measureID');
+      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+      sortedMeasures = finalResult;
       break;
     case '6':
+      primary = offices[5]._id;
+      officeSortedMeasureOffices = measureOffices.filter(measureOffice => measureOffice.officeID === primary);
+      plucked = pluck(officeSortedMeasureOffices, 'measureID');
+      finalResult = measures.filter(measure => plucked.indexOf(measure._id) >= 0);
+      sortedMeasures = finalResult;
       break;
     default:
       break;
