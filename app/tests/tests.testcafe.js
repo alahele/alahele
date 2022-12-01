@@ -80,7 +80,7 @@ test('Test that individual testimony page show up', async () => {
   await navBar.gotoBillsListPage();
   await billListPage.gotoIndividualBillPage();
   await individualBillPage.isDisplayed();
-  await individualTestimonyPage.gotoIndividualBillPage();
+  await individualBillPage.gotoIndividualTestimonyPage();
   await individualTestimonyPage.isDisplayed();
 });
 

@@ -1,6 +1,5 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
-import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class IndividualTestimonyPage {
   constructor() {
@@ -10,11 +9,7 @@ class IndividualTestimonyPage {
 
   /* Asserts that this page is currently displayed. */
   async isDisplayed() {
-    await t.wait(5000).expect(this.pageSelector.exists).ok();
-  }
-
-  async gotoIndividualBillPage() {
-    await t.click(`#${COMPONENT_IDS.INDIVIDUAL_TESTIMONY_BUTTON}`);
+    await t.wait(8000).expect(this.pageSelector.exists).ok();
   }
 }
 
