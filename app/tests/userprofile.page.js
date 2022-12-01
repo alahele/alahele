@@ -9,7 +9,7 @@ class UserProfilePage {
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed() {
-    await t.wait(5000).expect(this.pageSelector.exists).ok();
+    await t.wait(2000).expect(this.pageSelector.exists).ok();
 
   }
 

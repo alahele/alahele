@@ -5,19 +5,26 @@ import { useParams } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Measures } from '../../api/measure/MeasureCollection';
+import { Testimony } from '../../api/testimony/TestimonyCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const IndividualBill = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { _id } = useParams();
 
-  const { ready, measures } = useTracker(() => {
+  const { ready, measures, testimony } = useTracker(() => {
     // Get access to Stuff documents.
     const subscription = Measures.subscribeMeasures();
+    const subscription2 = Testimony.subscribeTestimony();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
+    subscription2.ready();
     const measureItems = Measures.find({ _id: _id }, { sort: { name: 1 } }).fetch();
+    const testimonyItems = Testimony.find({}, { sort: { name: 1 } }).fetch();
     const measureDoc = measureItems[0];
+    const testimonyDoc = testimonyItems[0];
     return {
+      testimony: testimonyDoc,
       measures: measureDoc,
       ready: rdy,
     };
@@ -67,8 +74,9 @@ const IndividualBill = () => {
               </Accordion.Body>
             </Accordion.Item>
 
-            <Accordion.Item className="individual-bill">
-              <dt className="col-sm-3"><a href={measures.measurePdfUrl}>View Official Measure</a></dt>
+            <Accordion.Item className="individual-bill pb-5">
+              <dt className="col-sm-3 float-start"><a href={measures.measurePdfUrl}>View Official Measure</a></dt>
+              <dt className="col-sm-3 float-start"><a id={COMPONENT_IDS.INDIVIDUAL_TESTIMONY_BUTTON} href={`/individual-testimony/${testimony._id}`}>View Testimony</a></dt>
             </Accordion.Item>
 
           </Accordion>
