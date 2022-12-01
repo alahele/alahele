@@ -22,7 +22,6 @@ import Hearing from '../pages/Hearing';
 import SignUpAdmin from '../pages/SignUpAdmin';
 import SignOut from '../pages/SignOut';
 import FavoriteBillList from '../pages/FavoriteBillList';
-import TestimonyList from '../pages/TestimonyList';
 
 /** Top-level layout component for this application.
  * Called in imports/startup/client/startup.jsx. */
@@ -45,7 +44,6 @@ const App = () => (
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/individualbill/:_id" element={<ProtectedRoute><IndividualBill /></ProtectedRoute>} />
-        <Route path="/testimony-list" element={<ProtectedRoute><TestimonyList /></ProtectedRoute>} />
         <Route path="/create-testimony" element={<ProtectedRoute><CreateTestimony /></ProtectedRoute>} />
       </Routes>
     </div>
