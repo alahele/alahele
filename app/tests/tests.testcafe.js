@@ -73,7 +73,7 @@ test('Test that individual bill page show up', async () => {
   await individualBillPage.isDisplayed();
 });
 
-test.only('Test that individual testimony page show up', async () => {
+test('Test that individual testimony page show up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(credentials.username, credentials.password);
   await navBar.isLoggedIn(credentials.username);
