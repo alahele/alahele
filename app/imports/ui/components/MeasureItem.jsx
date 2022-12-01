@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Button, Modal, Form, Col, Row } from 'react-bootstrap';
 import { PersonPlus } from 'react-bootstrap-icons';
 import swal from 'sweetalert';
