@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
 import { ROLE } from '../../api/role/Role';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -32,7 +33,7 @@ const HearingItem = ({ hearing }) => {
       <td>{hearing.notice}</td>
       <td><Link to={`/hearing/${hearing._id}`}>View</Link></td>
 
-      <td scope="col">
+      <th scope="col">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.USER]) ? ([
           <input
             type="checkbox"
@@ -40,7 +41,7 @@ const HearingItem = ({ hearing }) => {
             onChange={handleSelect}
           />,
         ]) : ''}
-      </td>
+      </th>
     </tr>
   );
 };

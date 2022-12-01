@@ -32,6 +32,7 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_TASK: 'sign-up-form-task',
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
   INDIVIDUAL_BILL_BUTTON: 'individual-bill-button',
+  INDIVIDUAL_TESTIMONY_BUTTON: 'individual-testimony-button',
   CREATE_TESTIMONY_CHOOSE_FROM_BILLS_BUTTON: 'create-testimony-choose-from-bills-button',
   CREATE_TESTIMONY_SELECT_BILL_BUTTON: 'create-testimony-select-bill-button',
   CREATE_TESTIMONY_BILL: 'create-testimony-bill',

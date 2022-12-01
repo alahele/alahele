@@ -36,10 +36,6 @@ const MeasureItem = ({ measure }) => {
       ready: rdy,
     };
   }, '');
-  // console.log(office);
-  // console.log('------------------------------');
-  // console.log(doc);
-  // console.log('------------------------------');
 
   switch (office) {
   case '1':
@@ -73,6 +69,7 @@ const MeasureItem = ({ measure }) => {
   const handleSelect = (event) => {
     const isChecked = event.target.checked;
 
+    // eslint-disable-next-line no-shadow
     const collectionName = SavedMeasure.getCollectionName();
     const { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description } = measure;
     const definitionData = { year, measureType, measureNumber, code, measureTitle, bitAppropriation, description };
@@ -103,7 +100,7 @@ const MeasureItem = ({ measure }) => {
       <th className="measure-item-align" scope="col">{measure.status}</th>
 
       <th className="measure-item-align" scope="col">
-        <Link id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} to={`/individualbill/${measure._id}`}>View</Link>
+        <a id={COMPONENT_IDS.INDIVIDUAL_BILL_BUTTON} href={`/individualbill/${measure._id}`}>View</a>
       </th>
 
       <th scope="col">

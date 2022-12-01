@@ -1,8 +1,10 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import PropTypes from 'prop-types';
 import { MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import HearingItem from './HearingItem';
-import {ROLE} from "../../api/role/Role";
+import { ROLE } from '../../api/role/Role';
 
 const HearingForPagination = ({ hearings, loading }) => (
   <>
